@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>generating things with code - ECAL 2017</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!--<link rel="stylesheet" href="css/print/pdf.css">-->
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+    <style type="text/css" media="screen">
+        .small, .small li, .small a, .small code, small p {
+            font-size: .5em;
+            line-height: 1.25em;
+        }
+        .reveal section img{
+            border:none;
+            box-shadow: none;
+        }
+        h1, h2, h3, h4{
+            font-variant: ;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+
+    <!--intro-->
+    <section>
+        <h2>Generating things<br>with code</h2>
+    </section>
+
+    <section>
+        <h4>Procedural Content Generation (PCG)</h4>
+        <p>programmatic generation of content<br>often using pseudo-random data</p>
+        <p>designing a <i>process</i> rather than an <i>object</i></p>
+    </section>
+
+    <section>
+        <h4>PCG are massively used in design, <br>
+            games, art, vfx, architecture...</h4>
+    </section>
+
+    <section>
+        <h3>important</h3>
+        <ol>
+            <li>data</li>
+            <li>space</li>
+            <li>process</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>not important</h3>
+        <ul>
+            <li>coding platform & language</li>
+            <li>coding tools & toolchain</li>
+            <li>capture device &amp; data sources</li>
+        </ul>
+    </section>
+
+    <!--examples-->
+    <section>
+
+        <section>
+            <h3>what PCGs are good at</h3>
+        </section>
+
+        <section>
+
+            <h3>modelization</h3>
+            <p>create the model of a system</p>
+
+            <h3>simulation</h3>
+            <p>use the model to process data</p>
+
+            <h3>exploration</h3>
+            <p>change the model's parameter</p>
+
+        </section>
+
+        <section>
+
+            <h3>corollary: visualisation</h3>
+            <p>rendering the model: 2D, 3D graphics,<br>
+                video, tangible objects, installation...</p>
+
+        </section>
+
+        <section>
+            <h3>pcg upsides</h3>
+            <ul>
+                <li>the computer does the boring part</li>
+                <li>few paramaters give many variations</li>
+                <li>very good at serial content</li>
+                <li><i>emergent</i> behaviours can produce<br>
+                    surprising or unexpected results</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>pcg downsides</h3>
+            <ul>
+                <li>mathematical uniqueness is often not<br>
+                    enough to create significant differences</li>
+                <li>hard to maintain consistent variations<br>
+                    while using numerous variables</li>
+                <li>hard to assess "good" settings<br>
+                    human curation required</li>
+            </ul>
+        </section>
+
+        <section data-background="img/examples/nomansky.png">
+
+            <p><a href="https://www.nomanssky.com/">NO MAN'S SKY</a></p>
+
+        </section>
+
+        <section>
+
+            <p><a href="https://www.nomanssky.com/">Hello Games - no man's sky</a></p>
+            <p><strong>model</strong>: universe generator</p>
+            <p><strong>simulation</strong>: update the model with game logic</p>
+            <p><strong>exploration</strong>: move & interact with the model</p>
+            <p><strong>visualisation</strong>: rendering a 3D scene</p>
+
+        </section>
+
+        <section data-background="img/examples/nervous.png">
+
+            <p><a href="http://n-e-r-v-o-u-s.com/index.php">KINEMATICS FOLD</a></p>
+
+        </section>
+
+        <section>
+
+            <p><a href="http://n-e-r-v-o-u-s.com/index.php">nervous systems - KINEMATICS FOLD</a></p>
+            <p><strong>model</strong>: triangle based patch modeler</p>
+            <p><strong>simulation</strong>: apply physics rules to the model</p>
+            <p><strong>exploration</strong>: change the base model</p>
+            <p><strong>visualisation</strong>: 3D renders & 3D print</p>
+
+        </section>
+
+        <section data-background="img/examples/uss.png">
+
+            <p><a href="http://wearechopchop.com/%E2%80%9Cunnamed-soundsculpture%E2%80%9D/">UNNAMED SOUNDSCULPTURE</a></p>
+
+        </section>
+
+        <section>
+
+            <p><a href="http://wearechopchop.com/%E2%80%9Cunnamed-soundsculpture%E2%80%9D/">We Are Chopchop - unnamed soundsculpture</a></p>
+            <p><strong>system</strong>: use particles to represent a 3D object</p>
+            <p><strong>simulation</strong>: playback of a recorded sequence</p>
+            <p><strong>exploration</strong>: move a virtual camera through space</p>
+            <p><strong>visualisation</strong>: render particles in 3D</p>
+
+        </section>
+
+        <section>
+            <p><a href="http://wearechopchop.com/%E2%80%9Cunnamed-soundsculpture%E2%80%9D/">unnamed sound sculpture</a></p>
+            <p><strong>system rules</strong>:</p>
+            <ul >
+                <li>spawn a particle at a 3D location</li>
+                <li>make the particle fall & disappear</li>
+            </ul>
+            <p>the particles move & disappear <i>procedurally</i></p>
+            <p>this system can work for any 4D data set</p>
+        </section>
+
+    </section>
+
+    <!--data-->
+    <section>
+        <section>
+            <h3>1. DATA</h3>
+            <p>N dimensions</p>
+        </section>
+
+        <section>
+
+            <h3>continuous VS discrete</h3>
+            <p>the world is a <i>continuous</i> system<br>
+                computers process <i>discrete</i> data</p>
+
+        </section>
+
+        <section>
+            <h3>discretizing the world</h3>
+            continuous data are <strong>measured</strong><br>
+            discrete data are <strong>counted</strong>
+        </section>
+
+        <section>
+
+            <h3>continuous => discrete</h3>
+            time => interval<br>
+            light => color palette<br>
+            reaction => process<br>
+            phenomenon => simulation<br>
+
+        </section>
+
+        <section>
+            <h3>N-dimensional objects</h3>
+        </section>
+
+        <section>
+            any given object can be described by<br>
+            a variable number of <i>dimensions</i><br>
+            <br>
+            the values of each dimension of an object<br>
+            can vary without affecting the others
+
+        </section>
+
+        <section>
+            <h3>light's dimensions</h3>
+            <p>direction, speed, wavelength, energy</p>
+        </section>
+
+        <section>
+            <h3>computer representation<br>
+                of a unidimensional datum</h3>
+            <br>
+            the BIT<br>
+            0 / 1<br>
+            <br>
+            limitation: it can only describe whether a<br>
+            given property of the object "is" or "isn't"
+            <br>
+
+        </section>
+
+        <section>
+            <h3>1D <i>extension pack</i></h3>
+            <ul>
+                <li>bit (0/1)</li>
+                <li>byte / octet: 8 bits & 256 integer values</li>
+                <li>int, float, uint, double: 8, 16, 32, 64 bits<br>
+                <li>single character: 7 bits (US ASCII ), 32 bit (UTF-32)</li>
+            </ul>
+        </section>
+
+        <section>
+
+            in the computers's memory, a number<br>or a
+            character is stored as an array of bits<br>
+            <img src="img/data/float.png"><br>
+            so, technically, a number is itself <br>
+            a N-dimensional object
+
+        </section>
+
+        <section>
+            <h3>2 dimensional data</h3>
+            series of unidimesnsional data<br>
+            <ul>
+                <li>typed linear array: ["a", "b", "c"] /  [ 0, 1, 2 ]</li>
+                <li>string : "Nicolas Barradeau"</li>
+                <li>an empty image: [  width * height ]</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>N-dimensional data</h3>
+            combinatorics of unidimensional data<br>
+            <ul>
+                <li>color: { R, G, B }</li>
+                <li>a vector: { X, Y, Z }</li>
+                <li>binary pixel: { X, Y, value }</li>
+            </ul>
+        </section>
+
+        <section>
+            <ul>
+                <li>pixel, color: { X, Y, R, G, B }</li>
+                <li>pixel, color & alpha: { X, Y, R, G, B, A }</li>
+                <li>stereo sound: { left, right, time, sampling rate }</li>
+                <li>video: pixel, color, sound, time</li>
+                <li>3D object: XYZ, indices, normals, colors, uvs...</li>
+            </ul>
+        </section>
+        <section>
+            <h3>?-DIMENSIONS</h3>
+            how many dimensions to a TWEET?
+            <pre class="small"><code> {<br>  "coordinates": null,<br>  "favorited": false,<br>  "created_at": "Wed Sep 05 00:37:15 +0000 2012",<br>  "truncated": false,<br>  "id_str": "243145735212777472",<br>  "entities": {<br>    "urls": [<br>    ],<br>    "hashtags": [<br>      {<br>        "text": "peterfalk",<br>        "indices": [<br>          35,<br>          45<br>        ]<br>      }<br>    ],<br>    "user_mentions": [<br><br>    ]<br>  },<br>  "in_reply_to_user_id_str": null,<br>  "text": "Maybe he'll finally find his keys. #peterfalk",<br>  "contributors": null,<br>  "retweet_count": 0,<br>  "id": 243145735212777472,<br>  "in_reply_to_status_id_str": null,<br>  "geo": null,<br>  "retweeted": false,<br>  "in_reply_to_user_id": null,<br>  "place": null,<br>  "user": {<br>    "name": "Jason Costa",<br>    "profile_sidebar_border_color": "86A4A6",<br>    "profile_sidebar_fill_color": "A0C5C7",<br>    "profile_background_tile": false,<br>    "profile_image_url": "http://a0.twimg.com/profile_images/1751674923/new_york_beard_normal.jpg",<br>    "created_at": "Wed May 28 00:20:15 +0000 2008",<br>    "location": "",<br>    "is_translator": true,<br>    "follow_request_sent": false,<br>    "id_str": "14927800",<br>    "profile_link_color": "FF3300",<br>    "entities": {<br>      "url": {<br>        "urls": [<br>          {<br>            "expanded_url": "http://www.jason-costa.blogspot.com/",<br>            "url": "http://t.co/YCA3ZKY",<br>            "indices": [<br>              0,<br>              19<br>            ],<br>            "display_url": "jason-costa.blogspot.com"<br>          }<br>        ]<br>      },<br>      "description": {<br>        "urls": [<br><br>        ]<br>      }<br>    },<br>    "default_profile": false,<br>    "contributors_enabled": false,<br>    "url": "http://t.co/YCA3ZKY",<br>    "favourites_count": 883,<br>    "utc_offset": -28800,<br>    "id": 14927800,<br>    "profile_image_url_https": "https://si0.twimg.com/profile_images/1751674923/new_york_beard_normal.jpg",<br>    "profile_use_background_image": true,<br>    "listed_count": 150,<br>    "profile_text_color": "333333",<br>    "protected": false,<br>    "lang": "en",<br>    "followers_count": 8760,<br>    "time_zone": "Pacific Time (US &amp; Canada)",<br>    "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme6/bg.gif",<br>    "verified": false,<br>    "profile_background_color": "709397",<br>    "notifications": false,<br>    "description": "Platform at Twitter",<br>    "geo_enabled": true,<br>    "statuses_count": 5532,<br>    "default_profile_image": false,<br>    "friends_count": 166,<br>    "profile_background_image_url": "http://a0.twimg.com/images/themes/theme6/bg.gif",<br>    "show_all_inline_media": true,<br>    "screen_name": "jasoncosta",<br>    "following": false<br>  },<br>  "source": "&lt;a href=\"http://jason-costa.blogspot.com\" rel=\"nofollow\"&gt;My Shiny App&lt;/a&gt;",<br>  "in_reply_to_screen_name": null,<br>  "in_reply_to_status_id": null<br>}</code></pre>
+        </section>
+        <section>
+            a single tweet can potentially be<br>
+            represented in ~72 dimensions,<br>
+            often themselves N-dimensional
+        </section>
+
+        <section>
+            <h3>data acquisition</h3>
+        </section>
+
+        <section>
+            <h3>a mobile phone</h3>
+            <p>photos, videos, microphone & GPS positions<br>
+                as well as some "hidden" sensors:</p>
+            <ul class="small">
+                <li><strong>TYPE_ACCELEROMETER</strong> Motion detection (shake, tilt, etc.).</li>
+                <li><strong>TYPE_AMBIENT_TEMPERATURE</strong> Monitoring air temperatures.</li>
+                <li><strong>TYPE_GRAVITY</strong> Motion detection (shake, tilt, etc.).</li>
+                <li><strong>TYPE_GYROSCOPE</strong> Rotation detection (spin, turn, etc.).</li>
+                <li><strong>TYPE_LIGHT</strong> Controlling screen brightness.</li>
+                <li><strong>TYPE_LINEAR_ACCELERATION</strong> Monitoring acceleration along a single axis.</li>
+                <li><strong>TYPE_MAGNETIC_FIELD</strong> Creating a compass.</li>
+                <li><strong>TYPE_ORIENTATION</strong> Determining device position.</li>
+                <li><strong>TYPE_PRESSURE</strong> Monitoring air pressure changes.</li>
+                <li><strong>TYPE_PROXIMITY</strong> Phone position during a call.</li>
+                <li><strong>TYPE_RELATIVE_HUMIDITY</strong> Monitoring dewpoint, absolute, and relative humidity.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h3>Open Data</h3>
+            <ul>
+                <li>statistical analysis friendly</li>
+                <li>mostly "geo-social" data</li>
+                <li>often geolocated</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>tracking devices</h3>
+            <ul>
+                <li>webcam</li>
+                <li>microphone</li>
+                <li>kinect</li>
+                <li>leap motion</li>
+                <li>VR devices: VIVE, Oculus</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>custom devices</h3>
+            <ul>
+                <li>Arduino boards + Processing</li>
+                <li>all manners of cheap sensors:<br>
+                    gesture detection, heat detector,<br>
+                    360° scanners, wind, rain, smoke...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>synthetic data</h3>
+            <ul>
+                <li>noise, fractals, turbulence...</li>
+                <li>photogrammetry <br>
+                    (build 3D models from 2D pictures)</li>
+                <li>CNNs & GANs (AI)</li>
+            </ul>
+        </section>
+
+        <section>
+            <p>there are  more and more data available and they become more and more complex (feature vectors)</p>
+            <p>reduced to sets of <i>unidimensional</i> variables,<br>
+            these data can <i>shift</i> between various <i>spaces</i></p>
+        </section>
+
+    </section>
+
+    <!--space-->
+    <section>
+
+        <section>
+            <h3>2. space</h3>
+            fields of representation
+        </section>
+
+        <section>
+            <h3>geometric</h3>
+        </section>
+
+        <section>
+            <h3>cartesian space</h3>
+            <img src="img/space/0_cartesian.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>polar space</h3>
+            <img src="img/space/1_polar.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>cylindrical space</h3>
+            <img src="img/space/2_cylindrical.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>spherical space</h3>
+            <img src="img/space/3_spherical.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>cartesian space 3D </h3>
+            <img src="img/space/4_3Dcartesian.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>color</h3>
+        </section>
+
+        <section>
+            <h3>RGB color space</h3>
+            <img src="img/space/RGB.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>HSL cylindrical space</h3>
+            <img src="img/space/HSL.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>HSL spherical space</h3>
+            <img src="img/space/HSL_sphere.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>sound</h3>
+        </section>
+
+        <section>
+            <h3>mono sound wave (2D)</h3>
+            <img src="img/space/soundwave.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>stereo sound wave (3D)</h3>
+            <img src="img/space/stereo.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>higher dimensions</h3>
+        </section>
+
+        <section>
+            <h3>4D space</h3>
+            <img src="img/space/5_4Dcartesian.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>point in a 4D space</h3>
+            <img src="img/space/6_4Dpoint.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>line in a 4D space</h3>
+            <img src="img/space/7_4Dline.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>cube in a 4D space</h3>
+            <img src="img/space/hypercube.png" class="stretch"><br>
+        </section>
+
+        <section>
+            <h3>RGBA (4D) color space</h3>
+            <img src="img/space/RGBA.png" class="stretch">
+        </section>
+
+        <section>
+            <h3>5.1 stereo sound system (N-D)</h3>
+            <img src="img/space/surround-sound.png" class="stretch">
+        </section>
+
+        <section>
+            to represent high dimensional space data, we'll often
+            need to project them in a lower dimension and find a way
+            to represent the parameters that "went missing" during the projection
+        </section>
+
+
+        <section>
+            <img src="img/space/hsl_palette.jpg" class="stretch"><br>
+            a color palette is a 2D projection of a 3D/4D object<br>
+            here, the spectrum represents the "missing data"
+        </section>
+
+        <section>
+            <img src="img/space/depthbuffer.jpg" class="stretch"><br>
+            in a 2D projection of a 3D mesh, the <i>depth</i> data is lost<br>
+            a depth buffer is used to represent the "missing data"
+        </section>
+
+        <section>
+            <img src="img/space/TSNE.png" class="stretch"><br>
+            a t-SNE reduces data dimensionality<br>
+            and creates similarity clusters
+        </section>
+
+        <section>
+            making sense of high dimensional data is hard<br>
+            keep the parameter count as low as possible
+        </section>
+
+        <section>
+            <h3>other spaces</h3>
+        </section>
+
+        <section>
+            <h3>physical/tangible space</h3>
+            <img src="img/space/3D_printing.png" class="stretch"><br>
+        </section>
+
+        <section data-background-image="img/space/notesonblindness.jpg">
+            <h3 style="color:#CCC">spatialized sound</h3>
+            <a href="http://notesonblindness.arte.tv/fr/vr">notes on blindness</a>
+        </section>
+
+
+        <section>
+            <h3>non euclidean space</h3>
+            <img src="img/space/moebius.png" class="stretch"><br>
+        </section>
+
+        <section data-background-image="img/space/hyperbolic_knit.jpg">
+            <h3 style="color:#CCC">hyperbolic space</h3>
+            <a href="https://en.wikipedia.org/wiki/Daina_Taimina">Model of Hyperbolic Space.<br>by Daina Taimina, 2011.</a>
+        </section>
+
+
+
+    </section>
+
+    <!--process-->
+    <section>
+
+        <section>
+            <h3>3. process</h3>
+            data space design
+        </section>
+
+        <section>
+            <h3>translation / rotation / scale</h3>
+            the basic transformations, let us <br>
+            perform distributions in space
+        </section>
+        <section>
+            <h3>grid / frame</h3>
+        </section>
+
+        <section data-background-image="img/process/grid.png">
+            <pre class="small stretch"><code><mark>//regular grid with 50px cells
+var cellSize = 50, i, j;
+for( i = 0; i <= w; i += cellSize ){
+    for( j = 0; j <= h; j += cellSize ){
+
+        //grid cell indices
+        var cell_x = Math.round( i / cellSize );
+        var cell_y = Math.round( j / cellSize );
+
+        //grid
+        circle( i, j, 2 );
+
+        //sub-grid
+        if( ( cell_x >= 20 && cell_x <= 26 )
+        &&  ( cell_y >= 8 && cell_y <= 20 ) ){
+            circle( i, j, 5 );
+        }
+
+        //frame
+        //horizontal lines
+        if( ( cell_x >= 16 && cell_x <= 30 )
+        &&  ( cell_y == 3 || cell_y == 12 ) ){
+            circle( i, j, 10 );
+        }
+
+        //verical lines
+        if( ( cell_x == 16 || cell_x == 30 )
+        &&  ( cell_y >= 3 && cell_y <= 12 ) ){
+            circle( i, j, 10 );
+        }
+    }
+}</mark></code></pre>
+        </section>
+
+        <section>
+            <h3>circle / disc</h3>
+        </section>
+
+        <section data-background-image="img/process/circular.png">
+            <pre class="small stretch"><code><mark>//points count
+var count = 24;
+
+//angle step ( angle between 2 points on the circle )
+var step = Math.PI * 2 / count;
+
+//circle radius
+var radius = h / 3;
+
+//circle distribution
+for( var angle = 0; angle < Math.PI * 2; angle += step ){
+
+    //computes the X / Y position
+    var x = Math.cos( angle ) * radius;
+    var y = Math.sin( angle ) * radius;
+
+    //draw this point
+    circle( x, y, 10 );
+
+}
+
+//radial distribution
+var radialSegments = 15;
+for( angle = 0; angle < Math.PI * 2; angle += step * 2 ){
+    for( var i = 0; i < radialSegments; i++ ){
+        var r = i * ( radius / radialSegments);
+        x = Math.cos( angle ) * r;
+        y = Math.sin( angle ) * r;
+        circle( x, y, 3 );
+    }
+}
+
+//spiral distribution
+var turns = 3;
+for( angle = 0; angle < Math.PI * 2 * turns; angle += step / 4 ){
+    r = radius * ( angle / ( Math.PI * 2 * turns ) );
+    console.log( i / ( Math.PI * 2 * turns ) );
+    x = Math.cos( angle ) * r;
+    y = Math.sin( angle ) * r;
+    circle( x, y, 1 );
+}</mark></code></pre>
+        </section>
+
+        <section>
+            <h3>triangles</h3>
+        </section>
+
+        <section data-background-image="img/process/triangular.png">
+            <pre class="small stretch"><code><mark>function reset(){
+    //measures of an equalateral triangle
+    var sides = 3;
+    var L = 2 * Math.sin( Math.PI / sides ); //side length
+    var A = L / ( 2 * Math.tan( Math.PI / sides ) ); //apothem
+    var H = ( 1 + A ); //radius + apothem
+
+    var size = 50;
+    L *= size;
+    H *= size;
+
+    var mx = 2 * Math.ceil( w / L );
+    var my = Math.ceil( h / H );
+
+    for( var i = 0; i < w; i+= mx ){
+
+        for( var j = 0; j <= h; j+= my ){
+
+            //cell indices
+            var cx = Math.round( i/mx );
+            var cy = Math.round( j/my );
+
+            //coordinates
+            var x = ( cx ) * L / 2;
+            var y = ( cy ) * H;
+
+            //triangular pattern
+            var mody = cy % 2;
+            if(( cx % 2 == 1 && cy % 2 == 0 )
+            || ( cx % 2 == 0 && cy % 2 == 1 )){
+                circle(x, y, 5);
+            } else {
+                circle(x, y, 1);
+            }
+
+            //hexagonal pattern
+            var modx = cx % 6;
+            if(( mody == 0 && ( modx == 1 || modx == 3 ) )
+            || ( mody == 1 && ( modx == 0 || modx == 4 ) ) ){
+                circle( x, y, 10 );
+            }
+        }
+    }
+}</mark></code></pre>
+        </section>
+
+        <section>
+            <h3>fields</h3>
+            assign a value at given<br>
+            locations in space
+        </section>
+        <section data-background-image="img/process/vector_field.png">
+            <pre class="small stretch"><code><mark>var HPI = Math.PI / 2;
+function angle(a,b){
+    var dx = a[0] - b[0];
+    var dy = a[1] - b[1];
+    return Math.atan2( dy, dx );
+}
+//method to draw an arrow
+function drawArrow( p0, p1, size ){
+    var a = angle( p0, p1 );
+    ctx.beginPath();
+    ctx.moveTo(p0[0], p0[1]);
+    ctx.lineTo(p0[0] + Math.cos( a + HPI ) * size, p0[1] + Math.sin( a + HPI ) * size);
+    ctx.lineTo(p1[0], p1[1]);
+    ctx.lineTo(p0[0] + Math.cos( a - HPI ) * size, p0[1] + Math.sin( a - HPI ) * size);
+    ctx.fill();
+}
+//this is the value at a given X/Y location
+function getValue( x, y ){
+    return Math.cos( x ) * Math.sin( y ) + Date.now() * 0.001;
+}
+function reset() {
+    var cellSize = 50;
+    var points = [];
+    var values = [];
+    //regular grid with 50px cells that covers the screen
+    for( var i = 0; i <= w; i += cellSize ){
+        for( var j = 0; j <= h; j += cellSize ){
+            points.push( [i,j] );
+            values.push( getValue( i, j ) );
+        }
+    }
+    //draws an arrow at each point (lattice)
+    points.forEach( function( p, id ){
+
+        //direction
+        var p1 = [
+            p[0] + Math.cos( values[id] ) * cellSize * .75,
+            p[1] + Math.sin( values[id] ) * cellSize * .75
+        ];
+
+        //draw arrow
+        drawArrow( p, p1, cellSize * .2 );
+    });
+}</mark></code></pre>
+        </section>
+
+        <!--rotation-->
+        <section>
+            <h3>point symmetry</h3>
+        </section>
+        <section data-background-image="img/process/point_symmetry.png">
+            <pre class="small stretch"><code><mark>function rotate(p, lattice, angle){
+    var a = getAngle(lattice, p) + angle;
+    var d = getDistance(lattice, p);
+    var pp = new Point();
+    pp.x = lattice.x + Math.cos(a) * d;
+    pp.y = lattice.y + Math.sin(a) * d;
+    return pp;
+}
+
+//random walk:
+// make a point move randomly X times on X / Y
+// store each position in an array
+var count = 64;
+var steplength = 20;
+var p = new Point();
+var points = [];
+for( var i = 0; i < count; i++ ){
+    p.x += steplength;
+    p.y += ( Math.random() - .5 ) * steplength;
+    //p.clone() return a copy of the point
+    points.push( p.clone() );
+}
+
+//performs a series of rotations around a point (center)
+var center = new Point();
+var rotations = 64;
+var angleStep = Math.PI * 2 / rotations;
+var tmp = new Point();
+for( i = 0; i < rotations; i++ ){
+    var rotated = [];
+    points.forEach( function( p ){
+        if( i == 0 )circle(p.x,p.y, 2 );
+        tmp = rotate( p, center, angleStep * i );
+        rotated.push( tmp );
+    });
+    renderLine( rotated );
+}</mark></code></pre>
+        </section>
+
+        <!--projection-->
+        <section>
+            <h3>projection</h3>
+        </section>
+        <section data-background-image="img/process/projection.png">
+            <pre class="small stretch"><code><mark>function project(p, a, b, asSegment) {
+    var dx = b.x - a.x;
+    var dy = b.y - a.y;
+    if (asSegment && dx == 0 && dy == 0) return a;
+    var t = ( ( p.x - a.x ) * dx + ( p.y - a.y ) * dy) / ( dx * dx + dy * dy );
+    if (asSegment && t < 0) return a;
+    if (asSegment && t > 1) return b;
+    return new Point(a.x + t * dx, a.y + t * dy);
+}
+var steplength = 30;
+var p = new Point(0, h/2);
+var points = [];
+for( var i = 0; i <= w; i+=steplength ){
+    p.x = i;
+    p.y += ( Math.random() - .5 ) * steplength;
+    circle( p.x, p.y, 2 );
+    points.push( p.clone() );
+}
+renderLine( points );
+
+//performs a series of projections onto an axis
+// define by the start & end points
+var start   = new Point( 0, h - h / 4 );
+var end     = new Point( w, h - h / 4 );
+points.forEach( function( p ){
+    var tmp = project( p, start, end );
+    line(p,tmp);
+});
+line( start, end );
+
+//performs a series of projections onto an axis
+// define by the start & end points
+start = new Point( 0, 0 );
+end = new Point( w, h );
+points.forEach( function( p ){
+    var tmp = project( p, start, end );
+    line(p,tmp);
+});
+line( start, end );</mark></code></pre>
+        </section>
+
+        <!--reflection-->
+        <section>
+            <h3>reflection</h3>
+        </section>
+        <section data-background-image="img/process/reflection.png">
+            <pre class="small stretch"><code><mark>function reflect(p, a, b) {
+    var pp = project(p, a, b);
+    return new Point(p.x + ( pp.x - p.x ) * 2, p.y + ( pp.y - p.y ) * 2);
+}
+
+var radius = h/3;
+var step = Math.PI * 2 / 64;
+var center = new Point(w/2, h/2);
+var points = [];
+//distributes points on a quarter of a circle
+for (var i = 0; i < Math.PI / 2 + step; i += step ) {
+    var p = new Point(
+        center.x + Math.cos( i ) * radius,
+        center.y + Math.sin( i ) * radius
+    );
+    points.push(p.clone());
+}
+
+//vertical symmetry
+var start   = new Point( 0, h/2 );
+var end     = new Point( w, h/2 );
+points.forEach(function (p) {
+    var tmp = reflect( p, start, end);
+    line(p, tmp);
+});
+
+//horizontal symmetry
+start   = new Point( w/2, 0 );
+end     = new Point( w/2, h );
+points.forEach(function (p) {
+    var tmp = reflect( p, start, end);
+    line(p, tmp);
+});
+
+//diagonal symmetry
+start   = new Point( w/2-radius, h/2+radius );
+end     = new Point( w/2+radius, h/2-radius );
+points.forEach(function (p) {
+    var tmp = reflect( p, start, end);
+    line(p, tmp);
+});</mark></code></pre>
+        </section>
+
+        <section>
+            <h3>extension to 3D space</h3>
+            <i>just</i> add a third dimension<br>
+            grid, frame => box, extruded frame<br>
+            circle, disc => torus, sphere<br>
+            triangles => regular polyhedron<br>
+            fields are N-Dimensional<br>
+        </section>
+
+
+        <!--rule based systems-->
+        <section>
+            <h3>rule-based systems</h3>
+        </section>
+
+        <!--grammar-->
+        <section>
+            <h3>grammar</h3>
+            series of rules that defines all<br>
+            valid sentences of a language
+        </section>
+
+        <section>
+
+            <h3>formal grammar</h3>
+            a formal grammar is based on <i>production rules</i>, takes<br>
+            an <i>axiom</i> as an input and determines if it is valid
+
+        </section>
+
+        <section>
+            <p>the next illustration is a "finite state machine"<br>
+                it describes all the production rules relationships</p>
+        </section>
+
+        <section>
+            <img src="img/process/formal_grammar.png" class="stretch">
+            <p class="small"><a href="http://www.pnas.org/content/93/24/13515.full">picture source</a></p>
+        </section>
+
+        <section>
+            <p>instead of writing a <i>dictionary</i> of all the valid <i>axioms</i>,<br>
+                we can use this FSM to ckeck if an <i>axiom</i> is valid</p>
+        </section>
+
+        <section>
+            <img src="img/process/formal_grammar_test.png" class="stretch">
+        </section>
+
+        <!--l system-->
+        <section>
+            <h3>L-system</h3>
+            variation on formal grammar<br>
+            used to model plants' growth
+        </section>
+
+        <section>
+            ruleset:
+            <pre><code>variables : A B
+axiom  : A
+rules  : (A → AB), (B → A)</code></pre>
+            production:
+            <pre><code>n=0:         A           start (axiom/initiator)
+            / \
+n=1:       A   B         (A→AB)
+          /|    \
+n=2:     A B     A       (A→AB), (B→A)
+        /| |     |\
+n=3:   A B A     A B     (A→AB), (B→A), (A→AB)
+      /| | |\    |\ \
+n=4: A B A A B   A B A   (A→AB), (B→A), (A→AB), (A→AB), (B→A)</code></pre>
+        </section>
+
+        <section>
+            <iframe src="../code/l_system/index.html" class="stretch"></iframe>
+        </section>
+
+        <section>
+            L-systems introduce the concepts of <br>
+            <i>iteration, recursion, trees & graph</i>
+        </section>
+
+        <!--new principlpes-->
+
+        <!--iteration-->
+        <section>
+            <h3>iteration</h3>
+        </section>
+        <section data-background-image="img/process/iteration.png">
+            <pre class="small stretch"><code><mark>var RAD = Math.PI / 180;
+//stores some vairables
+var points = [];
+var angles = [];
+var speeds = [];
+for( var i = 0; i < 20; i++ ){
+
+    //point position
+    points.push( new Point(w/2, h/2) );
+    //starting angle
+    angles.push( Math.random() * Math.PI * 2 );
+    //rotation speed
+    speeds.push( 5 + Math.random() * 25 );
+
+}
+
+ctx.beginPath();
+//iterate 2000 times
+for( i = 0; i < 2000; i++ ){
+
+    //iterate over all points
+    points.forEach( function( p, id ){
+
+        //move the pen to the current position
+        ctx.moveTo( p.x, p.y );
+
+        //updates angle
+        angles[id] += ( Math.random() - .5 ) * RAD * speeds[id];
+
+        //updates the point's position
+        p.x += Math.sin( angles[id] );
+        p.y += Math.cos( angles[id] );
+
+        //draws line to new position
+        ctx.lineTo( p.x, p.y );
+
+    });
+}
+ctx.stroke();</mark></code></pre>
+        </section>
+
+        <!--recursion-->
+        <section>
+            <h3>recursion</h3>
+        </section>
+        <section data-background-image="img/process/sierpinski.png">
+            <pre class="small stretch"><code><mark>function draw(p0, p1, p2) {
+    ctx.beginPath();
+    ctx.moveTo(p0.x, p0.y);
+    ctx.lineTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.closePath();
+    ctx.stroke();
+}
+
+function sierpinski(p0, p1, p2, count ) {
+    //break condition
+    if(count <= 0) {
+        //render
+        draw(p0, p1, p2);
+    }else{
+
+        //decrease the counter
+        count--;
+
+        //find the edges' centers
+        var a = [ ( p0.x + p1.x ) / 2, (p0.y + p1.y) / 2 ];
+        var b = [ ( p1.x + p2.x ) / 2, (p1.y + p2.y) / 2 ];
+        var c = [ ( p2.x + p0.x ) / 2, (p2.y + p0.y) / 2 ];
+
+        //calls the method on the new triangles
+        sierpinski( p0, a, c, count );
+        sierpinski( p1, b, a, count );
+        sierpinski( p2, c, b, count );
+    }
+}
+sierpinski( points[0], points[1], points[2], 6 );</mark>
+</code></pre>
+        </section>
+
+        <!--tree-->
+        <section>
+            <h3>recursive tree</h3>
+        </section>
+        <section data-background-image="img/process/tree.png">
+            <pre class="small stretch"><code><mark>function branch(length, angle) {
+
+    line(0, 0, 0, -length);
+    ctx.translate(0, -length);
+
+    if (length > 2) {
+
+        length *= 0.65;
+
+        ctx.save();
+        ctx.rotate(angle);
+        branch(length, angle);
+        ctx.restore();
+
+        ctx.save();
+        ctx.rotate(-angle);
+        branch(length, angle);
+        ctx.restore();
+    }
+}
+
+function line(x0, y0, x1, y1) {
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
+}
+ctx.translate(w/2,h/2 + 300);
+branch( 200, Math.PI / 180 * 30 );</mark></code></pre>
+        </section>
+
+        <!--graph-->
+        <section>
+            <h3>graph</h3>
+        </section>
+        <section data-background-image="img/process/mst.png">
+            <pre class="small stretch"><code><mark>var Vertex = function( data ){ /*store the data*/ }
+
+var Edge = function( v0, v1 ){
+    this.v0 = v0;
+    this.v1 = v1;
+}
+
+var Graph = function( vertices, edges ){
+    this.vertices = vertices;
+    this.edges = edges;
+}
+
+//create two vertices
+var A = new Vertex( data );
+var B = new Vertex( data );
+
+//create an edge to bind the two vertices
+var E = new Edge( A, B );
+
+//create a graph
+var graph = new Graph( [ A, B ], [ E ] );</mark></code></pre>
+        </section>
+
+        <section>
+            <p>this is the essence of procedural generation:</p>
+            describing the rules of production<br>
+            rather than the objects themselves
+        </section>
+
+    </section>
+
+    <!--further-->
+    <section>
+
+        <section>
+            <h3>further considerations</h3>
+        </section>
+
+        <!--random-->
+        <section>
+            <h3>random & pseudo-random</h3>
+            a <i>random()</i> methods create sequences that are - by definition - hard to reproduce.
+            prefer a Pseudo Random Number Generator (PRNG) that produces <i>seemingly</i> random series of numbers
+        </section>
+        <section data-background-image="img/extra/prng.png">
+        </section>
+
+        <!--noise-->
+        <section>
+            <h3>random, noise, turbulence</h3>
+            random values are often "too random". use a noise to soften the variations.
+            a turbulence is an accumulation of noises sampled at various scales (octaves)
+        </section>
+        <section data-background-image="img/extra/noise.png">
+            <pre class="small stretch"><code><mark>
+function pseudoRandom(x, y) {
+    return ( ( Math.sin( x * 12.9898 + y * 78.233) ) * 43758.5453123 ) % 1;
+}
+
+function noise(x, y) {
+
+    //gets the integer part
+    var ix = parseInt(x);
+    var iy = parseInt(y);
+
+    // 2D cell corners
+    var a = pseudoRandom(ix,iy);
+    var b = pseudoRandom(ix+1, iy);
+    var c = pseudoRandom(ix, iy+1);
+    var d = pseudoRandom(ix+1, iy+1);
+
+    //gets the fractional part
+    var fx = (x % 1);
+    var fy = (y % 1);
+    var ux = fx * fx * (3.0 - 2.0 * fx);
+    var uy = fy * fy * (3.0 - 2.0 * fy);
+
+    //interpolate the 4 noises with fractional parts
+    return (a * (1-ux) + b * ux) + (c - a) * uy * (1.0 - ux) + (d - b) * ux * uy;
+
+}
+
+function FBM( x, y ){
+    var OCTAVES = 6;
+    var value = 0;
+    var amplitude = .5;
+    for (var i = 0; i < OCTAVES; i++) {
+        value += amplitude * noise(x,y);
+        x *= 2.;
+        y *= 2.;
+        amplitude *= .5;
+    }
+    return value;
+}</mark></code></pre>
+        </section>
+
+        <!--trails, traces, feedback-->
+        <section>
+            <h3>trails & traces</h3>
+            preserve previously drawn frame<br>
+            cheap way of adding complexity
+        </section>
+        <section data-background-image="img/extra/trails.png">
+            <pre class="small stretch"><code><mark>//clear half the screen
+ctx.clearRect(0,0,w/2,h);
+
+//draw a translucent rect on top of the other half
+ctx.fillStyle = "#FFF";
+ctx.globalAlpha = .05;
+ctx.fillRect(w/2,0,w/2,h);</mark></code></pre>
+        </section>
+
+        <!--emergence-->
+
+        <!--pseudo circle-->
+        <section>
+            <h3>emergent pattern</h3>
+        </section>
+        <section data-background-image="img/extra/emergence_polar.png">
+            <pre class="small stretch"><code><mark>var morph = Date.now() * 0.0005;
+var time = Date.now() * 0.001;
+
+//points count
+var total = 16;
+var count = Math.min( Math.max( 1, Math.round( ( .5 + Math.cos( morph ) ) * total ) ), total );
+var step = Math.PI / total;
+
+//circle radius
+var radius = h / 3;
+ctx.globalAlpha = .25;
+circle( 0,0, radius );
+
+//circle distribution
+for( var angle = 0; angle < count * step; angle += step ){
+
+    //computes the X / Y position
+    var x = Math.cos( angle ) * radius * ( Math.cos( angle + time ));
+    var y = Math.sin( angle ) * radius * ( Math.cos( angle + time ));
+
+    //draw this point
+    ctx.globalAlpha = 1;
+    circle( x, y, 3 );
+
+    //draw the line
+    ctx.globalAlpha = .25;
+    line(   Math.cos( angle ) * radius, Math.sin( angle ) * radius,
+            Math.cos( angle ) * -radius, Math.sin( angle ) * -radius );
+
+}</mark>
+            </code></pre>
+        </section>
+
+        <!--flocking-->
+        <section>
+            <h3>emergent behaviour</h3>
+        </section>
+        <section data-background-image="img/extra/emergence_flocking.png">
+            <pre class="small stretch"><code><mark>//tests proximity to all other boids
+boids.forEach(function (other) {
+
+    //if it's the same object, bail out
+    if (boid == other)return;
+
+    //compute position delta
+    var dx = boid.x - other.x;
+    var dy = boid.y - other.y;
+
+    //compute boids' distance
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < boid.separation) {
+        separation.x += dx;
+        separation.y += dy;
+    }else{
+        if (dist < boid.cohesion) {
+            cohesion.x += dx;
+            cohesion.y += dy;
+        }
+        if (dist < boid.alignment) {
+            alignment.x += other.speed.x;
+            alignment.y += other.speed.y;
+        }
+    }
+});
+
+//computes the total acceleration
+
+if( separation.length() > 0 ){
+    separation.normalize().multiplyScalar( separate );
+    boid.acceleration.add( separation );
+}
+
+if( cohesion.length() > 0 ){
+    cohesion.normalize().multiplyScalar( cohede );
+    boid.acceleration.sub( cohesion );
+}
+
+if( alignment.length() > 0 ){
+    alignment.normalize().multiplyScalar( align );
+    boid.acceleration.sub( alignment );
+}</mark></code></pre>
+        </section>
+
+        <section>
+            <h3>parametrisation & expressiveness</h3>
+            drawing an ant
+        </section>
+        <section data-background-image="img/extra/ant/3D.jpg">
+            <h3 style="color: #CCC">hyper-realistic 3D render</h3>
+            <a href="http://jabjork.cgsociety.org/art/ant-3ds-atta-max-laevigata-zbrush-photoshop-realistic-3d-1154254">ANT (Atta laevigata) by javier porcel</a>
+        </section>
+        <section>
+            <img src="img/extra/ant/step3.png">
+            <img src="img/extra/ant/step1.png">
+            <img src="img/extra/ant/step0.png">
+            <br>
+            depending on the context those are equally valid representations of an ant. use relevant parameters
+        </section>
+
+        <section>
+            <h3>graphic tools</h3>
+        </section>
+
+
+        <!--p5-->
+        <section data-background-image="img/extra/tools/processing.png">
+            <h3><a href="https://processing.org/">processing</a></h3>
+        </section>
+
+        <!--OF-->
+        <section data-background-image="img/extra/tools/openframeworks.png">
+            <h3><a href="http://openframeworks.cc/">openframeworks</a></h3>
+        </section>
+
+        <!--structure synth-->
+        <section>
+            <h3>context free grammar</h3>
+            <i>recursively</i> applies <i>production rules</i> and stops when the <i>axiom</i> only contains terminal symbols (primitives)
+        </section>
+        <section data-background-image="img/extra/tools/structure_synth/structure_synth0.png">
+            <h3><a href="http://structuresynth.sourceforge.net/">structuresynth</a></h3>
+            <pre class="small"><code>#define _col0 #F00
+#define _col1 #FF0
+#define _inc 0.1
+40 * {   y 0.1 ry 9 rz -2 s 1.01 1.01 1.01 color _col0  }column
+rule column w 0.5{
+    { y 0.5 ry 18   blend _col1 _inc     }box
+}
+rule column w 0.2{
+    { x -0.25 z -0.25 y 0.5 s 0.8  blend _col1 _inc     } box
+}
+rule column w 0.2{
+    20 * { rx 1 ry 1.5 rz 3 s 0.75 0.95 1.10  blend _col1 _inc }box
+}</code></pre>
+        </section>
+        <section data-background-image="img/extra/tools/structure_synth/structure_synth1.png">
+        </section>
+        <section data-background-image="img/extra/tools/structure_synth/structure_synth2.png">
+        </section>
+        <section data-background-image="img/extra/tools/structure_synth/structure_synth3.png">
+        </section>
+        <section>
+            <h3><a href="https://www.contextfreeart.org/">context free art (2d)</a></h3>
+            <h3><a href="https://after12am.github.io/eisenscript-editor/">eisenscript demo (3D)</a></h3>
+        </section>
+
+        <!--magicavoxel-->
+        <section data-background-image="img/extra/tools/magicavoxel_closeup.png"><h3><a href="https://ephtracy.github.io/">magicavoxel</a></h3></section>
+        <section data-background-image="img/extra/tools/magicavoxel_sphere.png"></section>
+        <section data-background-image="img/extra/tools/magicavoxel_shader.png"></section>
+
+        <!--shadertoy-->
+        <section data-background-image="img/extra/tools/shadertoy.png">
+            <h3><a href="https://www.shadertoy.com/">shadertoy</a></h3>
+            fragment shader black magic
+        </section>
+
+        <!--houdini-->
+        <section data-background-image="img/extra/tools/houdini.jpg">
+            <h3><a href="https://www.sidefx.com/products/houdini-education/">houdini</a></h3>
+            <a href="http://www.entagma.com/">excellent series of tutorials</a>
+        </section>
+
+        <!--blender-->
+        <section data-background-image="img/extra/tools/blender.jpg">
+            <h3><a href="https://www.blender.org/">blender</a></h3>
+            <a href="https://wiki.blender.org/index.php/Doc:FR/2.4/Manual/Extensions/Python/Example">functional scripting example</a>
+        </section>
+
+        <!--meshlab-->
+        <section data-background-image="img/extra/tools/meshlab.png">
+            <h3><a href="http://www.meshlab.net/">meshlab</a></h3>
+        </section>
+
+        <section>
+            <h3>convolutional neural networks &</h3>
+            <h3>generative advesrsarial networks</h3>
+            it's the future but for now it's mostly<br>
+            academic papers with funny names:<br>
+            <span class="small">
+
+            <a href="http://3dgan.csail.mit.edu/">Learning a Probabilistic Latent Space of Object Shapes via 3D Generative-Adversarial Modeling</a><br>
+            <a href="https://github.com/Newmu/dcgan_code">Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</a><br>
+            <a href="https://blog.openai.com/evolution-strategies/">Evolution Strategies as a Scalable Alternative to Reinforcement Learning</a>
+
+            </span>
+
+        </section>
+
+        <section>
+            <h3>generative design studios</h3>
+            <a href="http://universaleverything.com/projects/screens-of-the-future/">universal everything</a><br>
+            <a href="http://www.onformative.com/">onformative</a><br>
+            <a href="http://variable.io/">variable.io</a><br>
+            <a href="https://www.field.io/">field.io</a><br>
+            <a href="http://waltzbinaire.com/">waltz binaire</a><br>
+            <a href="http://nocomputer.be/">no computer</a><br>
+            <a href="http://www.am-cb.net/">AM-CB</a><br>
+        </section>
+
+        <section>
+            <h3>twitter accounts</h3>
+            <p style="font-size: .75em">
+            <a href="https://twitter.com/tylhobbs" target="_blank">tylhobbs</a> <a href="https://twitter.com/MacTuitui" target="_blank">MacTuitui</a> <a href="https://twitter.com/P_Malin" target="_blank">P_Malin</a> <a href="https://twitter.com/FogleBird" target="_blank">FogleBird</a> <a href="https://twitter.com/pissang1" target="_blank">pissang1</a> <a href="https://twitter.com/mystaticself" target="_blank">mystaticself</a> <a href="https://twitter.com/M_PF" target="_blank">M_PF</a> <a href="https://twitter.com/Flexi23" target="_blank">Flexi23</a> <a href="https://twitter.com/JoanieLemercier" target="_blank">JoanieLemercier</a> <a href="https://twitter.com/inconvergent" target="_blank">inconvergent</a> <a href="https://twitter.com/WilliamChyr" target="_blank">WilliamChyr</a> <a href="https://twitter.com/mariuswatz" target="_blank">mariuswatz</a> <a href="https://twitter.com/" target="_blank"></a> <a href="https://twitter.com/xorxor_hu" target="_blank">xorxor_hu</a> <a href="https://twitter.com/hyper_glu" target="_blank">hyper_glu</a> <a href="https://twitter.com/AdrienMClaireB" target="_blank">AdrienMClaireB</a> <a href="https://twitter.com/laserberg" target="_blank">laserberg</a> <a href="https://twitter.com/AtticusBones" target="_blank">AtticusBones</a> <a href="https://twitter.com/_kzr" target="_blank">_kzr</a> <a href="https://twitter.com/aiekick" target="_blank">aiekick</a> <a href="https://twitter.com/wearekuva" target="_blank">wearekuva</a> <a href="https://twitter.com/ExUtumno" target="_blank">ExUtumno</a> <a href="https://twitter.com/generateme_blog" target="_blank">generateme_blog</a> <a href="https://twitter.com/genekogan" target="_blank">genekogan</a> <a href="https://twitter.com/wearenocomputer" target="_blank">wearenocomputer</a> <a href="https://twitter.com/" target="_blank"></a> <a href="https://twitter.com/_Nick_Taylor" target="_blank">_Nick_Taylor</a> <a href="https://twitter.com/cupe_cupe" target="_blank">cupe_cupe</a> <a href="https://twitter.com/eddietree" target="_blank">eddietree</a> <a href="https://twitter.com/albertomoss" target="_blank">albertomoss</a> <a href="https://twitter.com/ariweinkle" target="_blank">ariweinkle</a> <a href="https://twitter.com/hughskennedy" target="_blank">hughskennedy</a> <a href="https://twitter.com/TatumCreative" target="_blank">TatumCreative</a> <a href="https://twitter.com/akirodic" target="_blank">akirodic</a> <a href="https://twitter.com/RavenKwok" target="_blank">RavenKwok</a> <a href="https://twitter.com/patriciogv" target="_blank">patriciogv</a> <a href="https://twitter.com/cornusammonis" target="_blank">cornusammonis</a> <a href="https://twitter.com/" target="_blank"></a> <a href="https://twitter.com/mflux" target="_blank">mflux</a> <a href="https://twitter.com/legomushroom" target="_blank">legomushroom</a> <a href="https://twitter.com/roland_huf" target="_blank">roland_huf</a> <a href="https://twitter.com/prideout" target="_blank">prideout</a> <a href="https://twitter.com/p01" target="_blank">p01</a> <a href="https://twitter.com/liabru" target="_blank">liabru</a> <a href="https://twitter.com/kenji_special" target="_blank">kenji_special</a> <a href="https://twitter.com/mattdesl" target="_blank">mattdesl</a> <a href="https://twitter.com/lennyjpg" target="_blank">lennyjpg</a> <a href="https://twitter.com/dbtwr" target="_blank">dbtwr</a> <a href="https://twitter.com/gordonnl" target="_blank">gordonnl</a> <a href="https://twitter.com/kyndinfo" target="_blank">kyndinfo</a> <a href="https://twitter.com/edankwan" target="_blank">edankwan</a> <a href="https://twitter.com/evanbbb?" target="_blank">evanbbb?</a> <a href="https://twitter.com/novastructura" target="_blank">novastructura</a> <a href="https://twitter.com/thespite" target="_blank">thespite</a> <a href="https://twitter.com/moebio" target="_blank">moebio</a> <a href="https://twitter.com/alteredq" target="_blank">alteredq</a> <a href="https://twitter.com/marcinignac" target="_blank">marcinignac</a> <a href="https://twitter.com/BlurSpline" target="_blank">BlurSpline</a> <a href="https://twitter.com/philogb" target="_blank">philogb</a> <a href="https://twitter.com/wblut" target="_blank">wblut</a> <a href="https://twitter.com/toxi" target="_blank">toxi</a> <a href="https://twitter.com/RezaAli" target="_blank">RezaAli</a> <a href="https://twitter.com/soulwire" target="_blank">soulwire</a> <a href="https://twitter.com/oosmoxiecode" target="_blank">oosmoxiecode</a> <a href="https://twitter.com/felixturner" target="_blank">felixturner</a> <a href="https://twitter.com/marpi_" target="_blank">marpi_</a> <a href="https://twitter.com/" target="_blank"></a> <a href="https://twitter.com/subblue" target="_blank">subblue</a> <a href="https://twitter.com/grgrdvrt" target="_blank">grgrdvrt</a> <a href="https://twitter.com/quasimondo" target="_blank">quasimondo</a> <a href="https://twitter.com/flight404" target="_blank">flight404</a> <a href="https://twitter.com/sougwen" target="_blank">sougwen</a> <a href="https://twitter.com/kcimc" target="_blank">kcimc</a>
+            </p>
+        </section>
+
+        <section>
+            <h3>useful methods</h3>
+        </section>
+
+        <section>
+            <h3>linear interpolation</h3>
+            <pre><code>function lerp ( t, a, b ){
+    return a * (1-t) + b * t;
+}</code></pre>
+            <h3>normalisation</h3>
+            <pre><code>function norm( t, a, b ){
+    return ( t - a ) / ( b - a );
+}</code></pre>
+            <h3>mapping</h3>
+            <pre><code>function map( t, a0, b0, a1, b1 ){
+    return lerp( norm( t, a0, b0 ), a1, b1 );
+}</code></pre>
+        </section>
+        <section>
+            <h3>distance</h3>
+            <pre><code>function distance( p0, p1 ){
+    var dx = p0.x - p1.x;
+    var dy = p0.y - p1.y;
+    return sqrt( dx * dx + dy * dy );
+}</code></pre>
+            <h3>angle</h3>
+            <pre><code>function angle( p0, p1 ){
+    return atan2( p1.y - p0.y, p1.x - p0.x );
+}</code></pre>
+        </section>
+        <section>
+            <h3>polar coordinates</h3>
+            <pre><code>x = cos( angle ) * radius;
+y = sin( angle ) * radius;</code></pre>
+            <h3>cylindrical coordinates</h3>
+            <pre><code>x = cos( angle ) * radius;
+y = height value;
+z = sin( angle ) * radius;
+</code></pre>
+            <h3>spherical coordinates</h3>
+            <pre><code>var theta = 0 &gt; ? &gt; PI * 2;
+var phi = -PI &gt; ? &gt; PI;
+x = sin(theta) * cos( phi ) * radius;
+y = sin(theta ) * sin( phi ) * radius;
+z = cos( theta ) * radius;</code></pre>
+        </section>
+        <section>
+            <h3>project</h3>
+            <pre><code>function project(p, a, b, asSegment) {
+    var dx = b.x - a.x;
+    var dy = b.y - a.y;
+    if (asSegment && dx == 0 && dy == 0) {
+        return a;
+    }
+    var t = ( ( p.x - a.x ) * dx + ( p.y - a.y ) * dy) / ( dx * dx + dy * dy );
+    if (asSegment && t < 0) return a;
+    if (asSegment && t > 1) return b;
+    return new Point(a.x + t * dx, a.y + t * dy);
+}</code></pre>
+            <h3>reflect</h3>
+            <pre><code>function reflect(p, a, b) {
+    var pp = project(p, a, b);
+    return new Point(p.x + ( pp.x - p.x ) * 2, p.y + ( pp.y - p.y ) * 2);
+}</code></pre>
+        </section>
+
+    </section>
+
+    </div>
+
+</div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+        center: true,
+        pdfMaxPagesPerSlide: 1,
+
+        transition: 'none',
+        backgroundTransition: 'none'
+    });
+
+</script>
+
+</body>
+</html>

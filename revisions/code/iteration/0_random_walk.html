@@ -6,29 +6,65 @@
 </head>
 <body>
 
-    <script src="../../geom.js"></script>
-    <script src="../../graphics.js"></script>
     <script src="../../base.js"></script>
 
     <script>
 
+        function draw(){
 
-        var agent = new Point(w/2, h/2);
+            //creates an agent : something that will move around in the 2D space
+            var agent = {
+                x : w/2,
+                y : h/2
+            };
 
+            //iteration : from A to B, i is incrémented by 1
+            for( var i = 0; i < 10000; i++ ){
 
-//        iteration :
+                //feedback :use the previous position to compute the next
 
-        for( var i = 0; i < 1000; i++ ){
+                agent.x += Math.random() > .5 ? 1 : -1;
+                agent.y += Math.random() > .5 ? 1 : -1;
 
-            //feedback
+                ctx.fillRect( agent.x, agent.y, 1, 1 );
+
+            }
+
+            return;
+
+            //iteratively create 100 agents around the center using the iterator 'i' to place them
+            ctx.clearRect( 0,0,w,h );
+
+            for( var i = 0; i < 100; i++ ){
+
+                //an angle indexed on the iterator
+                var angle = i / 100 * Math.PI * 4;
+
+                //using the iterator
+                var radius = i * 3;
+
+                var agent = {
+                    x : w / 2 + Math.cos(angle) * radius,
+                    y : h / 2 + Math.sin(angle) * radius
+                };
+                ctx.globalAlpha = 1;
+                ctx.fillRect( agent.x, agent.y, 2, 2 );
+
+                //and perform a random walk of a thousand iterations
+                ctx.globalAlpha = .1;
+                for( var j = 0; j < 1000; j++ ){
+
+                    //feedback :use the previous position to compute the next
+                    agent.x += Math.random() > .5 ? 1 : -1;
+                    agent.y += Math.random() > .5 ? 1 : -1;
+
+                    ctx.fillRect( agent.x, agent.y, 2, 2 );
+
+                }
+            }
 
         }
-
-
-
-
-
-
+        draw();
 
     </script>
 

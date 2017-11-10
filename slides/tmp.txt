@@ -1,0 +1,115 @@
+GENERATING THINGS
+WITH CODE
+PROCEDURAL CONTENT GENERATION (PCG)
+programmatic generation of content
+often using pseudo-random data
+designing a process rather than an object
+PCG ARE MASSIVELY USED IN DESIGN,
+GAMES, ART, VFX, ARCHITECTURE...
+IMPORTANT
+data
+space
+process
+NOT IMPORTANT
+coding platform & language
+coding tools & toolchain
+capture device & data sources
+WHAT PCGS ARE GOOD AT
+MODELIZATION
+create the model of a system
+SIMULATION
+use the model to process data
+EXPLORATION
+change the model's parameter
+COROLLARY: VISUALISATION
+rendering the model: 2D, 3D graphics,
+video, tangible objects, installation...
+PCG UPSIDES
+the computer does the boring part
+few paramaters give many variations
+very good at serial content
+emergent behaviours can produce
+surprising or unexpected results
+PCG DOWNSIDES
+mathematical uniqueness is often not
+enough to create significant differences
+hard to maintain consistent variations
+while using numerous variables
+hard to assess "good" settings
+human curation required
+NO MAN'S SKY
+Hello Games - no man's sky
+model: universe generator
+simulation: update the model with game logic
+exploration: move & interact with the model
+visualisation: rendering a 3D scene
+1. DATA
+N dimensions
+CONTINUOUS VS DISCRETE
+the world is a continuous system
+computers process discrete data
+DISCRETIZING THE WORLD
+continuous data are measured
+discrete data are counted
+CONTINUOUS => DISCRETE
+time => interval
+light => color palette
+reaction => process
+phenomenon => simulation
+N-DIMENSIONAL OBJECTS
+any given object can be described by
+a variable number of dimensions
+
+the values of each dimension of an object
+can vary without affecting the others
+2. SPACE
+fields of representation
+GEOMETRIC
+CARTESIAN SPACE
+
+POLAR SPACE
+
+CYLINDRICAL SPACE
+
+3. PROCESS
+data space design
+TRANSLATION / ROTATION / SCALE
+the basic transformations, let us
+perform distributions in space
+GRID / FRAME
+//regular grid with 50px cells
+var cellSize = 50, i, j;
+for( i = 0; i <= w; i += cellSize ){
+    for( j = 0; j <= h; j += cellSize ){
+
+        //grid cell indices
+        var cell_x = Math.round( i / cellSize );
+        var cell_y = Math.round( j / cellSize );
+
+        //grid
+        circle( i, j, 2 );
+
+        //sub-grid
+        if( ( cell_x >= 20 && cell_x <= 26 )
+        &&  ( cell_y >= 8 && cell_y <= 20 ) ){
+            circle( i, j, 5 );
+        }
+
+        //frame
+        //horizontal lines
+        if( ( cell_x >= 16 && cell_x <= 30 )
+        &&  ( cell_y == 3 || cell_y == 12 ) ){
+            circle( i, j, 10 );
+        }
+
+        //verical lines
+        if( ( cell_x == 16 || cell_x == 30 )
+        &&  ( cell_y >= 3 && cell_y <= 12 ) ){
+            circle( i, j, 10 );
+        }
+    }
+}
+FURTHER CONSIDERATIONS
+RANDOM & PSEUDO-RANDOM
+a random() methods create sequences that are - by definition - hard to reproduce. prefer a Pseudo Random Number Generator (PRNG) that produces seemingly random series of numbers
+PCG are massively used in design, games, art, vfx, architecture...
