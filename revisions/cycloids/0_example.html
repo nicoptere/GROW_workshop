@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cycloids</title>
+</head>
+<body>
+
+    <script src="../graphics.js"></script>
+    <script src="../base.js"></script>
+    <script src="../geom.js"></script>
+    <script>
+
+        var G = new Graphics(ctx);
+        function draw(){
+
+            ctx.save();
+            ctx.translate(w/2, h/2);
+
+            var big = new Point();
+            big.radius = 250;
+
+            var small = new Point();
+            small.radius = 100;
+
+            var pen = new Point();
+            pen.radius = 5;
+
+            G.circle( big, big.radius );
+            G.circle( small, small.radius );
+            G.disc( pen, pen.radius );
+
+            return;
+
+            //places the small circle outside the big circle
+            small.x = big.x + Math.cos( 0 ) * ( big.radius + small.radius );
+            small.y = big.y + Math.sin( 0 ) * ( big.radius + small.radius );
+
+            G.circle( small, small.radius );
+            G.line( big, small );
+
+            return;
+
+            //places the pen outside the small circle
+            pen.x = small.x + Math.cos( 0 ) * small.radius;
+            pen.y = small.y + Math.sin( 0 ) * small.radius;
+
+            G.disc( pen, pen.radius );
+            G.line( small, pen );
+
+            return;
+
+            var step = RAD;
+            ctx.beginPath();
+            for( var i = 0; i < 30; i++ ){
+
+                small.x = big.x + Math.cos( i * step ) * ( big.radius + small.radius );
+                small.y = big.y + Math.sin( i * step ) * ( big.radius + small.radius );
+
+                ctx.lineTo( small.x, small.y );
+
+            }
+            ctx.stroke();
+            G.circle( small, small.radius );
+
+            return;
+
+            ctx.restore();
+            ctx.clearRect(0,0,w,h);
+            ctx.translate(w/2, h/2);
+
+            var penSpeed = 5;
+
+            ctx.beginPath();
+            for( i = 0; i < 500; i++ ){
+
+                var angle = i * step;
+
+                small.x = big.x + Math.cos( angle ) * ( big.radius + small.radius );
+                small.y = big.y + Math.sin( angle ) * ( big.radius + small.radius );
+
+                pen.x = small.x + Math.cos( penSpeed * angle ) * small.radius;
+                pen.y = small.y + Math.sin( penSpeed * angle ) * small.radius;
+
+                ctx.lineTo( pen.x, pen.y );
+
+            }
+            ctx.stroke();
+
+        }
+        draw();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script src="shaping.js"></script>
+<script>
+
+    var G = new Graphics(ctx);
+    function draw(){
+
+        ctx.restore();
+        ctx.save();
+        ctx.clearRect(0, 0, w, h );
+
+        G.text( shapingName, 12, 100, 90 );
+
+        var fc = Shaping[shapingName];
+
+        var stepX = w / 20;
+        for( var i = 0; i < w; i+=stepX ){
+
+            ctx.globalAlpha = fc( i/w, 4, 2 );
+            if( shapingName == "cubicPulse" ) ctx.globalAlpha = fc( i/w, 1, .25 );
+            ctx.fillRect( i, 0, stepX, h );
+
+        }
+
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = "#F00";
+        ctx.beginPath();
+        for( i = 0; i < w; i+=10 ){
+
+            var value = fc( i/w, 4, 1 );
+            if( shapingName == "cubicPulse" ) value = fc( i/w, .25, .25 );
+            ctx.lineTo( i, h - value * h );
+
+        }
+        ctx.stroke();
+
+
+    }
+
+    var shapingId = -1;
+    var shapingName = "";
+    function onMouseDown(e){
+
+        shapingId++;
+        shapingId %= 5;
+        var id = 0;
+        for (var key in Shaping ) {
+            if (id++ != shapingId) continue;
+            shapingName = key;
+        }
+        draw();
+
+    }
+    canvas.addEventListener( 'mousedown', onMouseDown, false );
+    onMouseDown();
+    draw();
+
+</script>
+</body>
+</html>

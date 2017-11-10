@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script src="easing.js"></script>
+<script>
+
+
+    var mouse = new Point(w/2, h/2);
+    var G = new Graphics(ctx);
+    function draw(){
+
+        requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, w, h );
+
+        var t = .5 + Math.sin( Date.now() * 0.001 ) * .5;
+
+        var fc = Easing[easingName];
+
+
+        ctx.fillStyle = "#000";
+        G.text( easingName, 12, 100, 90 );
+        ctx.strokeRect( 100, 100, w-300, h-200 );
+
+        var x = lerp( t, 100, ( w - 200 ) );
+        G.line( x, 100, x, h-100 );
+        G.disc( x, 100, 5 );
+
+        ctx.beginPath();
+        for( var i = 0; i <= 1; i+=.01 ){
+
+            var y = Math.max( 0, Math.min( 1, fc(i) ) );
+            ctx.lineTo( lerp( i, 100, w-200), lerp( y, h-100, 100) );
+
+        }
+        ctx.lineTo( w-200, 100 );
+        ctx.stroke();
+
+        G.disc( x, lerp( fc(t), h-100, 100), 5 )
+
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#f00";
+        ctx.fillRect( w - 150, h - 100, 100,  - ( ( h-200 )* fc( t ) ) );
+
+
+    }
+
+    function onMouseMove(e){
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    }
+    canvas.addEventListener( 'mousemove', onMouseMove, false );
+    var easingId = -1;
+    var easingName = "";
+    function onMouseDown(e){
+
+        easingId++;
+        easingId %= 21;
+        var id = 0;
+        for (var key in Easing ) {
+            if (id++ != easingId) continue;
+            easingName = key;
+        }
+
+    }
+    canvas.addEventListener( 'mousedown', onMouseDown, false );
+    onMouseDown();
+    draw();
+
+</script>
+</body>
+</html>
