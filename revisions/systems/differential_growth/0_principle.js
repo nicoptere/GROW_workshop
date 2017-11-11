@@ -1,10 +1,5 @@
 
 var G = new Graphics(ctx);
-ctx .fillStyle = "#FFF";
-w = ctx.width =
-h = ctx.height = 1200;
-ctx.fillRect( 0,0,w,h );
-ctx.fillStyle = "#000";
 var p0 = new Point( w/2 ,       h/2+30 );
 var p1 = new Point( w/2 -30 ,   h/2-30 );
 var p2 = new Point( w/2 +30 ,   h/2-30 );
@@ -17,41 +12,38 @@ poly.forEach(function(p){
     p.r = radius;
     p.acc = new Point();
 });
-
 G.polyline( poly, true );
 
 
 function update(){
 
-    ctx.clearRect(0,0,w,h);
-    // ctx.globalAlpha = .1;
+    // ctx.clearRect(0,0,w,h);
+    ctx.globalAlpha = .1;
 
-    while( poly.length > 1000 ){
-        var tmp = [];
-        for( var i = 0; i < poly.length; i++ ){
+    var tmp = [];
+    for( var i = 0; i < poly.length; i++ ){
 
-            var current = poly[ i ];
+        var current = poly[ i ];
 
+        var next = poly[ ( i + 1 ) % poly.length ];
 
-            var next = poly[ ( i + 1 ) % poly.length ];
+        tmp.push( current );
 
-            tmp.push( current );
-
-            if( current.distance( next ) > radius ){
-                var midpoint = current.midpoint( next );
-                midpoint.r = radius;
-                midpoint.acc = new Point();
-                tmp.push( midpoint );
-            }
-
+        if( current.distance( next ) > radius ){
+            var midpoint = current.midpoint( next );
+            midpoint.r = radius;
+            midpoint.acc = new Point();
+            tmp.push( midpoint );
         }
-        poly = tmp;
 
-        attractRepel( poly, poly );
+    }
+    poly = tmp;
 
-        G.polygon( poly, true );
-    // poly.forEach(function (p) {disc(p.x, p.y, 2);});
 
+    attractRepel( poly, poly );
+    G.polyline( poly, true );
+
+    if( poly.length > 1000 ){
         // save( ctx, 'differential_growth');
         return;
     }

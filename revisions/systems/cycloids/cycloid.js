@@ -24,6 +24,9 @@ function update() {
     //rotation speed around the big circle
     var time0 = Date.now() * 0.001;
 
+
+    //EPICYCLOIDS : outside the circle
+
     //position around the big circle
     //( circle0.radius + circle1.radius ) will place the circle "outside" the big circle
     var cx = circle0.x + Math.cos( time0 ) * ( circle0.radius + circle1.radius );
@@ -40,30 +43,54 @@ function update() {
     circle( px, py, 3 );
 
     //store the new position
-    points.push( new Point( px, py ) );
+    epicycloid.push( new Point( px, py ) );
 
     //render the curve in red
     ctx.strokeStyle = "#F00";
     ctx.beginPath();
-    points.forEach( function( p ){
+    epicycloid.forEach( function(p ){
         ctx.lineTo( p.x, p.y );
     });
     ctx.stroke();
-    if( points.length > 360 )points.shift();
+    if( epicycloid.length > 360 )epicycloid.shift();
+
+    //HYPOCYCLOIDS : inside the circle
+
+    ctx.strokeStyle = "#000";
+    //position around the big circle
+    //( circle0.radius + circle1.radius ) will place the circle "outside" the big circle
+    var cx = circle0.x + Math.cos( time0 ) * ( circle0.radius - circle1.radius );
+    var cy = circle0.y + Math.sin( time0 ) * ( circle0.radius - circle1.radius );
+    circle( cx, cy, circle1.radius);
+
+
+    //position inside the small circle
+    var time1 = -time0 * 4;
+
+    var px = cx + Math.cos( time1 ) * circle1.radius;
+    var py = cy + Math.sin( time1 ) * circle1.radius;
+
+    circle( px, py, 3 );
+
+    //store the new position
+    hypocycloid.push( new Point( px, py ) );
+
+    //render the curve in red
+    ctx.strokeStyle = "#00F";
+    ctx.beginPath();
+    hypocycloid.forEach( function(p ){
+        ctx.lineTo( p.x, p.y );
+    });
+    ctx.stroke();
+    if( hypocycloid.length > 360 )hypocycloid.shift();
+
 
 }
-
-//creates a 2D context, an array to store points
-var canvas, w, h, ctx, points = [];
-canvas = document.createElement( 'canvas' );
-document.body.appendChild( canvas );
-w = canvas.width = window.innerWidth ;
-h = canvas.height = window.innerHeight ;
-ctx = canvas.getContext("2d");
-update();
-
+var epicycloid = [];
+var hypocycloid = [];
 function circle( x,y,r ){
     ctx.beginPath();
     ctx.arc( x, y, r, 0, Math.PI * 2 );
     ctx.stroke();
 }
+update();

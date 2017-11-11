@@ -17,6 +17,10 @@ var ctx = getContext( w, h );
 var canvas = ctx.canvas;
 document.body.appendChild( canvas );
 
+//remplis le fond en blanc
+ctx .fillStyle = "#FFF";
+ctx.fillRect( 0,0,w,h );
+ctx.fillStyle = "#000";
 
 //étend le contexte sur toute la surface de la fenêtre et assigne les valeurs de w et h
 function onResize(){

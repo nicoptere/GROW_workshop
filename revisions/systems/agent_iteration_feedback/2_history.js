@@ -90,7 +90,7 @@ function update(){
 
             var width = Math.abs( Math.sin( ( time + t ) * PI ) );
 
-            width *= Shaping.pcurve( t, 0.2, 8 );
+            // width *= Shaping.pcurve( 1-t, 0.2, 8 );
 
             // width = Shaping.sawtooth( (1-t) * 3 );
 
