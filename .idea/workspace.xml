@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e4f2d3-4bf8-414a-b6c0-e2b0ec7f350a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/canvas" afterPath="$PROJECT_DIR$/revisions/canvas" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/code/index.html" afterPath="$PROJECT_DIR$/revisions/code/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/systems/cycloids/0_example.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/0_example.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/emergence/flocking.html" afterPath="$PROJECT_DIR$/revisions/systems/emergence/flocking.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/emergence/flocking.js" afterPath="$PROJECT_DIR$/revisions/systems/emergence/flocking.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/emergence/pseudo_rotation.html" afterPath="$PROJECT_DIR$/revisions/systems/emergence/pseudo_rotation.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/emergence/pseudo_rotation.js" afterPath="$PROJECT_DIR$/revisions/systems/emergence/pseudo_rotation.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,48 +21,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="184" column="0" lean-forward="true" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0_principle.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0_principle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3_spline_wall.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2_history.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/2_history.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
+            <state relative-caret-position="495">
+              <caret line="179" column="0" lean-forward="true" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -373,12 +323,12 @@
       <workItem from="1510311131829" duration="16405000" />
       <workItem from="1510337705625" duration="9624000" />
       <workItem from="1510350557388" duration="2033000" />
-      <workItem from="1510388384812" duration="30982000" />
+      <workItem from="1510388384812" duration="32255000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112510000" />
+    <option name="totallyTimeSpent" value="113783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -799,10 +749,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/2_history.html">
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
+        <state relative-caret-position="413">
+          <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -815,18 +765,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js">
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/2_history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="184" column="0" lean-forward="true" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+        <state relative-caret-position="495">
+          <caret line="179" column="0" lean-forward="true" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding />
         </state>
       </provider>
