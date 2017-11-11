@@ -6,15 +6,19 @@
 </head>
 <body>
 
-    <script src="../graphics.js"></script>
-    <script src="../base.js"></script>
-    <script src="../geom.js"></script>
+    <script src="../../graphics.js"></script>
+    <script src="../../base.js"></script>
+    <script src="../../geom.js"></script>
     <script>
 
         var G = new Graphics(ctx);
         function draw(){
 
+
+            ctx.restore();
             ctx.save();
+            ctx.clearRect(0,0,w,h);
+
             ctx.translate(w/2, h/2);
 
             var big = new Point();
@@ -30,7 +34,13 @@
             G.circle( small, small.radius );
             G.disc( pen, pen.radius );
 
-            return;
+                if( iterator < 1 )return;
+
+            ctx.restore();
+            ctx.save();
+            ctx.clearRect(0,0,w,h);
+            ctx.translate(w/2, h/2);
+            G.circle( big, big.radius );
 
             //places the small circle outside the big circle
             small.x = big.x + Math.cos( 0 ) * ( big.radius + small.radius );
@@ -39,16 +49,16 @@
             G.circle( small, small.radius );
             G.line( big, small );
 
-            return;
+                if( iterator < 2 )return;
 
             //places the pen outside the small circle
-            pen.x = small.x + Math.cos( 0 ) * small.radius;
-            pen.y = small.y + Math.sin( 0 ) * small.radius;
+            pen.x = small.x + Math.cos( PI / 4 ) * small.radius;
+            pen.y = small.y + Math.sin( PI / 4 ) * small.radius;
 
             G.disc( pen, pen.radius );
             G.line( small, pen );
 
-            return;
+                if( iterator < 3 )return;
 
             var step = RAD;
             ctx.beginPath();
@@ -63,18 +73,47 @@
             ctx.stroke();
             G.circle( small, small.radius );
 
-            return;
+                if( iterator < 4 )return;
 
             ctx.restore();
+            ctx.save();
+            ctx.clearRect(0,0,w,h);
+            ctx.translate(w/2, h/2);
+            G.circle( big, big.radius );
+
+            var penSpeed = 5;
+            ctx.beginPath();
+            for( i = 0; i < 360; i++ ){
+
+                var angle = i * step;
+
+                small.x = big.x + Math.cos( angle ) * ( big.radius + small.radius );
+                small.y = big.y + Math.sin( angle ) * ( big.radius + small.radius );
+                ctx.globalAlpha = .1;
+                G.circle( small, small.radius );
+
+                pen.x = small.x + Math.cos( penSpeed * angle ) * small.radius;
+                pen.y = small.y + Math.sin( penSpeed * angle ) * small.radius;
+                ctx.globalAlpha = .5;
+                G.disc( pen, 2 );
+
+                ctx.lineTo( pen.x, pen.y );
+
+            }
+            ctx.stroke();
+
+                if( iterator < 5 )return;
+
+            ctx.restore();
+            ctx.save();
             ctx.clearRect(0,0,w,h);
             ctx.translate(w/2, h/2);
 
-            var penSpeed = 5;
-
+            penSpeed = 5.1;
             ctx.beginPath();
-            for( i = 0; i < 500; i++ ){
+            for( i = 0; i < 3600; i++ ){
 
-                var angle = i * step;
+                angle = i * step;
 
                 small.x = big.x + Math.cos( angle ) * ( big.radius + small.radius );
                 small.y = big.y + Math.sin( angle ) * ( big.radius + small.radius );
@@ -85,11 +124,21 @@
                 ctx.lineTo( pen.x, pen.y );
 
             }
+            ctx.closePath();
             ctx.stroke();
 
         }
-        draw();
 
+        var iterator = 0;
+        var maxIterations = 6;
+        function increment(){
+            iterator++;
+            iterator %= maxIterations;
+            draw()
+        }
+        canvas.addEventListener("mousedown", increment, false );
+
+        draw();
     </script>
 
 </body>
