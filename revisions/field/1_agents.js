@@ -37,6 +37,7 @@ function update() {
     });
 
     //for each agent
+    var margin = 20;
     ctx.globalAlpha = 1;
     agents.forEach( function( agent ){
 
@@ -51,13 +52,13 @@ function update() {
         agent.y += Math.sin( angle ) * agent.speed;
 
         //bounds
-        if( agent.x < 0 )agent.x += w;
-        if( agent.y < 0 )agent.y += h;
-        if( agent.x > w )agent.x = 0;
-        if( agent.y > h )agent.y = 0;
+        if( agent.x < -margin )agent.x += w + margin;
+        if( agent.y < -margin )agent.y += h + margin;
+        if( agent.x > w + margin )agent.x = -margin;
+        if( agent.y > h + margin )agent.y = -margin;
 
 
-        G.disc( agent,  5 );
+        G.disc( agent, 5 );
     })
 
 }

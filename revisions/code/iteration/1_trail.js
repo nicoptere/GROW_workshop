@@ -21,16 +21,25 @@ function update(){
 
     requestAnimationFrame(update);
 
-    //increase the iterations count
-    if( iterations >= 100 )return;
-    iterations++;
+    ctx.clearRect(0,0,w/3,h);
+
+    ctx.fillStyle = 'rgba(255,255,255,.05)';
+    ctx.fillRect(w/3,0,w/3,h);
+    ctx.fillStyle = '#000';
+
+    ctx.lineWidth = 3;
 
     for( var i = 0; i < points.length; i++ ){
         
         //draw a dot at the current position
         var p = points[i];
-        circle( p.x, p.y, 2 );
-        
+
+        //bounds
+        if( p.x < -5 )p.x += w + 5;
+        if( p.y < -5 )p.y += h + 5;
+        if( p.x > w + 5 )p.x = -5;
+        if( p.y > h + 5 )p.y = -5;
+
         //move to current position
         ctx.beginPath();
         ctx.moveTo( p.x, p.y );
@@ -39,11 +48,12 @@ function update(){
         angles[i] += ( Math.random() - .5 ) * RAD * speeds[i];
 
         //updates poistion width the angle
-        p.x += Math.cos( angles[i] ) * 30;
-        p.y += Math.sin( angles[i] ) * 30;
+        p.x += Math.cos( angles[i] ) * 5;
+        p.y += Math.sin( angles[i] ) * 5;
 
         ctx.lineTo( p.x, p.y );
         ctx.stroke();
+        // circle( p.x, p.y, 2 );
 
     }
 }

@@ -14,7 +14,7 @@ function reset() {
         var t = i / count;
 
         //linear X value
-        x = i / count * w;
+        x = t * w;
 
         //start with a regular sinusoid
         var r = Math.sin( t * Math.PI * 2 );

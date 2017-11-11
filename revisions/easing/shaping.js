@@ -1,7 +1,20 @@
+var Shaping = {};
+
+Shaping.square = function ( n ){
+    return Math.sin( n * PI2 ) > 0 ? 1 : .5;
+};
+
+Shaping.sawtooth = function ( n ){
+    return ( n - Math.floor( n ) );
+};
+
+Shaping.triangle = function ( n ){
+    return  ( .5 - Math.abs( n - Math.floor( n + .5 ) ) );
+};
+
 //  Function from Iñigo Quiles
 //  www.iquilezles.org/www/articles/functions/functions.htm
 
-var Shaping = {};
 Shaping.pcurve = function (x, a, b) {
     var k = Math.pow(a + b, a + b) / (Math.pow(a, a) * Math.pow(b, b));
     return k * Math.pow(x, a) * Math.pow(1.0 - x, b);

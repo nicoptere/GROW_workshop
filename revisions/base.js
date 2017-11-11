@@ -39,3 +39,20 @@ function map( t, a0, b0, a1, b1 ){ return lerp( norm( t, a0, b0 ), a1, b1 );}
 var PI = Math.PI;
 var PI2 = PI * 2;
 var RAD = PI / 180;
+
+//save file to disk
+var dl = document.createElement( 'a' );
+function save( ctx, id, cb ){
+
+    ctx.canvas.toBlob(function(blob) {
+        // dl.href = ctx.canvas.toDataURL('image/png');
+
+        dl.href = URL.createObjectURL(blob);
+        dl.download = id + ".png";
+        dl.click();
+
+        id++;
+        if( cb )setTimeout( cb, 1, id );
+    });
+
+}

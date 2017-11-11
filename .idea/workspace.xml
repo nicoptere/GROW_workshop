@@ -2,27 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e4f2d3-4bf8-414a-b6c0-e2b0ec7f350a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/field/1_agents.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/field/1_agents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/random/random.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/random/random.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/iteration/2_history.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/iteration/2_history.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/transform/kaleidoscope.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/transform/kaleidoscope.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/transform/pavage.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/code/transform/pavage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/distribution/poisson.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/distribution/poisson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/feedback/0_feedback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/feedback/0_feedback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/random/3_fbm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/random/4_curl_noise.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/random/4_curl_noise.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/save.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/revisions/random/turbulence.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/canvas" afterPath="$PROJECT_DIR$/revisions/canvas" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/code/iteration/0_random_walk.html" afterPath="$PROJECT_DIR$/revisions/code/iteration/0_random_walk.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/0_example.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/0_example.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/cardioid.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/cardioid.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/cardioid.js" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/cardioid.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/epicycloid.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/epicycloid.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/epicycloid.js" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/epicycloid.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/guilloche.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/guilloche.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/hypocycloid.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/hypocycloid.js" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/lissajous.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/lissajous.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/nestedcycloid.html" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/nestedcycloid.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/cycloids/nestedcycloid.js" afterPath="$PROJECT_DIR$/revisions/systems/cycloids/nestedcycloid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/base.js" afterPath="$PROJECT_DIR$/revisions/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/code/index.html" afterPath="$PROJECT_DIR$/revisions/code/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/easing/2_shaping.html" afterPath="$PROJECT_DIR$/revisions/easing/2_shaping.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/easing/3_shaping.html" afterPath="$PROJECT_DIR$/revisions/easing/3_shaping.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/easing/shaping.js" afterPath="$PROJECT_DIR$/revisions/easing/shaping.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/field/1_agents.js" afterPath="$PROJECT_DIR$/revisions/field/1_agents.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/iteration/index.html" afterPath="$PROJECT_DIR$/revisions/code/iteration/1_trails.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/code/iteration/iteration.js" afterPath="$PROJECT_DIR$/revisions/code/iteration/1_trail.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/field/field.js" afterPath="$PROJECT_DIR$/revisions/field/0_principle.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/field/index.html" afterPath="$PROJECT_DIR$/revisions/field/0_principle.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/noise.html" afterPath="$PROJECT_DIR$/revisions/random/2_noise.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/noise.js" afterPath="$PROJECT_DIR$/revisions/random/2_noise.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/pseudorandom.html" afterPath="$PROJECT_DIR$/revisions/random/1_pseudorandom.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/pseudorandom.js" afterPath="$PROJECT_DIR$/revisions/random/1_pseudorandom.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/random.html" afterPath="$PROJECT_DIR$/revisions/random/0_random.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/random.js" afterPath="$PROJECT_DIR$/revisions/random/0_random.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/random/turbulence.html" afterPath="$PROJECT_DIR$/revisions/random/3_fbm.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,98 +57,78 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2941">
-              <caret line="173" column="95" lean-forward="false" selection-start-line="173" selection-start-column="95" selection-end-line="173" selection-end-column="95" />
+            <state relative-caret-position="314">
+              <caret line="103" column="71" lean-forward="false" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="0_principle.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html">
+      <file leaf-file-name="hexagonal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/distribution/hexagonal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="0_principle.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js">
+      <file leaf-file-name="3_shaping.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/revisions/easing/3_shaping.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+            <state relative-caret-position="578">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1_agents.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/field/1_agents.html">
+      <file leaf-file-name="kaleidoscope.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="408">
+              <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1_agents.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/field/1_agents.js">
+      <file leaf-file-name="pavage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+            <state relative-caret-position="340">
+              <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pseudorandom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/random/pseudorandom.js">
+      <file leaf-file-name="kaleidoscope.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="1" />
+            <state relative-caret-position="901">
+              <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="random.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/random/random.js">
+      <file leaf-file-name="pavage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+            <state relative-caret-position="404">
+              <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shaping.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/easing/shaping.js">
+      <file leaf-file-name="2_noise.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="18" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="16" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pseudorandom.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/random/pseudorandom.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="random.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/revisions/random/random.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -158,6 +155,14 @@
       <find>&lt;script src=&quot;../../Point.js&quot;&gt;&lt;/script&gt;</find>
       <find>noiseSize</find>
       <find>[1]</find>
+      <find>dot</find>
+      <find>pseudoRandom</find>
+      <find>function pseudoRandom</find>
+      <find>speed</find>
+      <find>left</find>
+      <find>nois</find>
+      <find>dista</find>
+      <find>.z</find>
     </findStrings>
     <replaceStrings>
       <replace>t</replace>
@@ -168,6 +173,7 @@
       <replace>&lt;script src=&quot;../../geom.js&quot;&gt;&lt;/script&gt;</replace>
       <replace>grainSize</replace>
       <replace>.y</replace>
+      <replace>angleSpeed</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -176,32 +182,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/revisions/canvas/2_cercle/1_trigo.html" />
-        <option value="$PROJECT_DIR$/revisions/canvas/2_cercle/0_arc.html" />
-        <option value="$PROJECT_DIR$/revisions/easing/shaping.js" />
-        <option value="$PROJECT_DIR$/revisions/easing/3_shaping.html" />
-        <option value="$PROJECT_DIR$/revisions/canvas/8_effets/0_glow.html" />
-        <option value="$PROJECT_DIR$/revisions/canvas/8_effets/1_filters.html" />
-        <option value="$PROJECT_DIR$/exercices/references/index.html" />
-        <option value="$PROJECT_DIR$/revisions/easing/easing.js" />
-        <option value="$PROJECT_DIR$/revisions/easing/0_easing.html" />
-        <option value="$PROJECT_DIR$/revisions/distribution/triangular.js" />
-        <option value="$PROJECT_DIR$/revisions/distribution/triangular.html" />
-        <option value="$PROJECT_DIR$/revisions/distribution/hexagonal.html" />
-        <option value="$PROJECT_DIR$/revisions/distribution/hexagonal.js" />
-        <option value="$PROJECT_DIR$/revisions/cycloids/guilloche.html" />
-        <option value="$PROJECT_DIR$/revisions/cycloids/lissajous.html" />
-        <option value="$PROJECT_DIR$/revisions/random/pseudorandom.js" />
-        <option value="$PROJECT_DIR$/revisions/canvas/5_curves/0_quadratic.html" />
-        <option value="$PROJECT_DIR$/revisions/distribution/scale.js" />
         <option value="$PROJECT_DIR$/revisions/canvas/9_extras/1_exercice.html" />
         <option value="D:/drives/slack/moeb/moeb_2017_novembre_10-10_15_59/_privatechannels/shiffre/2017-06-21.json" />
         <option value="$PROJECT_DIR$/revisions/field/1_animated.html" />
         <option value="$PROJECT_DIR$/revisions/field/field_animated.js" />
-        <option value="$PROJECT_DIR$/revisions/random/noise.js" />
-        <option value="$PROJECT_DIR$/revisions/random/turbulence.html" />
-        <option value="$PROJECT_DIR$/revisions/random/turbulence.js" />
-        <option value="$PROJECT_DIR$/revisions/easing/2_shaping.html" />
         <option value="$PROJECT_DIR$/revisions/field/field.js" />
         <option value="$PROJECT_DIR$/revisions/code/transform/rotation.html" />
         <option value="$PROJECT_DIR$/revisions/geom.js" />
@@ -223,10 +207,32 @@
         <option value="$PROJECT_DIR$/revisions/field/1_agents.html" />
         <option value="$PROJECT_DIR$/revisions/random/random.html" />
         <option value="$PROJECT_DIR$/revisions/random/random.js" />
-        <option value="$PROJECT_DIR$/revisions/field/1_agents.js" />
-        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" />
+        <option value="$PROJECT_DIR$/revisions/feedback/0_feedback.html" />
+        <option value="$PROJECT_DIR$/revisions/feedback/0_feedback.js" />
+        <option value="$PROJECT_DIR$/revisions/random/noise.js" />
+        <option value="$PROJECT_DIR$/revisions/random/turbulence.js" />
+        <option value="$PROJECT_DIR$/revisions/random/turbulence.html" />
+        <option value="$PROJECT_DIR$/revisions/random/curl_noise.html" />
+        <option value="$PROJECT_DIR$/revisions/random/curl_noise.js" />
+        <option value="$PROJECT_DIR$/revisions/code/iteration/index.html" />
+        <option value="$PROJECT_DIR$/revisions/code/iteration/1_trail.js" />
+        <option value="$PROJECT_DIR$/revisions/field/1_agents.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.html" />
+        <option value="$PROJECT_DIR$/revisions/save.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html" />
+        <option value="$PROJECT_DIR$/revisions/base.js" />
+        <option value="$PROJECT_DIR$/revisions/code/iteration/2_history.html" />
+        <option value="$PROJECT_DIR$/revisions/easing/2_shaping.html" />
+        <option value="$PROJECT_DIR$/revisions/easing/shaping.js" />
+        <option value="$PROJECT_DIR$/revisions/code/iteration/2_history.js" />
+        <option value="$PROJECT_DIR$/revisions/code/transform/kaleidoscope.html" />
+        <option value="$PROJECT_DIR$/revisions/code/transform/pavage.html" />
+        <option value="$PROJECT_DIR$/revisions/code/transform/pavage.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/revisions/distribution/poisson.html" />
+        <option value="$PROJECT_DIR$/revisions/distribution/poisson.js" />
+        <option value="$PROJECT_DIR$/revisions/easing/3_shaping.html" />
       </list>
     </option>
   </component>
@@ -279,12 +285,6 @@
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
               <item name="revisions" type="462c0819:PsiDirectoryNode" />
-              <item name="canvas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
-              <item name="revisions" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -298,7 +298,32 @@
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
               <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="transform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="distribution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
               <item name="easing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="feedback" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="field" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
@@ -323,8 +348,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,19 +359,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../grow17" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\perso\grow\GROW_workshop\revisions\distribution" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\code\transform" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\code\iteration" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\differential_growth" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\random" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\perso\grow\GROW_workshop\revisions\systems" />
       <recent name="D:\perso\grow\workshop\revisions" />
       <recent name="D:\perso\grow\workshop\exercices\references\assets" />
       <recent name="D:\perso\grow\workshop\exercices\references" />
       <recent name="D:\perso\grow\workshop\exercices" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\perso\grow\GROW_workshop\revisions\random" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\field" />
-      <recent name="D:\perso\grow\GROW_workshop" />
-      <recent name="D:\perso\grow\workshop\revisions\field" />
-      <recent name="D:\perso\grow\workshop\revisions\random" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -361,26 +386,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.0_principle.html">
-    <configuration name="0_principle.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/differential_growth/0_principle.html" />
-    <configuration name="1_agents.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/field/1_agents.html" />
-    <configuration name="1_easing.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/easing/1_easing.html" />
-    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/index.html" />
-    <configuration name="random.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/random/random.html" />
+  <component name="RunManager" selected="JavaScript Debug.poisson.html">
+    <configuration name="2_history.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/code/iteration/2_history.html" />
+    <configuration name="2_shaping.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/easing/2_shaping.html" />
+    <configuration name="3_shaping.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/easing/3_shaping.html" />
+    <configuration name="pavage.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/code/transform/pavage.html" />
+    <configuration name="poisson.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/distribution/poisson.html" />
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.1_agents.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.random.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.1_easing.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.2_history.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.3_shaping.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.2_shaping.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.pavage.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.1_easing.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.random.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.1_agents.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.pavage.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.2_shaping.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.3_shaping.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.2_history.html" />
       </list>
     </recent_temporary>
   </component>
@@ -405,20 +430,22 @@
       <workItem from="1510302069862" duration="1032000" />
       <workItem from="1510311131829" duration="16405000" />
       <workItem from="1510337705625" duration="9624000" />
-      <workItem from="1510350557388" duration="1403000" />
+      <workItem from="1510350557388" duration="2033000" />
+      <workItem from="1510388384812" duration="24624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80898000" />
+    <option name="totallyTimeSpent" value="106152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34193888" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2665964" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -432,7 +459,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -456,180 +482,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/revisions/field/field.png" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_moeb_2017_novembre_10-10_15_59.zip/moeb_2017_novembre_10-10_15_59/_conversations/derschmale U3ACW8J9E/2017-11-09.json" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_moeb_2017_novembre_10-10_15_59.zip/moeb_2017_novembre_10-10_15_59/_conversations/derschmale U3ACW8J9E/2017-01-24.json" />
-    <entry file="file://D:/drives/slack/moeb/moeb_2017_novembre_10-10_15_59/channels.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/drives/slack/moeb/moeb_2017_novembre_10-10_15_59/_privatechannels/shiffre/2017-06-21.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="183" column="24" lean-forward="true" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/field/1_animated.html" />
-    <entry file="file://$PROJECT_DIR$/revisions/field/field_animated.js" />
-    <entry file="file://$PROJECT_DIR$/revisions/random/noise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/turbulence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="47" lean-forward="true" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/turbulence.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/canvas/0_dom/1_hello_world.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/index.html" />
-    <entry file="file://$PROJECT_DIR$/revisions/code/trails/trails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/translate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/geom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="129" column="55" lean-forward="true" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/rotation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/rotation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/project.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/reflect.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/easing/2_shaping.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/easing/1_easing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/recursion/sierpinski.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/emergence/flocking.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/translation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/bounce.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/circle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/oscillation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/random_rays.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/rayhits.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/code/utils/recursive_rays.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -654,28 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/0_random_walk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/iteration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slides/js/reveal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -683,29 +513,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/field/index.html">
+    <entry file="file://$PROJECT_DIR$/revisions/field/0_principle.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/field/field.js">
+    <entry file="file://$PROJECT_DIR$/revisions/field/0_principle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/pseudorandom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/pseudorandom.html">
+    <entry file="file://$PROJECT_DIR$/revisions/random/1_pseudorandom.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
@@ -713,34 +535,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/easing/shaping.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="16" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/random.html">
+    <entry file="file://$PROJECT_DIR$/revisions/random/0_random.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/random.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/field/1_agents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -753,26 +551,322 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html">
+    <entry file="file://$PROJECT_DIR$/revisions/random/1_pseudorandom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="680">
+          <caret line="40" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/revisions/random/0_random.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2941">
-          <caret line="173" column="95" lean-forward="false" selection-start-line="173" selection-start-column="95" selection-end-line="173" selection-end-column="95" />
+        <state relative-caret-position="710">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/utils/noise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="275" column="4" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/3_fbm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/4_curl_noise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/3_fbm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="28" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/geom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/4_curl_noise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="74" column="16" lean-forward="true" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/0_random_walk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/field/1_agents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="55" column="50" lean-forward="true" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+        <state relative-caret-position="362">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/1_trails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/1_trail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/save.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/graphics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/easing/2_shaping.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/canvas/9_extras/utils/polygon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="799" column="94" lean-forward="false" selection-start-line="798" selection-start-column="0" selection-end-line="800" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/2_history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/iteration/2_history.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="92" column="40" lean-forward="true" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/easing/shaping.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/reflect.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/reflect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/feedback/0_feedback.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/feedback/0_feedback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="103" column="71" lean-forward="false" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/distribution/hexagonal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/distribution/hexagonal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/distribution/poisson.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/distribution/poisson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="155" column="32" lean-forward="true" selection-start-line="155" selection-start-column="32" selection-end-line="155" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/easing/3_shaping.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>

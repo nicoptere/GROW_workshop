@@ -1,9 +1,6 @@
 
-// Based on Morgan McGuire @morgan3d
-// https://www.shadertoy.com/view/4dS3Wd
-
 function pseudoRandom(x, y) {
-    return ( ( Math.sin( Math.pow( x * 12.9898, 2 ) + Math.pow( y * 78.233, 2 ) ) ) * 43758.5453123 ) % 1;
+    return ( ( Math.sin( Math.pow( x + 12.9898, 2 ) + Math.pow( y + 78.233, 2 ) ) ) * 43758.5453123 ) % 1;
 }
 
 function noise(x, y) {
@@ -28,20 +25,6 @@ function noise(x, y) {
     return (a * (1-ux) + b * ux) + (c - a) * uy * (1.0 - ux) + (d - b) * ux * uy;
 
 }
-
-function FBM( x, y ){
-    var OCTAVES = 6;
-    var value = 0;
-    var amplitude = .5;
-    for (var i = 0; i < OCTAVES; i++) {
-        value += amplitude * noise(x,y);
-        x *= 2.;
-        y *= 2.;
-        amplitude *= .5;
-    }
-    return value;
-}
-
 function reset(e) {
 
     var offset = w * .2;
@@ -50,19 +33,20 @@ function reset(e) {
     }
     ctx.clearRect(0,0,w,h);
 
-    var cellSize = 1;
+    var cellSize = 2;
     var noiseScale = 0.05;
     var i, j, value;
     var points = [[],[],[],[]];
-    for (j = 0; j < h; j += h/4) {
+    for (j = 0; j < h; j += h/3) {
 
-        var id = parseInt( j/(h/4));
+        var id = parseInt( j/(h/3));
+
         var values = [];
         for (i = 0; i <= w; i += cellSize ) {
 
 
-            var x = i + offset;
-            var y = j;
+            var x = ( i + offset ) / cellSize;
+            var y = ( j ) / cellSize;
 
             switch( id ){
                 case 0 :
@@ -76,16 +60,13 @@ function reset(e) {
                 case 2:
                     value = noise( x * noiseScale, y * noiseScale ) * .5 + .5;
                     break;
-
-                case 3:
-                    value = FBM( x * noiseScale, y * noiseScale ) * .5 + .5;
-                    break;
             }
 
-            values.push( [ i, j + value * h/4 ]);
+            values.push( [ i, j + value * h/3 ]);
 
         }
         points.push( values );
+
         ctx.beginPath();
         ctx.moveTo(0, j);
         ctx.lineTo(w, j);
@@ -98,19 +79,20 @@ function reset(e) {
     });
 
 
-    ctx.strokeStyle = "#FFF";
-    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#EEE";
+    ctx.lineWidth = 20;
     ctx.beginPath();
     ctx.moveTo(offset, 0);
     ctx.lineTo(offset, h);
     ctx.stroke();
-    ctx.strokeStyle = "#000";
+    ctx.strokeStyle = "#F00";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(offset, 0);
     ctx.lineTo(offset, h);
     ctx.stroke();
     ctx.lineWidth = 1;
+    ctx.strokeStyle = "#000";
 
 }
 
