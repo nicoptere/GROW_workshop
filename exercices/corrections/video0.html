@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video</title>
+
+</head>
+<body>
+
+<script src="base.js"></script>
+<script src="assetsLoader.js"></script>
+<script>
+
+        var objects = [];
+        var count = 0;
+        for( var i = 3; i < 75; i++ ){
+            var obj = {name:'pic_' + count++, url:"nyc/nyc_"+i+".png", type:assetsLoader.IMG };
+            objects.push( obj );
+        }
+
+        assetsLoader.load( objects, function(){
+
+            w = canvas.width = assetsLoader['pic_0'].width;
+            h = canvas.height = assetsLoader['pic_0'].height;
+
+            update();
+
+        });
+
+
+        function update(){
+
+            requestAnimationFrame(update);
+
+            ctx.clearRect(0,0,w,h)
+
+            var angle = Date.now() * 0.001;
+            var step = Math.PI * 2 / count;
+            var RAD = Math.PI / 180;
+
+            for( var i = 0; i < count; i ++ ){
+
+                ctx.save();
+
+                ctx.beginPath();
+                ctx.moveTo( w/2, h/2 );
+                ctx.lineTo( w/2+Math.cos( angle + i * step ) * w,           h/2+Math.sin( angle + i * step ) * w );
+                ctx.lineTo( w/2+Math.cos( angle + (i+1) * step + RAD ) * w, h/2+Math.sin( angle + (i+1) * step + RAD ) * w );
+                ctx.lineTo( w/2, h/2 );
+                ctx.clip();
+
+                ctx.drawImage( assetsLoader['pic_' + i ], 0,0 );
+
+                ctx.restore();
+
+            }
+
+        }
+
+</script>
+
+</body>
+</html>

@@ -2,22 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>references</title>
+    <title>exercices</title>
+
 </head>
 <body>
 
 <ul>
 
-    <li><a href="http://www.bernhardlang.de/aerialviews">lecture de motifs</a></li>
-    <li><a href="https://twitter.com/concinnus/status/927777655331504129"> unknown pleasures </a></li>
-    <li><a href="https://twitter.com/GHSMaths/status/928292603673620480"> curves & arcs </a></li>
-    <li><a href="http://www.complexification.net/gallery/">Complexification</a></li>
-    <li><a href="https://medium.com/@zachlieberman/daily-sketches-2016-28586d8f008e">Zach Lieberman</a></li>
-    <li>
-        <a href="https://twitter.com/SweetRScience/status/923897068975833088"> chronophotographie</a><br>
-        <a href="https://www.youtube.com/watch?v=Mm_cRbYbUM8">new york timelapse</a><br>
-        <a href="https://telecharger-videos-youtube.com/fr">aspirateur youtube</a><br>
-        <a href="https://trac.ffmpeg.org/wiki/Create%20a%20thumbnail%20image%20every%20X%20seconds%20of%20the%20video">commande FFMPEG ( ffmpeg -i input.mp4 -vf fps=1 out%d.png )</a>
+
+    <h2> exercice 1: reproduire les designs suivants</h2>
+
+    <ol>
+
+        <li><br>
+        <img src="assets/tumblr_nclm7s0qB91tb0c1mo1_1280.jpg" width="480px"/><br>
+        </li>
+
+        <li><br>
+            <img src="assets/tumblr_nnh1ngiqMB1tb0c1mo1_1280.jpg" width="480px"/><br>
+        </li>
+
+        <li><br>
+            <img src="assets/tumblr_nct6wilTD91tb0c1mo1_1280.jpg" width="480px"/><br>
+        </li>
+
+        <li>animer les visuels?</li>
+
+    </ol>
+
+    <h2> exercice 2 (spicy): reproduire les animations suivantes</h2>
+
+        <li>refaire ça:<br>
+            <video src="assets/DNJO9JgWsAE6a3n.mp4" autoplay controls loop></video><br>
+            <a href="https://twitter.com/SweetRScience/status/923897068975833088">source</a>
+            à partir de ça:<a href="https://www.youtube.com/watch?v=Mm_cRbYbUM8">new york timelapse</a> ou <a href="assets/new-york-city-24h-time-lapse.mp4">en local</a><br>
+            <strong>hint: </strong> <i>ctx.clip() </i>
+        </li>
+
+        <br>
+
+        <li>refaire ça:<br>
+            <video src="assets/DOAg2ozUEAAvBYw.mp4" autoplay controls loop width="480px"></video><br>
+            <a href="https://twitter.com/concinnus/status/927777655331504129">source </a>
+            à partir de ça:<a href="https://www.youtube.com/watch?v=QY0IWHzthFE">Kinect Depth Test.m4v</a> ou <a href="assets/kinect-depth-testm4v.mp4">en local</a>
+        </li>
+
+        <br>
+
+        <li>les vidéos sont disponibles en local, au cas où vous voudriez les récupérer en ligne:</li>
+        <ul>
+            <a href="https://www.ffmpeg.org/">récupérer / installer FFMPEG</a><br>
+            tékécharger depuis un <a href="https://telecharger-videos-youtube.com/fr">aspirateur youtube</a><br>
+            ou bien un <a href="https://ezgif.com/video-to-webp/">aspirateur twitter</a><br>
+            extraire des frames <a href="https://trac.ffmpeg.org/wiki/Create%20a%20thumbnail%20image%20every%20X%20seconds%20of%20the%20video">commande FFMPEG</a>: ffmpeg -i input.mp4 -vf fps=1/2 out%d.png
+        </ul>
+
+    </li>
+
+
+    <h2> exercice 3 (hot): reproduire un des designs suivants </h2>
+
+    <li>Anders Hoff<br>
+        <img src="assets/anders_hoff.jpg" width="480px"/><br>
+        how to : <a href="http://inconvergent.net/generative/sand-spline/">sand spline</a>
+        <strong>hint: </strong> <i> shaping finction, coordonnées polaires</i>
+    </li>
+
+    <br>
+
+    <li>Tyler Hobbs<br>
+        <img src="assets/tylerhobbs.png" width="480px"/><br>
+        how to : <a href="http://www.tylerlhobbs.com/writings/watercolor">watercolor</a>
+        <strong>hint: </strong> <i> subdivision récursive et croissance différentielle</i>
+    </li>
+
+    <br>
+
+    <li>generate me <br>
+        <img src="assets/generateme.jpg" width="480px"/><br>
+        how to : <a href="https://generateme.wordpress.com/2016/05/04/curvature-from-noise/">curvature from noise</a><br>
+        <strong>hint: </strong> <i> ctx.getImageData, central difference, flow field, trails</i>
+    </li>
+
+    <br>
+
+    <li>ou bien un des trucs d'Alexis Andre<br>
+        <a href="https://twitter.com/MacTuitui">series</a><br>
+        3 minutes pour regarder et arrêter un choix, puis au boulot
     </li>
 
 

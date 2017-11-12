@@ -2,29 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e4f2d3-4bf8-414a-b6c0-e2b0ec7f350a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/catmullrom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/1_recursive_subdiv.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/cardinal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/catmullrom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/quadratic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/simplify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines_wall.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines_wall.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/DNJO9JgWsAE6a3n.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/DOAg2ozUEAAvBYw.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/anders_hoff.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/generateme.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/kinect-depth-testm4v.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/references/assets/tylerhobbs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/corrections/assetsLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/corrections/video0.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/canvas" afterPath="$PROJECT_DIR$/revisions/canvas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exercices/references/index.html" afterPath="$PROJECT_DIR$/exercices/references/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/base.js" afterPath="$PROJECT_DIR$/revisions/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,18 +32,70 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="192" column="98" lean-forward="true" selection-start-line="192" selection-start-column="98" selection-end-line="192" selection-end-column="98" />
+            <state relative-caret-position="226">
+              <caret line="207" column="47" lean-forward="false" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
+              <folding>
+                <element signature="n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exercices/references/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2_recursive_subdiv_tri.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="video0.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/exercices/corrections/video0.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="assetsLoader.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exercices/corrections/assetsLoader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/revisions/base.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exercice_0.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exercices/corrections/exercice_0.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2_recursive_subdiv_tri.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="532">
-              <caret line="195" column="45" lean-forward="true" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
+              <caret line="195" column="45" lean-forward="false" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -108,11 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/revisions/random/turbulence.js" />
-        <option value="$PROJECT_DIR$/revisions/random/turbulence.html" />
-        <option value="$PROJECT_DIR$/revisions/random/curl_noise.html" />
-        <option value="$PROJECT_DIR$/revisions/random/curl_noise.js" />
-        <option value="$PROJECT_DIR$/revisions/code/iteration/index.html" />
         <option value="$PROJECT_DIR$/revisions/code/iteration/1_trail.js" />
         <option value="$PROJECT_DIR$/revisions/field/1_agents.js" />
         <option value="$PROJECT_DIR$/revisions/systems/differential_growth/1_spline_wall.html" />
@@ -157,8 +194,13 @@
         <option value="$PROJECT_DIR$/revisions/systems/splines/splines.js" />
         <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.html" />
         <option value="$PROJECT_DIR$/revisions/systems/differential_growth/1_recursive_subdiv.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/exercices/corrections/d3_grid_arcs.html" />
+        <option value="$PROJECT_DIR$/exercices/references/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/exercices/corrections/assetsLoader.js" />
+        <option value="$PROJECT_DIR$/exercices/corrections/video0.html" />
       </list>
     </option>
   </component>
@@ -176,9 +218,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1924" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -201,6 +244,37 @@
             <path>
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="exercices" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="exercices" type="462c0819:PsiDirectoryNode" />
+              <item name="corrections" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="exercices" type="462c0819:PsiDirectoryNode" />
+              <item name="corrections" type="462c0819:PsiDirectoryNode" />
+              <item name="nyc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="exercices" type="462c0819:PsiDirectoryNode" />
+              <item name="references" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="exercices" type="462c0819:PsiDirectoryNode" />
+              <item name="references" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
@@ -339,11 +413,11 @@
       <recent name="D:\perso\grow\workshop\exercices\references\assets" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\perso\grow\GROW_workshop\exercices\corrections" />
+      <recent name="D:\perso\grow\GROW_workshop\exercices\corrections\nyc" />
+      <recent name="D:\perso\grow\GROW_workshop\exercices\references\assets" />
       <recent name="D:\perso\grow\GROW_workshop\revisions\systems\differential_growth" />
       <recent name="D:\perso\grow\GROW_workshop\revisions\systems\splines" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\agent_iteration_feedback" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\attraction_repulsion" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\distribution" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -358,26 +432,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.splines.html">
-    <configuration name="0_principle.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/attraction_repulsion/0_principle.html" />
-    <configuration name="3_reacher.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/agent_iteration_feedback/3_reacher.html" />
-    <configuration name="3_spline_wall.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/agent_iteration_feedback/3_spline_wall.html" />
-    <configuration name="poisson.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/distribution/poisson.html" />
-    <configuration name="splines.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/splines/splines.html" />
+  <component name="RunManager" selected="JavaScript Debug.video0.html">
+    <configuration name="d2_grid.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/exercices/corrections/d2_grid.html" />
+    <configuration name="d3_circles_interleaved.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/exercices/corrections/d3_circles_interleaved.html" />
+    <configuration name="d3_grid_arcs.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/exercices/corrections/d3_grid_arcs.html" />
+    <configuration name="exercice_0.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/exercices/corrections/exercice_0.html" />
+    <configuration name="video0.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/exercices/corrections/video0.html" />
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.3_reacher.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.3_spline_wall.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.splines.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.d3_grid_arcs.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.exercice_0.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.d3_circles_interleaved.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.d2_grid.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.video0.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.splines.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.3_spline_wall.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.3_reacher.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.video0.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.d2_grid.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.d3_circles_interleaved.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.exercice_0.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.d3_grid_arcs.html" />
       </list>
     </recent_temporary>
   </component>
@@ -404,12 +478,12 @@
       <workItem from="1510337705625" duration="9624000" />
       <workItem from="1510350557388" duration="2033000" />
       <workItem from="1510388384812" duration="32255000" />
-      <workItem from="1510479362001" duration="22562000" />
+      <workItem from="1510479362001" duration="33499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136345000" />
+    <option name="totallyTimeSpent" value="147282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -449,59 +523,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/revisions/feedback/0_feedback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/kaleidoscope.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/distribution/hexagonal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/distribution/hexagonal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/distribution/poisson.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -735,14 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="22" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/systems/splines/splines_wall.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -823,18 +836,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="192" column="98" lean-forward="true" selection-start-line="192" selection-start-column="98" selection-end-line="192" selection-end-column="98" />
+        <state relative-caret-position="532">
+          <caret line="195" column="45" lean-forward="false" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html">
+    <entry file="file://$PROJECT_DIR$/exercices/corrections/d3_grid_arcs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="195" column="45" lean-forward="true" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
+        <state relative-caret-position="498">
+          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/corrections/exercice_0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="207" column="47" lean-forward="false" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/references/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/corrections/nyc/nyc_3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="46" lean-forward="true" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/corrections/assetsLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/corrections/video0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
