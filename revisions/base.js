@@ -23,14 +23,14 @@ ctx.fillRect( 0,0,w,h );
 ctx.fillStyle = "#000";
 
 //étend le contexte sur toute la surface de la fenêtre et assigne les valeurs de w et h
-function onResize(){
-
-    w = window.innerWidth;
-    h = window.innerHeight;
-    ctx.canvas.width = w;
-    ctx.canvas.height = h;
-}
-window.addEventListener( "resize", onResize, false );
+// function onResize(){
+//
+//     w = window.innerWidth;
+//     h = window.innerHeight;
+//     ctx.canvas.width = w;
+//     ctx.canvas.height = h;
+// }
+// window.addEventListener( "resize", onResize, false );
 
 
 
@@ -49,10 +49,9 @@ var dl = document.createElement( 'a' );
 function save( ctx, id, cb ){
 
     ctx.canvas.toBlob(function(blob) {
-        // dl.href = ctx.canvas.toDataURL('image/png');
 
         dl.href = URL.createObjectURL(blob);
-        dl.download = id + ".png";
+        dl.download = ( id || Date.now() ) + ".png";
         dl.click();
 
         id++;

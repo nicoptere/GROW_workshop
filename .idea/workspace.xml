@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e4f2d3-4bf8-414a-b6c0-e2b0ec7f350a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/catmullrom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/1_recursive_subdiv.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/cardinal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/catmullrom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/quadratic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/simplify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines_wall.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/revisions/systems/splines/splines_wall.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/canvas" afterPath="$PROJECT_DIR$/revisions/canvas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/base.js" afterPath="$PROJECT_DIR$/revisions/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" afterPath="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html" afterPath="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +39,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="179" column="0" lean-forward="true" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+            <state relative-caret-position="569">
+              <caret line="192" column="98" lean-forward="true" selection-start-line="192" selection-start-column="98" selection-end-line="192" selection-end-column="98" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2_recursive_subdiv_tri.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="195" column="45" lean-forward="true" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -33,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -57,6 +88,7 @@
       <find>nois</find>
       <find>dista</find>
       <find>.z</find>
+      <find>attractRepel</find>
     </findStrings>
     <replaceStrings>
       <replace>t</replace>
@@ -76,26 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/revisions/code/transform/rotation.js" />
-        <option value="$PROJECT_DIR$/revisions/code/transform/project.html" />
-        <option value="$PROJECT_DIR$/revisions/code/transform/reflect.html" />
-        <option value="$PROJECT_DIR$/revisions/easing/1_easing.html" />
-        <option value="$PROJECT_DIR$/revisions/code/emergence/flocking.html" />
-        <option value="$PROJECT_DIR$/revisions/code/transform/translation.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/bounce.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/circle.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/oscillation.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/random_rays.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/rayhits.html" />
-        <option value="$PROJECT_DIR$/revisions/code/utils/recursive_rays.html" />
-        <option value="$PROJECT_DIR$/revisions/canvas/7_images/1_patterns.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/revisions/code/iteration/0_random_walk.html" />
-        <option value="$PROJECT_DIR$/revisions/field/1_agents.html" />
-        <option value="$PROJECT_DIR$/revisions/random/random.html" />
-        <option value="$PROJECT_DIR$/revisions/random/random.js" />
-        <option value="$PROJECT_DIR$/revisions/feedback/0_feedback.js" />
-        <option value="$PROJECT_DIR$/revisions/random/noise.js" />
         <option value="$PROJECT_DIR$/revisions/random/turbulence.js" />
         <option value="$PROJECT_DIR$/revisions/random/turbulence.html" />
         <option value="$PROJECT_DIR$/revisions/random/curl_noise.html" />
@@ -116,8 +128,6 @@
         <option value="$PROJECT_DIR$/revisions/distribution/poisson.js" />
         <option value="$PROJECT_DIR$/revisions/easing/3_shaping.html" />
         <option value="$PROJECT_DIR$/revisions/code/iteration/2_history.js" />
-        <option value="$PROJECT_DIR$/revisions/base.js" />
-        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" />
         <option value="$PROJECT_DIR$/revisions/systems/iteration/3_spline_wall.html" />
         <option value="$PROJECT_DIR$/revisions/feedback/0_feedback.html" />
         <option value="$PROJECT_DIR$/revisions/systems/cycloids/epicycloid.js" />
@@ -126,7 +136,29 @@
         <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html" />
         <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.html" />
         <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_happy_place.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_happy_place.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_reacher.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/1_reacher.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/splines.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/quadratic.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/catmullrom.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/catmullrom.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/cardinal.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/splines_wall.html" />
+        <option value="$PROJECT_DIR$/revisions/base.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/splines_wall.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/splines/splines.js" />
+        <option value="$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/1_recursive_subdiv.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html" />
       </list>
     </option>
   </component>
@@ -179,6 +211,41 @@
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
               <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+              <item name="5_curves" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+              <item name="9_extras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+              <item name="9_extras" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+              <item name="appendix" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -187,6 +254,12 @@
               <item name="revisions" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="transform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="random" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
@@ -236,6 +309,13 @@
               <item name="systems" type="462c0819:PsiDirectoryNode" />
               <item name="field" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GROW_workshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GROW_workshop" type="462c0819:PsiDirectoryNode" />
+              <item name="revisions" type="462c0819:PsiDirectoryNode" />
+              <item name="systems" type="462c0819:PsiDirectoryNode" />
+              <item name="splines" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -251,19 +331,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../grow17" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\perso\grow\GROW_workshop\revisions\distribution" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\code\transform" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\code\iteration" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\differential_growth" />
-      <recent name="D:\perso\grow\GROW_workshop\revisions\random" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\agent_iteration_feedback" />
       <recent name="D:\perso\grow\GROW_workshop\revisions\systems" />
       <recent name="D:\perso\grow\GROW_workshop\revisions\systems\iteration" />
       <recent name="D:\perso\grow\workshop\revisions" />
       <recent name="D:\perso\grow\workshop\exercices\references\assets" />
-      <recent name="D:\perso\grow\workshop\exercices\references" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\differential_growth" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\splines" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\agent_iteration_feedback" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\systems\attraction_repulsion" />
+      <recent name="D:\perso\grow\GROW_workshop\revisions\distribution" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -278,26 +358,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.0_principle.html">
+  <component name="RunManager" selected="JavaScript Debug.splines.html">
     <configuration name="0_principle.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/attraction_repulsion/0_principle.html" />
-    <configuration name="2_shaping.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/easing/2_shaping.html" />
-    <configuration name="3_shaping.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/easing/3_shaping.html" />
-    <configuration name="pavage.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/code/transform/pavage.html" />
+    <configuration name="3_reacher.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/agent_iteration_feedback/3_reacher.html" />
+    <configuration name="3_spline_wall.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/agent_iteration_feedback/3_spline_wall.html" />
     <configuration name="poisson.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/distribution/poisson.html" />
+    <configuration name="splines.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GROW_workshop/revisions/systems/splines/splines.html" />
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.3_shaping.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.2_shaping.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.pavage.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.3_reacher.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.3_spline_wall.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.splines.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.pavage.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.2_shaping.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.3_shaping.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.splines.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.3_spline_wall.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.3_reacher.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.0_principle.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.poisson.html" />
       </list>
     </recent_temporary>
   </component>
@@ -324,17 +404,18 @@
       <workItem from="1510337705625" duration="9624000" />
       <workItem from="1510350557388" duration="2033000" />
       <workItem from="1510388384812" duration="32255000" />
+      <workItem from="1510479362001" duration="22562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113783000" />
+    <option name="totallyTimeSpent" value="136345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2665964" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606956" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -363,213 +444,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/0_random_walk.html</url>
-          <line>53</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/revisions/systems/field/0_principle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/1_pseudorandom.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/0_random.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/field/1_agents.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="19" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/1_pseudorandom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/0_random.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/utils/noise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="275" column="4" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/3_fbm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/4_curl_noise.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/3_fbm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/geom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/4_curl_noise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="74" column="16" lean-forward="true" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/0_random_walk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/field/1_agents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="55" column="50" lean-forward="true" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/1_trail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/save.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/graphics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/easing/2_shaping.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/canvas/9_extras/utils/polygon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="799" column="94" lean-forward="false" selection-start-line="798" selection-start-column="0" selection-end-line="800" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/easing/shaping.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/reflect.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/code/transform/reflect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/feedback/0_feedback.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,14 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/code/transform/pavage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -609,7 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
           <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,38 +534,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.html" />
+    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/hypocycloid.js" />
     <entry file="file://$PROJECT_DIR$/revisions/feedback/0_feedback.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -705,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,42 +567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="80" column="11" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="85" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/1_trails.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -773,10 +583,258 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/geom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="97" column="4" lean-forward="false" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/2_happy_place.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/1_hexagons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="84" column="15" lean-forward="true" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/0_random_walk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/2_noise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/3_fbm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/random/4_curl_noise.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="49" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/canvas/9_extras/utils/catmullrom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/quadratic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/catmullrom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="34" lean-forward="true" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/catmullrom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/cardinal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/splines.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/splines_wall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/splines_wall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="28" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/splines/splines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_spline_wall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/agent_iteration_feedback/3_reacher.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/0_principle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/lissajous.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/cycloids/guilloche.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/attraction_repulsion/0_principle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/1_recursive_subdiv.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="115" column="5" lean-forward="true" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="179" column="0" lean-forward="true" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+        <state relative-caret-position="569">
+          <caret line="192" column="98" lean-forward="true" selection-start-line="192" selection-start-column="98" selection-end-line="192" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revisions/systems/differential_growth/2_recursive_subdiv_tri.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="195" column="45" lean-forward="true" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
           <folding />
         </state>
       </provider>

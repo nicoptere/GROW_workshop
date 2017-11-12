@@ -4,7 +4,7 @@
  * @param others other points need a 'r' radius  parameter
  * @param direction determines if we attract or repel the other points
  * @param damping how much force is applied
- * @returns {Point}
+ * @returns {Point} force totale à appliquer sur le point
  */
 
 function attractRepel( p, others, direction, damping ) {
@@ -19,12 +19,12 @@ function attractRepel( p, others, direction, damping ) {
         var vector = p.direction(o).multiplyScalar( .5 );
         if (d < minDist) {
 
+            //attraction or repulsion vector
             vector.multiplyScalar( direction );
+            vector.multiplyScalar( damping );
 
-            //attraction or repulsion
             acc.add(vector);
 
-            vector.multiplyScalar( damping );
             o.sub(vector)
         }
     });
@@ -47,11 +47,12 @@ function draw(){
     ctx.globalAlpha = .2;
     points.forEach(function( p ){
         G.disc( p, p.r );
+        G.disc( p, 2 );
     });
 
-
     attractRepel( mouse, points, direction, 5 );
-    // return;
+
+    return;
 
     points.forEach(function( p ){
 
