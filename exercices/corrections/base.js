@@ -15,7 +15,7 @@ function map( t, a0, b0, a1, b1 ){ return lerp( norm( t, a0, b0 ), a1, b1 );}
 var Point = function(x,y){
     this.x = x;
     this.y = y;
-}
+};
 function distance( a,b ){
     var dx = a.x - b.x;
     var dy = a.y - b.y;

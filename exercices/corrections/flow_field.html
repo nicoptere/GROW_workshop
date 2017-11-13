@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video</title>
+
+    <style>
+        html, body{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="base.js"></script>
+
+<script>
+
+    var flow = document.createElement( "canvas" );
+    var flowData, particles = [], startingPoints = [];
+
+    var img = new Image();
+    img.onload = function(){
+        w = canvas.width = img.width;
+        h = canvas.height = img.height;
+
+        ctx.save();
+        ctx.filter = "blur(5px) saturate(0)";
+        ctx.drawImage(img,0,0);
+        ctx.restore();
+
+
+        var imgData = ctx.getImageData(0,0,w,h);
+
+        flow.width = w;
+        flow.height = h;
+        var f_ctx = flow.getContext( '2d' );
+        flowData = ctx.getImageData(0,0,w,h);
+
+        //compute the flowfiled
+
+        var multiplier = 3;
+        var threshold = 3;
+        var i = imgData.data.length;
+        while( i -= 4 ){
+
+            var top = ( i/4 - w ) * 4;
+            var bot = ( i/4 + w ) * 4;
+            var tb = ( imgData.data[top] - imgData.data[bot] ) * multiplier;
+            flowData.data[ i ] = ~~( 0x7F + tb );
+
+            var lef = ( i/4 - 1 ) * 4;
+            var rig = ( i/4 + 1 ) * 4;
+            var lr =( imgData.data[lef] - imgData.data[rig] ) * multiplier;
+            flowData.data[ i+1 ] =  ~~( 0x7F + lr );
+
+            flowData.data[ i+2 ] = 0;
+
+            if( Math.abs( tb ) > threshold && Math.abs( lr ) > threshold ){
+                startingPoints.push( new Point( ~~( i/4 ) % w, ~~( ( i/4 ) / w ) ) );
+            }
+
+
+        }
+
+        ////debug
+        //ctx.putImageData( flowData,0,0);
+
+        ctx.filter = "";
+        ctx.fillStyle = "#FFF";
+        ctx.fillRect( 0,0,w,h );
+
+        //now we have a flow field, we can use it to drive particles motion
+        for( i = 0; i < 10000; i++ ){
+
+            var p = new Point();
+            resetParticle( p );
+            particles.push( p );
+
+        }
+
+        update();
+
+    };
+
+    function resetParticle( p ) {
+
+        var id = ~~(Math.random() * startingPoints.length );
+        var o = startingPoints[ id ];
+        p.x = o.x + ( Math.random() - .5 ) * 10;
+        p.y = o.y + ( Math.random() - .5 ) * 10;
+        p.lifeTime = 200 + Math.random() * 100;
+
+    }
+
+    function update() {
+
+        requestAnimationFrame(update);
+
+        ctx.globalAlpha = .02;
+        ctx.globalCompositeOperation = "darken";
+
+        var times = 10;
+        while( times-- ){
+
+            ctx.beginPath();
+
+            particles.forEach( function( p,i ){
+
+                ctx.moveTo(p.x, p.y);
+
+                var id = ( ~~( p.x ) + ~~( p.y ) * w ) * 4;
+                p.x += ( .5 - ( ( flowData.data[ id ]     ) ) / 0xFF ) * 20;
+                p.y += ( .5 - ( ( flowData.data[ id + 1 ] ) ) / 0xFF ) * 20;
+
+                ctx.lineTo(p.x, p.y);
+
+                if( p.lifeTime <= 0){
+                    resetParticle( p );
+                }
+                p.lifeTime--;
+
+            });
+
+            ctx.stroke();
+
+        }
+    }
+    img.src = 'tronche.jpg';
+
+    canvas.addEventListener('mousedown', function(){
+        ctx.clearRect(0,0,w,h);
+    })
+
+</script>
+
+</body>
+</html>
