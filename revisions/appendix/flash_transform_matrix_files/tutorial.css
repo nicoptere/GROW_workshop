@@ -1,0 +1,121 @@
+.tutorial {
+	margin-right:50px;	
+}
+object, embed {
+	margin:0;
+	padding:0;
+	border-width:0;
+}
+.tutorial .flash {
+	border:1px solid #822;
+	padding:1em;
+}
+
+.tutorial h3 {
+	color:#015;
+	font-size:12pt;
+	margin-top:2em;
+	border-bottom:1px solid #DDD;
+}
+
+.tutorial .index {
+	margin:.5em;
+	padding:1em;
+	border:1px solid #666;
+}
+.tutorial .index h4 {
+	margin:0;
+	border-bottom:1px solid #AAA;
+}
+.tutorial .term {
+	font-style: italic;
+	color: #CC3300;
+}
+.tutorial p.pagenumbers {
+	font-size:.8em;
+}
+
+.tutorial p.image {
+	width:675px;
+	text-align:center;
+	font-size:.8em;
+	color:#333;
+	margin-top:2em;
+	margin-bottom:2em;
+}
+.tutorial p.image img {
+	margin:1em;
+}
+.tutorial img.inline-left {
+	float:left;
+	margin: 0 1em .5em 0;
+}
+
+.tutorial div.note {
+	width:650px;
+	margin:2em 13px;
+	border:1px solid #999;
+}
+.tutorial div.note h4, .tutorial div.note p {
+	margin:0;
+	padding:.5em;
+}
+.tutorial div.note h4 {
+	font-size:1em;
+	background:#FFE url(../images/icons/icon_notepin.gif) no-repeat 2px 4px;
+	border-bottom:1px solid #999;
+	padding-left:22px;
+}
+.tutorial div.note pre {
+	width:600px;
+}
+.tutorial pre i {
+	color:#999;
+}
+.tutorial pre.style {
+	background-color: #F2E6EF;
+	border: 1px solid #D2A4C1;
+}
+.tutorial pre.html {
+	background-color: #E6EFF2;
+	border: 1px solid #A4C1D2;
+}
+.tutorial .footnote {
+	font-size:.8em;
+	color:#666;
+}
+.tutorial .warning, .tutorial .alert {
+	color:red;
+}
+
+table.table {
+	border-collapse:collapse;
+}
+table.table th, table.table td {
+	border:1px solid black;
+	padding:3px;
+}
+table.table thead th {
+	color:#333;
+	background-color:#EEE;
+}
+table.table th {
+	color:white;
+	background-color:#666;
+}
+
+.new-content1 {
+	padding-left:1em;
+	border-left:3px solid #0A0;
+}
+.new-content2 {
+	padding-left:1em;
+	border-left:3px solid #8FEA8F;
+}
+.new-content3 {
+	padding-left:1em;
+	border-left:3px solid #D4FDD4;
+}
+.hidden {
+	display:none;	
+}

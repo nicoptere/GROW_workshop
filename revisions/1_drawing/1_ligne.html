@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+    <script src="../base.js"></script>
+    <script>
+
+        //une classe point qui stocke 2 coorodnnées X et Y
+        var Point = function( x, y ){
+            this.x = x || 0;
+            this.y = y || 0;
+        };
+
+        //une méthode de dessin pour dessiner en boucle
+        function draw()
+        {
+            requestAnimationFrame( draw );
+
+            ctx.clearRect( 0,0,w,h );
+            ctx.restore();
+            ctx.save();
+
+            //crée 2 points centrés verticalement ( h / 2 ):
+
+            // P0 : à 100 px sur X ( = à gauche )
+            // P1 : à ( largeur de l'écran - 100px ) ( = à droite )
+
+            var p0 = new Point(     100, h / 2 );
+            var p1 = new Point( w - 100, h / 2 );
+
+
+            //on commence une nouvelle forme:
+            // une série d'instructions de dessin
+            ctx.beginPath();
+
+            //enregistre une commande disant:
+            // "envoie le 'crayon' aux coordonnées du premier point sans dessiner"
+            ctx.moveTo( p0.x, p0.y );
+
+            //enregistre une commande disant:
+            // "tire un trait juqu'aux coordonnées du second point"
+            ctx.lineTo( p1.x, p1.y );
+
+            //et enfin on dit de dessiner le trait
+            ctx.stroke();
+
+            return;
+
+            /*
+
+            // le STYLE
+
+            le contexte plusieurs options pour dessiner des lignes.
+            les plus importantes sont:
+
+             - ctx.lineWidth = épaisseur du trait (defaut 1)
+
+             - ctx.strokeStyle = couleur du trait (defaut #000000)
+
+             - ctx.lineCap = butt | round | square (defaut 'butt' )
+
+             - ctx.lineJoin = mitter | round | bevel (defaut 'mitter' )
+
+
+             /!\ ces options doivent être settées avant d'appeler ctx.stroke()
+
+            */
+            
+                //on peut changer le style ici
+                ctx.lineWidth = 10;
+
+            //on commence une nouvelle forme
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y );
+            ctx.lineTo( p1.x, p1.y );
+
+                //ou le changer là
+                ctx.strokeStyle = "#f00";
+
+            //dit de dessiner le trait
+            ctx.stroke();
+
+            //mais si on assigne ce style (4px jaune) après avoir dessiné, c'est trop tard :)
+
+            ctx.lineWidth  = 4;
+            ctx.strokeStyle = "#FF0";
+            
+            return;
+
+            //en revanche on peut redessiner la série d'instructions avec le nouveau style
+            ctx.stroke();
+
+            return;
+
+            //les lignes ont aussi une propriété lineCap qui indique comment la ligne se termine:
+
+            var lineWidth = 50;
+            ctx.lineWidth = lineWidth;
+            ctx.strokeStyle = "#06C";//bleu
+
+            //teste les 3 terminaisons de lignes possibles
+
+            //haut
+            ctx.lineCap = "butt";
+            
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y -  lineWidth * 3 );
+            ctx.lineTo( p1.x, p1.y - lineWidth * 3 );
+            ctx.stroke();
+
+            //milieu
+            ctx.lineCap = "round";
+            
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y );
+            ctx.lineTo( p1.x, p1.y );
+            ctx.stroke();
+
+            //bas
+            ctx.lineCap = "square";
+            
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y +  lineWidth * 3 );
+            ctx.lineTo( p1.x, p1.y + lineWidth * 3 );
+            ctx.stroke();
+            
+            return;
+
+            //commence une seule nouvelle forme
+            ctx.beginPath();
+
+            //donne une grande quantité d'instructions de dessin ( points0.Length instructions, 100 en l'occurrence )
+            for( var i = 0; i < points0.length; i++ ){
+
+                //premier point aléatoire
+                p0 = points0[ i ];
+
+                //second point aléatoire
+                p1 = points1[ i ];
+
+                //enregistre une commande disant "envoie le 'crayon' aux coordonnées du premier point sans dessiner"
+                ctx.moveTo( p0.x, p0.y );
+
+                //enregistre une commande disant "tire un trait juqu'aux coordonnées du second point"
+                ctx.lineTo( p1.x, p1.y );
+
+            }
+            //dit de dessiner le trait
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            return;
+
+            // bonus: un vieux trick pour dessiner de cercles pas cher.
+
+            // - utiliser une épaisseur de trait de la taille du diamètre
+            ctx.lineWidth = 10;
+            // - utiliser un lineCap "round"
+            ctx.lineCap = "round";
+
+            ctx.clearRect(0,0,w,h);
+            ctx.beginPath();
+            for( i = 0; i < points0.length; i++ ){
+
+                //premier point aléatoire
+                p0 = points0[ i ];
+
+                //tire un mini trait vers la droite
+                //du fait de l'épaisseur du trait, il ressemblera à un rond :)
+                ctx.moveTo( p0.x, p0.y );
+                ctx.lineTo( p0.x+.1, p0.y );
+
+            }
+            ctx.stroke();
+
+        }
+
+        var points0 = [];
+        var points1 = [];
+        for( var i = 0; i < 100; i++ ){
+            var p0 = new Point( Math.random() * w, Math.random() * h );
+            var p1 = new Point( Math.random() * w, Math.random() * h );
+            points0.push( p0 );
+            points1.push( p1 );
+        }
+
+        draw();
+
+
+    </script>
+</body>
+</html>

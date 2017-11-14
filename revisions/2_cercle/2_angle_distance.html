@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script>
+
+    var mouseDown = false;
+    var center = new Point();// centre
+    var mouse = new Point();// souris
+    var other = new Point();// point arbitraire
+
+    var G = new Graphics(ctx);
+
+    //calcule la distance entre 2 points
+    function getDistance( p0, p1 )
+    {
+        var dx = p1.x - p0.x;
+        var dy = p1.y - p0.y;
+        return Math.sqrt( dx*dx + dy*dy );
+    }
+
+    //calcule l'angle entre P0 et P1
+    function getAngle( p0, p1 )
+    {
+        var dx = p1.x - p0.x;
+        var dy = p1.y - p0.y;
+        return Math.atan2( dy, dx );
+    }
+
+    function draw()
+    {
+
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+
+        //assigne le style de trait 
+        ctx.lineJoin = "round";
+        ctx.lineWidth = 2;
+        ctx.fillStyle =
+        ctx.strokeStyle = "#CCC";
+
+        //centre du cercle
+        center.x = w / 2;
+        center.y = h / 2;
+        G.disc( center, 5 );
+        G.circle( center, 100 );
+
+        
+        //calcule la distance entre le centre et la souris
+        var distance = getDistance( center, mouse );
+
+        //calcule l'angle entre le centre et la souris
+        var angle = getAngle( center, mouse );
+
+        //dessine le cercle positionné au centre de rayon:  centre - souris
+        G.circle( center, distance );
+
+        //trace une ligne entre le centre et la position de la souris
+        G.line( center, mouse );
+
+
+        //dessine un point rouge sur la souris
+        ctx.fillStyle = ctx.strokeStyle = "#F00";//rouge
+        G.disc( mouse, 10 );
+
+        //dessine le cercle positionné sur la souris de rayon:  centre - souris
+//        G.circle( mouse, distance );
+
+        return;
+
+        //dessine une portion de cercle entre 0 et l'angle: centre ^ souris
+
+        //dessine en bleu si l'angle est inférieur à 0
+        //en jaune si l'angle est supérieur à 0
+        ctx.fillStyle = ctx.strokeStyle = ( angle > 0 ) ? "#FC0" : "#00F";
+        
+        ctx.lineWidth = 5;
+        G.sector( center, 100, 0, angle );
+
+        return;
+        
+        //distance à un point arbitraire
+
+        ctx.lineWidth = 1;
+        ctx.fillStyle = "rgba( 255,192,0, .5 )";
+        ctx.strokeStyle = "rgb( 255,192,0 )";
+        G.disc( other, 5 );
+        G.circle( other, getDistance( other, mouse ) );
+        G.sectorFilled( other, getDistance( other, mouse ), 0, getAngle( other, mouse ) );
+
+    }
+
+    //prise en charge souris
+    function onDown(e){
+        other.x = e.clientX;
+        other.y = e.clientY;
+        mouseDown = true; onMove(e);
+    }
+    function onUp(e){ mouseDown = false; }
+    function onLeave(e){ mouseDown = false; }
+    function onMove(e)
+    {
+        if( mouseDown )
+        {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            console.log( "distance centre souris =", getDistance( mouse, center).toFixed(2), "pixels" );
+        }
+    }
+    window.addEventListener( 'mouseup', onUp, false );
+    window.addEventListener( 'mouseleave', onLeave, false );
+    window.addEventListener( 'mousedown', onDown, false );
+    window.addEventListener( 'mousemove', onMove, false );
+
+    draw();
+
+</script>
+</body>
+</html>

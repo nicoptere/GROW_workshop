@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>glow</title>
+</head>
+<body>
+
+    <script src="../base.js"></script>
+    <script src="../geom.js"></script>
+    <script src="../graphics.js"></script>
+    <script>
+
+        ctx.translate( w / 2 , h / 2 );
+        var G = new Graphics( ctx );
+        function draw(){
+
+            ctx.shadowColor = "#333";
+
+            for( var i = 0; i < 50; i+= 10 ){
+
+                for( var j = 0; j < 50; j+= 10 ){
+
+
+                    ctx.shadowBlur = i;
+
+                    ctx.shadowOffsetX = ctx.shadowOffsetY = j;
+
+                    G.disc( i * 10 - 250, j * 10 - 250, 25 );
+
+                }
+            }
+
+
+        }
+        draw();
+
+    </script>
+</body>
+</html>

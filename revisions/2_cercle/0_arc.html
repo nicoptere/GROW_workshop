@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+<script src="../base.js"></script>
+<script>
+
+
+    function draw()
+    {
+        
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+
+//        la commande cercle:
+//        il n'y a pas d'instruction ctx.circle()
+//        le cercle est un cas particulier d'un arc de cercle.
+//        c'est un arc de cercle de 360° ou 2 * PI
+//
+//        de fait l'instruction pour dessiner un cercle est:
+//
+//        ctx.arc( X, Y, Rayon, AngleDepart, AngleArrivee, Direction )
+//
+//        où:
+//
+//        X = position du centre du cercle en X
+//        Y = position du centre du cercle en Y
+//
+//        Rayon = le rayon du cercle
+//
+//        AngleDepart = l'angle de départ de l'arc en RADIANS
+//
+//        AngleArrivee = l'angle d'arrivée de l'arc en RADIANS
+//
+//        Direction = true|false détermine dans quel sens on dessine (horaire ou antihoraire)
+//
+//
+//        RADIANS?
+//
+//        un RADIAN est une mesure d'angle sui vaut:
+//
+//        RADIAN = PI / 180
+//        DEGRES = 180 / PI
+//
+//        sauf cas particulier tous les mesures d'angles se font en RADIANS
+//
+//        pour passer des degrés aux radians on peut faire:
+//
+//            radians = degres * ( Math.PI / 180 )
+//
+//        et inversement pour passer des radians aux degrés:
+//
+//            degres = radians * ( 180 / Math.PI )
+//
+//        NB : 2 constantes RAD et DEG sont présentes dans base.js
+
+        var cx = w / 2;// position X du cercle
+        var cy = h / 2;// position Y du cercle
+
+        var radius = 150;// R rayon du cercle
+
+        var angle = 0;// Angle de départ en radians
+        
+        var arcLength = Math.PI * 2;// LongueurArc en radians
+
+        var direction = false;// Direction horaire | antihoraire
+
+        //commence un ensemble d'instructions de dessin
+        ctx.beginPath();
+
+        //instruction de dessin d'un arc
+        ctx.arc( cx, cy, radius, angle, arcLength, direction );
+
+        //assigne le style de trait
+        ctx.lineWidth = 10; 
+        ctx.strokeStyle = "#06C";
+        ctx.stroke();
+
+        return;
+
+        //ferme la forme
+        ctx.closePath();
+
+        //assigne le style de remplissage
+        ctx.fillStyle = "#FC0";
+        ctx.fill();
+
+        return;
+
+        //on dessine une portion d'arc
+        ctx.clearRect(0,0,w,h);
+        ctx.beginPath();
+        ctx.arc( cx, cy, radius, -RAD * 30, RAD * 30, direction );
+        ctx.stroke();
+
+        return;
+
+        //on peut dessiner des arcs de plus en plus grands en augmentant le rayon
+        ctx.clearRect(0,0,w,h);
+        for( var i = 10; i < 180; i *= 1.25 ){
+            ctx.beginPath();
+            ctx.arc( cx, cy, i * 2, -RAD * i, RAD * i, direction );
+            ctx.stroke();
+        }
+
+        return;
+
+        //on peut aussi choisir l'angle de départ
+        var startAngle = RAD * 120;
+        ctx.clearRect(0,0,w,h);
+        for( var i = 10; i < 150; i *= 1.25 ){
+            ctx.beginPath();
+            ctx.arc( cx, cy, i * 2, startAngle -RAD * i, startAngle + RAD * i, direction );
+            ctx.stroke();
+        }
+
+
+        return;
+
+        //CW ou CCW ?
+        ctx.clearRect(0,0,w,h);
+        ctx.beginPath();
+        ctx.arc( cx, cy, h/3, 0, PI * 2, true );
+        ctx.arc( cx, cy, h/4, 0, PI * 2, false );
+        ctx.stroke();
+        ctx.fill();
+
+
+
+    }
+    draw();
+
+</script>
+</body>
+</html>

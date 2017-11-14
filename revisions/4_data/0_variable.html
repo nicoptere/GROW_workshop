@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+    head, body
+    {
+        width:100%;
+        height:100%;
+        overflow: hidden;
+        margin:0;
+        padding:0;
+        background-color: #EEE;
+    }
+    #speed
+    {
+        position: absolute;
+        top:0;
+        left:0;
+    }
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+
+<div id="speed"></div>
+
+<script>
+    
+    var position = 0;
+
+    var speed = 10;
+
+    function draw()
+    {
+
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+
+        //on incrémente un variable de temps
+        position += speed;
+
+        // + affiche les informations dans une div
+        div.innerText = "position: " + position + "\nspeed: " + speed;
+
+        //on commence à dessiner une forme
+        ctx.beginPath();
+
+        //on dessine une ligne verticale placée à position en X
+        ctx.moveTo( position, 0 );
+        ctx.lineTo( position, h );
+
+        //on utilise la vitesse comme épaisseur de la ligne
+        ctx.lineWidth = speed;
+
+        //on dessine
+        ctx.stroke();
+
+        return;
+
+        // A % B : A modulo B : retourne le reste de la division de A par B
+        //faire en sorte que la variable position reste dans le champ visible
+
+        position %= w;
+
+        return;
+
+        //représenter la variable comme un ratio compris entre 0-1 (ou normalisée, voir les exemples précédents, lerp, norm, map )
+        var ratio = position / w;
+        //ou entre 1 et 0
+        var inverse = 1 - ( position / w );
+
+
+        //ça devient intéressant puisque notre variable est maintenant utilisable autrement
+        //on peut "indexer" un autre paramètre dessus
+        //par exemple dessiner un rectangle qui descend en fontion de la position X
+
+        ctx.strokeRect( position, ratio * h, 20,20 );
+
+        return;
+
+        //ou qui monte
+        ctx.strokeRect( position, inverse * h, 20,20 );
+
+        return;
+
+        //ou qui monte et qui s'étire
+
+        ctx.strokeRect( position, inverse * h, ratio * 500,20 );
+
+        return;
+
+        //ou encore obtenir une couleur qui varie en fonction de ratio
+
+        //crée une couleur basée sur la position
+        ctx.fillStyle = "hsl( " + ( 360 * ratio ) +", 100%, 50% )";
+
+        //dessine un disque avec une couleur indexée sur la position
+        ctx.beginPath();
+        ctx.arc( position, h / 2, 50, 0, Math.PI * 2 );
+        ctx.fill();
+
+    }
+
+    function onDown()
+    {
+        //remet la position à 0
+        position = 0;
+
+        //augment la vitesse de 2
+        speed += 2;
+
+        //applique un modulo sur la vitesse
+        speed %= 10;
+
+    }
+    window.addEventListener( "mousedown", onDown, false );
+    var div = document.getElementById("speed");
+    
+    draw();
+
+</script>
+
+
+</body>
+</html>

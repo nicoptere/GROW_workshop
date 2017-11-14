@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script>
+
+    var G = new Graphics(ctx);
+
+    /**
+     * @param ctx contexte 2d à transformer
+     * @param p0 point de départ de la ligne de réflection
+     * @param p1 point d'arrivée de la ligne de réflection
+     * @param distance distance de "glide"
+     */
+    function reflection( ctx, p0, p1, distance ) {
+
+        ctx.save();
+        var angle = Math.atan2( p1.y - p0.y, p1.x - p0.x );
+        ctx.translate( p0.x, p0.y );
+        ctx.rotate( angle );
+        ctx.scale( 1, -1 );
+        ctx.translate( distance || 0, 0 );//"glide"
+        ctx.rotate( -angle );
+        ctx.translate( -p0.x, -p0.y );
+
+    }
+
+    function draw()
+    {
+        /*
+        suite aux transformations, voici quelques transformations "utiles"
+
+        pour animer l'exemple, on crée 2 variables d'oscillation basée sur le temps (sin et cos du temps qui passe )
+        */
+        requestAnimationFrame(draw);
+
+        var angle = ( Date.now() * .001 );
+        var cos = Math.cos( angle );
+        var sin = Math.sin( angle );
+        
+        var cx = w/2;
+        var cy = h/2;
+
+        ctx.restore();
+        ctx.save();
+        ctx.clearRect(0,0,w,h);
+
+        //faire une translation "à la main"
+        /*
+        ctx.save();
+
+        //applique la transformation
+        ctx.setTransform(  1,0,0,1, cx, cy );
+
+        ctx.fillRect( -100,-50,200,100 );
+
+        ctx.restore();
+        //*/
+
+
+        //faire une translation ET une rotation "à la main"
+//        /*
+        ctx.save();
+
+         //applique la transformation
+        ctx.setTransform(   cos, -sin,
+                            sin, cos,
+                            cx, cy );
+
+        ctx.fillRect( -100,-50,200,100 );
+
+        ctx.restore();
+        //*/
+
+
+        //faire une translation ET une rotation ET une mise à l'échelle "à la main"
+        /*
+        ctx.save();
+
+        //échelle en X t Y
+        var sx = 2 * cos;
+        var sy = 2 * sin;
+
+        //applique la transformation
+        ctx.setTransform(   cos * sx, -sin * sx,
+                            sin * sy, cos * sy,
+                            cx, cy );
+
+        ctx.fillRect( -100,-50,200,100 );
+
+        ctx.restore();
+        //*/
+
+        
+        //SKEWING une transformation injustement méconnue
+        /*
+
+        ctx.save();
+
+        //applique la transformation
+
+        ctx.setTransform( 1, sin, cos, 1, cx, cy  );
+
+        ctx.fillRect( -100,-50,200,100 );
+
+        ctx.restore();
+        //*/
+
+        //skewer sur les 2 axes donne une "sensation" de 3D
+        //toutefois comme la transformation n'est pas "perspective" mais "affine", on ne peut pas avoir de "vraie" perspective
+        //NB on peut faire une transformation perspective en CSS:
+        //https://css-tricks.com/almanac/properties/p/perspective/
+
+
+        /*
+
+        //enfin voici une méthode utile : reflection
+        //ça permet de créer un "mirroir" le long d'une ligne arbitraire
+
+        //point qui tourne autour du centre
+        G.circle( cx, cy, 150 );
+
+        var p = new Point(cx+cos*150, cy+sin*150);
+
+        //début et fin de la ligne de mirroir
+        var m0 = new Point( cx - 200, cy - 75 );
+        var m1 = new Point( cx + 200, cy + 75 );
+        G.line( m0, m1 );
+
+        //original
+
+        ctx.fillStyle = "#C00";
+        G.disc( p, 20 );
+
+            //on appelle la méthode:
+            reflection( ctx, m0, m1 );
+
+        //le contexte est "mirroité" donc si on redessine le même objet
+
+        ctx.fillStyle = "#06C";
+        G.disc( p, 20 );
+        ctx.restore();
+
+        //il se retrouve en mirroir de l'original le long de la ligne
+
+        //*/
+
+    }
+
+
+    window.addEventListener( 'resize', draw, false );
+    draw();
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+    <script src="../base.js"></script>
+    <script>
+
+        //une classe point qui stocke 2 coorodnnées X et Y
+        var Point = function( x, y ){
+            this.x = x || 0;
+            this.y = y || 0;
+        };
+
+        //tableau de points dont on va se resservir
+        var shape = [
+                new Point( 0,0 ),
+                new Point( 0,0 ),
+                new Point( 0,0 )
+        ];
+
+        function draw()
+        {
+            requestAnimationFrame( draw );
+
+            //on restaure le contexte
+            ctx.clearRect( 0,0,w,h );
+            ctx.restore();
+            ctx.save();
+
+
+            //on place les 3 points autour du centre
+
+            var cx = w/2;
+            var cy = h/2;
+
+            //haut centre
+            shape[ 0 ].x = cx;
+            shape[ 0 ].y = cy - 100;
+
+            //bas droite
+            shape[ 1 ].x = cx + 100;
+            shape[ 1 ].y = cy + 65;
+
+            //bas gauche
+            shape[ 2 ].x = cx - 100;
+            shape[ 2 ].y = cy + 65;
+
+
+            //on commence une forme
+            ctx.beginPath();
+
+            //et donne les instructions de dessin
+            shape.forEach( function( p )
+            {
+                //tire un trait vers chaque point de la forme
+                ctx.lineTo(p.x, p.y);
+
+            });
+
+            //cette fois ci on veut fermer la forme donc on appelle
+            ctx.closePath();
+
+            //dessine
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            //et comme c'est un polygone, on peut le remplir
+            //le style de remplissage marche exactement comme le style de trait
+            ctx.fillStyle = 'rgba( 0,0,0,.5 )';
+
+            //l'instruction de remplissage : ctx.fill()
+            ctx.fill();
+
+
+            //ici on va dessiner un tableau que l'on remplit au click
+            ctx.beginPath();
+            handdrawn.forEach( function( p )
+            {
+                ctx.lineTo(p.x, p.y);
+            });
+            //dessine au trait
+            ctx.stroke();
+
+            //remplit la forme
+            ctx.fill();
+
+
+        }
+
+
+        //un tableau de points
+        var handdrawn = [];
+        function addPoint( e ){
+
+            //au click on ajoute un nouveau point aux coordonnées de la souris
+            handdrawn.push( new Point( e.clientX, e.clientY ) );
+        }
+        //qui se remplit au click
+        window.addEventListener( "mousedown", addPoint, false );
+
+        //vide le tableau de points
+        function removeAll(){
+            handdrawn = [];
+        }
+        //au double click
+        window.addEventListener( "dblclick", removeAll, false );
+
+
+        draw();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+        canvas, textarea
+        {
+            vertical-align: middle;
+            margin: 25px;
+            padding: 20px;
+        }
+        canvas
+        {
+            box-shadow: 0px 4px 6px 1px #999;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script src="CSVLoader.js"></script>
+
+<!--utilitaires géométriques-->
+<script src="utils/kmeans.js"></script>
+<script src="utils/convexhull.js"></script>
+<script src="utils/metrics.js"></script>
+
+<!-- methodes de dessin -->
+<script src="plotters/plotSimpleGraph.js"></script>
+<script src="plotters/plotCompareHistogram.js"></script>
+<script src="plotters/plotTime.js"></script>
+<script src="plotters/plotKmeans.js"></script>
+<script src="plotters/plotPolar.js"></script>
+<script src="plotters/plotHull.js"></script>
+<script src="plotters/plotQuadraticCompare.js"></script>
+<script src="plotters/plotArcs.js"></script>
+
+
+
+<canvas id="ctx0"></canvas><textarea id="ta0" cols="80"></textarea><br>
+<canvas id="ctx1"></canvas><textarea id="ta1" cols="80"></textarea><br>
+<canvas id="ctx2"></canvas><textarea id="ta2" cols="80"></textarea><br>
+<canvas id="ctx3"></canvas><textarea id="ta3" cols="80"></textarea><br>
+<canvas id="ctx4"></canvas><textarea id="ta4" cols="80"></textarea><br>
+<canvas id="ctx5"></canvas><textarea id="ta5" cols="80"></textarea><br>
+<canvas id="ctx6"></canvas><textarea id="ta6" cols="80"></textarea><br>
+<canvas id="ctx7"></canvas><textarea id="ta7" cols="80"></textarea><br>
+
+<script>
+
+    /*
+    le CSV provient de:
+     https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=90&id_rubrique=32
+     c'est un relevé météo sur 51 stations en france métropolitaine
+     */
+
+    //on stockera nos données dans data
+    var data = [];
+
+    //bornes des valeurs de température
+    var t_min,t_max;
+
+    //bornes des valeurs de vitesse du vent
+    var ff_min,ff_max;
+
+    //largeur / hauteur des canvas
+    // c'est la même pour tous mais on pourrait en avoir des différentes pour chaque ou récupérer les valeurs des canvas eux mêmes
+    var width = 600;
+    var height = 400;
+
+    //on instantie l'utilitaire de dessin sans lui passer de contexte
+    var G = new Graphics();
+
+    //on maintient une liste de références vers X contextes
+    var ctx0, ctx1, ctx2, ctx3, ctx4, ctx5, ctx6, ctx7, ctxs;
+
+
+    //on charge le CSV une fois qu ela page est chargée
+    window.onload = function()
+    {
+        //supprime le canvas créé et ajouté dans base.js
+        document.body.removeChild( canvas );
+
+        var methods = [ "plotSimpleGraph", "plotCompareHistogram", "plotTime", "plotKmeans", "plotPolar", "plotHull", "plotQuadraticCompare", "plotArcs" ];
+        methods.forEach( function( url, id ){
+
+            var req = new XMLHttpRequest();
+            req.onload = function(e){
+                var ta = document.getElementById("ta" + id );
+                ta.innerHTML = metrics.trim( e.target.responseText );
+                ta.rows = ta.innerHTML.split( '\n' ).length;
+            };
+            req.open( 'GET', "plotters/"+ url +".js" );
+            req.send(null);
+        });
+
+        //PAS BIEN : NE JAMAIS faire ça dans la vraie vie!
+        //on récupère les contextes d'éléments canvas présents dans la page
+        ctxs = [];
+        for( var i = 0; i < methods.length; i++ )
+        {
+            window[ "ctx" + i ] = document.getElementById("ctx" + i ).getContext( "2d" );
+            ctxs.push( window[ "ctx" + i ] );
+        }
+
+        //on charge le CSV
+        var loader = new CSVLoader();
+        loader.load( "synop.2015102115.csv", onCSVReady, ";" );
+    };
+
+
+    function onCSVReady( result )
+    {
+
+        data = result;
+
+        var bounds = metrics.getBounds( data, 't' );
+        t_min = bounds[0];
+        t_max = bounds[1];
+
+        bounds = metrics.getBounds( data, 'ff' );
+        ff_min = bounds[0];
+        ff_max = bounds[1];
+
+        console.log( 'temperatures: t_min', t_min, 't_max', t_max );
+        console.log( 'vent: ff_min', ff_min, 'ff_max', ff_max );
+
+        draw();
+
+    }
+
+
+    function draw()
+    {
+        requestAnimationFrame(draw);
+
+        ctxs.forEach(function(ctx){
+
+            ctx.restore();
+            ctx.save();
+            ctx.clearRect(0,0,w,h);
+            ctx.canvas.width = width;
+            ctx.canvas.height = height;
+
+            ctx.strokeStyle = "#DDD";
+
+        });
+
+        //on va mapper les valeurs des points entre leurs bornes et le rectangle
+        var temperatures = [];
+        var winds = [];
+        var x, y;
+        var marginX = 0;
+        var marginY = 50;
+
+        data.forEach( function( obj, i ) {
+
+            //espacement régulier en X
+            x = map( i, 0, data.length, marginX, width - marginX );// + ( width / data.length ) * .5;
+
+            //mappe la valeur T de l'objet en cours entre t_min / t_max
+            y = map( obj.t, t_min, t_max, height - marginY, marginY );
+            temperatures.push( new Point( x, y ) );
+
+            //mappe la valeur FF de l'objet en cours entre ff_min / f_max
+            y = map( obj.ff, ff_min, ff_max, height - marginY, marginY );
+            winds.push( new Point( x, y ) );
+
+        });
+
+
+        //1 lignes et points
+        simpleGraph( ctx0, temperatures, winds );
+
+
+        //2 histogramme
+        compareHistogram( ctx1, temperatures, winds );
+
+
+        //3 sélection d'un point sur une courbe
+        //une variable de temps qui oscille
+        var t = .5 + Math.sin( Date.now() *.0005 ) * .5;
+        plotTime( ctx2, winds, t );
+
+
+        //4 K-moyens (clusters)
+        plotKmeans( ctx3, temperatures, winds );
+
+
+        //5 dessine des portions d'anneau
+        //rayon intérieur et extérieur du cercle
+        var inRadius = height / 4;
+        var outRadius = height / 2 * t;
+        plotPolar( ctx4, inRadius, outRadius, data );
+
+        //6 convex hull
+        plotHull( ctx5, data );
+
+        //6 deux listes reliées
+        plotQuadraticCompare( ctx6, data );
+
+
+        //7 deux séries d'arcs
+        plotArcs( ctx7, data );
+    }
+
+</script>
+</body>
+</html>

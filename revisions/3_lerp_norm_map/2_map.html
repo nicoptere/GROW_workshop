@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+        #speed
+        {
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+
+<script>
+
+    var G = new Graphics(ctx);
+
+    //la fonction map qui combine lerp() et norm()
+    function map( X, MIN, MAX, A, B )
+    {
+        var norm = ( X - MIN ) / ( MAX - MIN );
+        return A + norm * ( B - A );
+    }
+
+    function draw()
+    {
+
+        ctx.clearRect( 0,0,w,h );
+        ctx.restore();
+        ctx.save();
+
+        /*
+        les fonctions d'interpolation et des normalisation sont très utiles et marchent souvent ensemble
+        à tel point qu'une troisième méthode combinant les 2 à vu le jour: map()
+
+        elle nous sera utile si on veut passer d'un ensemble de valeurs à un autre comme dans le dernier exemple de la page précédente
+        je connais la valeur X comprise entre MIN et MAX et je veux la représenter entre A et B
+
+        la version longue:
+
+            var norm = ( X - MIN ) / ( MAX - MIN );
+            var result = lerp( norm, A, B );
+
+        la version compactée (qui fait exactement la même chose ):
+
+            var result = map( X, MIN, MAX, A, B );
+
+        qui signifie: "donne moi la valeur de X entre MIN et MAX sur l'espace entre A et B"
+
+         comme les précédentes fonctions, map() fonctionne sur seule une "dimension" ; X, MIN, MAX A et B sont tous des chiffres
+         ce ne sont pas des objets, des tableaux, ni des grammes, des litres ou des minutes
+
+         vu qu'elle travaille uniquement sur une "dimension", elle est dite "N-dimensionnelle"
+         par exemple, le fait de mapper X entre certaines valeurs n'interfère pas sur une transformation de Y entre d'autres valeurs.
+
+
+         si j'ai un tableau à N dimensions ou contentant des objets à N-dimentions comme des points (x, y = 2D)
+         je veux le représenter dans un rectangle de taille donnée.
+         rien ne dit que les bornes des valeurs en X seront les mêmes que les bornes des valeurs en Y
+
+         je ne pourrai donc pas nécessairement utiliser les mêmes valeurs pour normaliser les X et les Y
+
+         en revanche comme les X sont indépendants des Y (ce sont des dimensions différentes) je peux les normaliser, les interpoler et les mapper indépendamment.
+
+
+         dans la vraie vie:
+         j'ai un tableau d'objets à 2 dimension (des points) distribués sur tout l'écran et je veux les faire tenir dans un carré de 200 pixels de côté, centré dans ma page.
+
+        */
+
+        //crée un tableau de 'count' points aléatoirement distribués sur l'écran
+        var count = 20;
+        var values = [];
+        for( var i = 0; i < count; i++ ){
+
+            //on crée un point aléatoire sur la surface de l'écran
+            var x = Math.random() * w;
+            var y = Math.random() * h;
+            var p = new Point( x,y );
+            values.push( p );
+
+            //on dessine le point
+            G.disc( x, y, 2 );
+
+        }
+
+        //ici on détermine la taille de notre carré
+        var size = 200;
+
+        //qu'on stocke dans un objet
+        var square = {
+
+            x : w / 2 - size / 2,
+            y : h / 2 - size / 2,
+            width: size,
+            height : size
+        };
+
+        //on dessine le carré
+        ctx.fillStyle = ctx.strokeStyle = "#f00"; //rouge
+        ctx.strokeRect( square.x, square.y, square.width, square.height );
+
+
+        /*
+        on va transformer la position de chaque point entre l'espace de l'écran et l'espce du carré:
+
+        //au passage:
+
+             values.forEach( function( p ){
+                ...
+             });
+
+        équivaut à faire une boucle for
+
+             for( var i = 0; values.length; i++ ){
+                var p = values[i];
+                ...
+             }
+
+        en plus élégant :)
+        */
+
+        //couleur des connexions
+        ctx.strokeStyle = "rgba( 0,64,192, .25 )";
+        values.forEach( function( p ){
+
+            //on mappe la dimension X du point entre l'écran et le carré
+            var x = map( p.x, 0, w, square.x, square.x + square.width );
+
+            //et on mappe la dimension Y du point entre l'écran et le carré
+            var y = map( p.y, 0, h, square.y, square.y + square.height );
+
+            //qu'on stocke dans un point
+            var n = new Point( x, y );
+
+            //on dessine le point P mappé aux dimensions du carré
+            G.disc( n, 2 );
+
+            //on trace une ligne entre les 2
+            G.line( p, n );
+
+        });
+
+        //on a transformé l'ensemble de nos points 2D pour qu'ils tiennent dans un carré en gardant leurs proportions
+        //comme pour l'exemple précédent, on peut commencer par trouver les bornes (min / max ) de notre ensemble en X et Y
+
+
+//        return;
+
+        //mais surtout, on peut ajouter N-dimension à nos objets et les mapper comme les X et les Y
+        ctx.fillStyle =
+        ctx.strokeStyle = "#000";
+
+        //par exemple:
+        var minPointSize = 5;
+        var maxPointSize = 50;
+        values.forEach( function( p )
+        {
+            // on ajoute une taille à chaque point ( entre minPointSize et maxPointSize )
+            p.size = lerp( Math.random(), minPointSize, maxPointSize );
+
+            // on le dessine
+            G.disc( p, p.size );
+
+        });
+
+        //et de la même manière qu'on a mappé X et Y, on mappe la propriété (dimension) 'size'
+
+        var squarePointSize = 20;
+
+        ctx.fillStyle = "#f00";
+        ctx.strokeStyle = "rgba( 0,64,192, .25 )";
+        values.forEach( function( p ){
+
+            var x = map( p.x, 0, w, square.x, square.x + square.width );
+            var y = map( p.y, 0, h, square.y, square.y + square.height );
+            var n = new Point( x, y );
+
+            //ici on mappe la taille du point entre maxPointSize et squarePointSize
+            var size = map( p.size, minPointSize, maxPointSize, 1, squarePointSize );
+
+            //dessine le disc avec son nouveau rayon
+            G.disc( n, size );
+
+            //on trace une ligne entre les 2
+            G.line( p, n );
+
+        });
+
+
+        //les méthodes, lerp(), norm() et map() sont présentes dans base.js
+        //ce sont trois méthodes essentielles
+
+
+    }
+    window.addEventListener( "resize", draw, false );
+    window.addEventListener( "mousedown", draw, false );
+    draw();
+
+</script>
+
+
+</body>
+</html>

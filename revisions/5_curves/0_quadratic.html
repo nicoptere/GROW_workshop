@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script>
+
+    var G = new Graphics(ctx);
+
+    function draw()
+    {
+
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+        ctx.fillStyle =
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 1;
+
+        //on crée 3 points autour du centre
+
+        var cx = w / 2;
+        var cy = h / 2;
+
+        var A = new Point( cx - 250,   cy + 150 );
+        var B = new Point( cx,         cy - 150 );
+        var C = new Point( cx + 250,   cy + 50 );
+
+        //dessine 3 disques
+        G.disc( A, 10);
+        G.disc( B, 10);
+        G.disc( C, 10);
+
+        //note qui correspond à quoi
+        G.text( "A", 24, A.x - 12, A.y - 16 );
+        G.text( "B", 24, B.x - 12, B.y - 16 );
+        G.text( "C", 24, C.x - 12, C.y - 16 );
+
+        //pour relier les 3 points, on peut se servir de lignes
+        G.line( A, B );
+        G.line( B, C );
+
+
+        /*
+        cependant pour obtenir une courbe, le contexte 2D dispose d'une méthode
+
+            ctx.quadraticCurveTo( cpx,cpy, px, py );
+
+        utilisant 4 arguments
+            cpx, cpy : les coordonnées X Y du point de controle
+            px, py : les coordonnées X Y du point d'arrivée
+
+        dans notre cas:
+            A est le point de départ
+            B est le point de contrôle
+            C est le point d'arrivée
+
+        le point de controle est ce qui rend la courbe, courbe.
+        si le point de controle est situé entre les deux autres points, rien ne se passera
+
+        essayez de changer la position de B comme suit:
+
+            B.x = lerp( .5, A.x, C.x);
+            B.y = lerp( .5, A.y, C.y);
+
+        la courbe deviendra plate
+        //*/
+
+        ctx.strokeStyle = "#06C";
+
+        //pour tracer une courbe, on commence un set d'instructions:
+        ctx.beginPath();
+
+        //on déplace le 'crayon' au premier point
+        ctx.moveTo( A.x, A.y );
+
+        //on donne l'instruction de tracer une courbe passant par le point de controle B et se terminant au point C
+        ctx.quadraticCurveTo( B.x, B.y, C.x, C.y );
+
+        //on valide les instructions
+        ctx.stroke();
+
+        return;
+
+            //on peut tracer les autres courbes utilisant ces 3 points
+            ctx.strokeStyle = "#F00";
+            ctx.beginPath();
+
+            // B C A
+            ctx.moveTo( B.x, B.y );
+            ctx.quadraticCurveTo( C.x, C.y, A.x, A.y );
+
+            // C A B
+            ctx.moveTo( C.x, C.y );
+            ctx.quadraticCurveTo( A.x, A.y, B.x, B.y );
+
+            ctx.stroke();
+
+
+        //NB:
+        //de la même manière que tracer une ligne entre A et B ou B et A donne le même résultat,
+        //tracer la courbe A B C revient à tracer la courbe C B A.
+
+        return;
+
+        //il est possible de tracer des portions de courbes grâce à des interpolations linéaires
+        //à un temps T, on commence par trouver 2 points CA et CB respectivement placés entre A / B et B / C
+
+        //on crée une variable dont l'oscillation est basée sur le temps
+        var T = .5 + ( Math.sin( Date.now() * .001 ) * .5 );
+
+        //on interpole T (0 - 1) entre A et B en X et en Y
+        var CA = new Point( lerp( T, A.x, B.x ),
+                            lerp( T, A.y, B.y ) );
+
+        //on interpole T (0 - 1) entre B et C en X et en Y
+        var CB = new Point( lerp( T, B.x, C.x ),
+                            lerp( T, B.y, C.y ) );
+
+        //on les dessine
+        ctx.fillStyle =
+        ctx.strokeStyle = "#F00";
+        G.disc( CA, 5 );
+        G.disc( CB, 5 );
+
+        //on écrit leur petit nom au dessus
+        G.text( "CA", 16, CA.x - 16, CA.y - 8 );
+        G.text( "CB", 16, CB.x - 16, CB.y - 8 );
+
+        //et on les relie
+        G.line( CA, CB );
+
+        //d'ores et déjà, il devrait paraître évident qu'il existe un rapport entre la ligne CA/CB et la courbe A B C dessinée en bleu
+
+        return;
+
+        //pour déterminer où se trouve le point de contôle CP au temps T, il nous suffit d'interpoler T entre CA et CB soit:
+
+        var CP = new Point( lerp( T, CA.x, CB.x ),
+                            lerp( T, CA.y, CB.y ) );
+
+        //dessine CP en vert
+        ctx.fillStyle = ctx.strokeStyle = "#0C0";
+        G.disc( CP, 5 );
+        G.text( "CP", 16, CP.x - 16, CP.y - 8 );
+
+        //à présent nous avons tout ce dont nous avons besoin pour dessiner la courbe ou des portions de courbe
+        // essayons:
+
+        return;
+
+        //la courbe partant de A , ayant pour point de controle CA et comme fin CP
+
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "#f00";
+        ctx.beginPath();
+        ctx.moveTo( A.x, A.y );
+        ctx.quadraticCurveTo( CA.x, CA.y, CP.x, CP.y );
+        ctx.stroke();
+
+        //ou bien tracer l'autre moitié de la courbe
+        /*
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "#00f";
+        ctx.beginPath();
+        ctx.moveTo( CP.x, CP.y );
+        ctx.quadraticCurveTo( CB.x, CB.y, C.x, C.y );
+        ctx.stroke();
+        //*/
+
+        //la méthode se trouve dans graphics:
+        // G.quadCurve( A,B,C );
+
+        return
+
+        //enfin on peut distribuer des points le long de la courbe en utilisant une valeur d'interpolation
+        for( var NT = 0; NT <= 1; NT += .1 ){
+
+            var CP0 = new Point( lerp( NT, A.x, B.x ), lerp( NT, A.y, B.y ) );
+            var CP1 = new Point( lerp( NT, B.x, C.x ), lerp( NT, B.y, C.y ) );
+
+            CP = new Point( lerp( NT, CP0.x, CP1.x ), lerp( NT, CP0.y, CP1.y ) );
+
+            ctx.fillStyle = T >= NT ? "#FC0" : "#00C"
+
+            G.disc( CP, 5);
+        }
+
+
+    }
+    draw();
+
+</script>
+
+
+</body>
+</html>

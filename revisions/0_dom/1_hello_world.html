@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+        #canvas{
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+        }
+
+        @keyframes rotating {
+            from{
+                transform: rotate(0deg);
+                border-radius: 25%;
+                background-color: #FC0;
+            }
+            50%
+            {
+                border-radius: 0;
+                background-color: #C06;
+            }
+            to{
+                transform: rotate(360deg);
+                border-radius: 25%;
+                background-color: #FC0;
+
+            }
+        }
+        .rotating {
+            animation: rotating 8s linear infinite;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+
+
+        // fonction permettant de créer / recupérer un contexte graphique
+        function getContext(w,h) {
+            var canvas = document.createElement( "canvas" );
+            canvas.width = w;
+            canvas.height = h;
+            return canvas.getContext( "2d" );
+        }
+
+        //crée un contexte graphique (API de dessin)
+        var width = 512;
+        var height = 512;
+        var ctx = getContext( width, height );
+
+        //le contexte maintient une reference a l'élément du DOM (le <canvas>) auquel il fait référence
+        var canvas = ctx.canvas;
+        document.body.appendChild( canvas );
+
+
+        //dessine un rectangle au trait entre:
+        //pour dessiner au trait, on utilise l'instruction :
+
+        //ctx.strokeRect(  origine X, origine Y, largeur, hauteur );
+
+        //au lieu de remplir tout l'espace, on dessine un rectangle centré au trait
+        //les coordonnées:
+
+        // 64px à gauche
+        // 64px en haut
+        // 512 - ( 2 * 64 )px de large -> 384 px
+        // 512 - ( 2 * 64 )px de haut -> 384 px
+
+        ctx.strokeRect( 64, 64, width - 128, height - 128 );
+
+        //qui équivaut aux deux instructions suivantes:
+        /*
+        ctx.rect( 64, 64, width - 128, height - 128 );
+        ctx.stroke();
+        //*/
+
+            //au passage
+            //si on veut éditer facilement la largeur des marges, on peut écrire
+            /*
+            var margin = 78;
+            ctx.strokeRect( margin, margin, width - 2 * margin, height - 2 * margin );
+            //*/
+
+        //dessine un rectangle plein
+
+//        ctx.fillRect( 0,0,width, height );
+
+        //pour effacer une zone rectangulaire, on utilise l'instruction
+        //    ctx.clearRect( X, Y, W, H );
+
+//        ctx.clearRect( 64,64,384,384 );
+
+        //dessine un carré bleu ( #06C = bleu )
+
+//        ctx.fillStyle = "#06C";
+//        ctx.fillRect( 128,128,256,256 );
+
+        //comme c'est un element HTML "normal" on peut ajouter des règles CSS:
+
+        //centrage CSS:
+
+//        canvas.setAttribute( "id", "canvas" );
+
+        //rotation CSS
+
+//        canvas.className = "rotating";
+
+        //le fichier base.js à la racine du dossier contient une instanciation de contexte 2d appelé ctx.
+        //il maintient également une méthode de resize, et deux variables w et h qui donnent la taille de l'écran
+        //plus quelques gâteries que nous étudierons dans les prochaines sections
+
+
+    </script>
+</body>
+</html>

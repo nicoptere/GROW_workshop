@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script>
+
+    var G = new Graphics(ctx);
+
+    //méthode qui rend un ensemble de points et trace des lignes entre eux + éventuellement écrit une lettre au dessus
+    function renderPointsAndLines(points, labels )
+    {
+
+        points.forEach( function(p, i)
+        {
+            //dessine un disque
+            G.disc( p, 5 );
+
+            //dessine son petit nom s'il est passé en paramètre
+            if( labels != null ) G.text( labels[ i ], 16, p.x - 8, p.y - 8 );
+
+            //relie avec le point précédent si i > 0
+            if( i > 0 )G.line( points[i - 1], p );
+
+
+        });
+    }
+
+    function draw()
+    {
+
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+        ctx.fillStyle = ctx.strokeStyle = "#000";
+        ctx.lineWidth = 1;
+
+        //on crée 4 points autour du centre
+
+        var cx = w / 2;
+        var cy = h / 2;
+
+        var A = new Point( cx - 300,   cy + 150 );
+        var B = new Point( cx - 100,    cy - 150 );
+        var C = new Point( cx + 100,   cy + 150 );
+        var D = new Point( cx + 300,   cy - 150 );
+
+        //on les dessine par lot (ça va plus vite :) )
+        var points = [A,B,C,D];
+        var labels =["A","B","C","D"];
+        renderPointsAndLines( points, labels );
+
+        //on a vu comment relier 3 points mais comment faire quand on en a 4?
+
+        ctx.strokeStyle = "#06C";
+        G.quadCurve(A,B,C);
+        G.quadCurve(B,C,D);
+        G.quadCurve(A,C,D);//?
+        G.quadCurve(C,B,D);//mmm ... ?
+
+        G.text( "?", 96, cx - 48, cy );
+        //...nope!
+
+        return;
+
+
+        /*
+        ça ne semble pas très efficace, et c'est normal car il nous manque une partie des informations (le 4eme point)
+
+        donc pour relier 4 points, le contexte 2D dispose d'une méthode
+
+            ctx.bezierCurveTo( cp1x, cp1y, cp2x, cp2y, px, py );
+
+        utilisant 6 arguments cette fois
+        cp1x, cp1y : les coordonnées X Y du premier point de contrôle
+        cp2x, cp2y : les coordonnées X Y du second point de contrôle
+        px, py : les coordonnées X Y du point d'arrivée
+
+        dans notre cas:
+        A est le point de départ
+        B est le premier point de contrôle
+        C est le second point de contrôle
+        D est le point d'arrivée
+
+        NB: comme pour les courbes quadratiques, les points ne doivent pas être colinéaires ("sur la même ligne") si on veut que ça marche
+        //*/
+
+
+        //rafraichit la vue
+        ctx.clearRect( 0,0,w,h );
+        ctx.fillStyle = ctx.strokeStyle = "#000";
+        renderPointsAndLines( points, labels );
+
+
+        ctx.strokeStyle = "#06C";
+        //pour tracer une courbe, on commence un set d'instructions:
+        ctx.beginPath();
+
+        //on déplace le 'crayon' au premier point
+        ctx.moveTo( A.x, A.y );
+
+        //on donne l'instruction de tracer une courbe passant par le point de controle B puis par le point de controle C et se terminant au point D
+        ctx.bezierCurveTo( B.x, B.y, C.x, C.y, D.x, D.y );
+
+        //on valide les instructions
+        ctx.stroke();
+
+        return;
+
+        // comme pour les courbes quadratiques, il est possible de tracer des portions de courbes  grâce à des interpolations linéaires
+        //comme il nous a fallu un point de plus pour tracer la courbe, il nous faudra cette fois ci créer 3 points intermédiaires, puis 2 pour obtenir le point
+
+        //on crée une variable dont l'oscillation est basée sur le temps
+        var T = .5 + ( Math.sin( Date.now() * .001 ) * .5 );
+
+        //à un temps T, on commence par trouver 3 points CA, CB et CC respectivement placés entre A / B, B / C, C / D
+
+        //on interpole T (0 - 1) entre A et B en X et en Y
+        var CA = new Point( lerp( T, A.x, B.x ),
+                            lerp( T, A.y, B.y ) );
+
+        //on interpole T (0 - 1) entre B et C en X et en Y
+        var CB = new Point( lerp( T, B.x, C.x ),
+                            lerp( T, B.y, C.y ) );
+
+        //on interpole T (0 - 1) entre C et D en X et en Y
+        var CC = new Point( lerp( T, C.x, D.x ),
+                            lerp( T, C.y, D.y ) );
+
+        //on les dessine
+        ctx.fillStyle = ctx.strokeStyle = "#F00";
+        renderPointsAndLines( [CA, CB, CC], ["CA", "CB", "CC" ] );
+
+
+        return;
+
+
+        //pour déterminer où se trouve les 2 points de contôle intermédiaires CP0 et CP1 au temps T
+        // il nous suffit d'interpoler T entre CA / CB et CB / CC
+
+        var CP0 = new Point( lerp( T, CA.x, CB.x ), lerp( T, CA.y, CB.y ) );
+        var CP1 = new Point( lerp( T, CB.x, CC.x ), lerp( T, CB.y, CC.y ) );
+
+        //dessine CP0 et CP1 en vert
+        ctx.fillStyle = ctx.strokeStyle = "#0C0";
+        renderPointsAndLines( [CP0, CP1 ], ["CP0", "CP1" ] );
+
+
+        //déjà, il devrait paraître plus clair qu'il existe un rapport entre la ligne CP0/CP1 et la courbe A B C D dessinée en bleu
+
+        var CP = new Point( lerp( T, CP0.x, CP1.x ), lerp( T, CP0.y, CP1.y ) );
+        ctx.fillStyle = ctx.strokeStyle = "#FC0";
+        renderPointsAndLines( [CP], ["CP"] );
+
+        return;
+
+        //à présent nous avons tout ce dont nous avons besoin pour dessiner la courbe ou des portions de courbe
+        // essayons:
+
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = ctx.strokeStyle = "#000";
+        ctx.lineCap = 'round';
+        renderPointsAndLines( points, labels );
+
+        //la courbe partant de A , ayant pour point de controle CA, CP0 et comme fin CP
+
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "#f00";
+        ctx.beginPath();
+        ctx.moveTo( A.x, A.y );
+        ctx.bezierCurveTo( CA.x, CA.y, CP0.x, CP0.y, CP.x, CP.y );
+        ctx.stroke();
+
+        //ou bien tracer l'autre moitié de la courbe
+        /*
+         ctx.lineWidth = 5;
+         ctx.strokeStyle = "#00f";
+         ctx.beginPath();
+         ctx.moveTo( CP.x, CP.y );
+         ctx.bezierCurveTo( CP1.x, CP1.y, CC.x, CC.y, D.x, D.y );
+         ctx.stroke();
+         //*/
+
+        //la méthode se trouve dans graphics:
+        // G.bezierCurve( A,B,C,D );
+    }
+    draw();
+
+</script>
+
+
+</body>
+</html>

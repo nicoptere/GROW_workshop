@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>glow</title>
+</head>
+<body>
+
+    <script src="../base.js"></script>
+    <script src="../geom.js"></script>
+    <script src="../graphics.js"></script>
+    <script>
+
+
+        var filterId = 0;
+        var filters = [
+            'original',
+            'brightness(1.5)',
+            'contrast(1.5)',
+            'saturate(2)',
+            'grayscale(1)',
+            'sepia(1)',
+            'invert(1)',
+            'hue-rotate(100deg)',
+            'blur( 20px )',
+            'blur( 50px ) brightness(2.5)',
+            'saturate(2) grayscale(1) invert(1)',
+            'blur(10px) hue-rotate(240deg) brightness(1.5)',
+        ];
+
+        function draw(){
+
+            ctx.restore();
+            ctx.clearRect(0,0,w,h);
+            ctx.save();
+            ctx.translate( w / 2 , h / 2 );
+
+            var filter = filters[filterId++ % filters.length];
+            ctx.font = "12pt Verdana";
+            ctx.fillText( filter, -img.width / 2, - img.height / 2 - 10  );
+
+            ctx.filter = filter;
+            ctx.drawImage( img, -img.width / 2, - img.height / 2 , img.width, img.height  );
+
+        }
+
+        var img = new Image();
+        img.onload = function(){
+            window.addEventListener( 'mousedown', draw );
+            draw();
+        };
+        img.src = "image.jpg";
+
+    </script>
+</body>
+</html>

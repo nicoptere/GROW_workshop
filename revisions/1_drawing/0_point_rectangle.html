@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--ajout d'un import contenant les essentiels-->
+    <script src="../base.js"></script>
+
+    <script>
+
+        //une classe point qui stocke 2 coorodnnées X et Y
+        var Point = function( x, y ){
+            this.x = x || 0;
+            this.y = y || 0;
+        };
+
+
+        //une méthode de dessin pour dessiner en boucle
+        function draw()
+        {
+            //requestAnimationFrame est un polyfill qui
+            //rappelle la fonction draw() aussi souvent que possible
+
+            requestAnimationFrame( draw );
+
+            //on efface tout
+            ctx.clearRect( 0,0,w,h );
+
+            //on crée un Point à :
+            // 100 px en X
+            // 150 px en Y
+            var p = new Point( 100, 150 );
+
+            //taille du rectangle
+            var size = 25;
+
+            //on dessine un rectangle de taille SIZE à la position P
+            ctx.fillRect( p.x, p.y, size,size );
+
+            /*
+            //dessine un carré centré:
+
+            //on change la position de P
+            p = new Point( w/2, h/2 );
+
+            //onre dessine à la nouvelle position, à la même taille
+            ctx.fillRect( p.x, p.y, size,size );
+            //*/
+
+            /*
+            //dessine un carré en bas à droite
+
+            p.x = w - 100 - size;
+            p.y = h - 100 - size;
+            ctx.fillRect( p.x, p.y, size,size );
+            //*/
+
+            /*
+            //dessine 100 carrés un peu partout
+
+            //si le tableau de point n'existe pas
+            if( points === undefined ){
+                //on le crée
+                points = [];
+
+                //et on le remplit
+                for( var i = 0; i < 100; i++ ){
+
+                    //de points placés aléatoirement sur la surface de l'écran
+                    var p = new Point(  Math.random() * w,
+                                        Math.random() * h );
+                    points.push( p );
+
+                }
+            }
+            /*
+             points.forEach( function( p,i ){
+
+                ctx.fillRect( p.x, p.y, size, size );
+
+                //au lieu d'utiliser la taille size
+                //on peut utiliser une autre variable
+                // l'index du point dans le tableau par exemple
+
+                //ctx.fillRect( p.x, p.y, i/2, i/2 );
+
+            });
+            //*/
+
+        }
+        var points;
+        draw();
+
+
+    </script>
+</body>
+</html>

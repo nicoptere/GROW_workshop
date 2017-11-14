@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+</head>
+<body>
+    <script>
+
+
+        // on crée un node canvas
+        var canvas = document.createElement( "canvas" );
+
+        //on l'ajoute au DOM (à la page HTML)
+        document.body.appendChild( canvas );
+
+        //assigner la taille du canvas en pixels
+        canvas.width = 512;
+        canvas.height = 512;
+
+        /*
+
+        demande une référence au context graphique
+        l'outil de dessin de l'élément canvas (l'API de dessin)
+
+        */
+
+        var context = canvas.getContext( "2d" );
+
+        /*
+        toutes els instructions de dessin se fer ont sur le contexte.
+
+        si on veut dessiner un rectangle plein, noir opaque (couleur de remplissage par defaut)
+        on utilise l'instruction:
+
+            context.fillRect( origine X, origine Y, largeur, hauteur );
+
+        l'origine des coordonnées de dessin est en haut à gauche.
+        les X commencent à 0 à gauche et vont vers le "droite" de la page
+        les Y commencent à 0 en haut et vont vers le bas de la page
+
+        pour remplir toute la zone du canvas on passe els arguments suivants:
+
+            0 px à gauche
+            0 px en haut
+            512 px de large
+            512 px de haut
+
+         */
+        context.fillRect( 0,0,512,512 );
+
+
+    </script>
+</body>
+</html>

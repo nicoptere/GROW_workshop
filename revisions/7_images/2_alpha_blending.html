@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            /*background-color: #EEE;*/
+        }
+        canvas{
+            position: absolute;
+            border:0;
+            margin:0;
+            padding:0;
+            vertical-align: top;
+        }
+        #selector{
+            visibility: hidden;
+            position: absolute;
+            width:256px;
+            top: 0;
+            left: 650px;
+            height:100%;
+            z-index: 1000;
+            transition : all .3s ease-out;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+        #selector ul, a, h3, span{
+            border: 0;
+            margin: 0;
+            padding-left: 10px;
+            max-height:100%;
+            overflow:auto;
+        }
+        #selector li{
+            cursor: pointer;
+            background-color: inherit;
+            margin: 0;
+            padding: 0;
+            transition: all .3s ease-out;
+        }
+        #selector li:hover, li:active{
+            background-color: #FFCC33;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="../base.js"></script>
+    <script src="../geom.js"></script>
+    <script src="../graphics.js"></script>
+
+
+    <script>
+
+
+
+        /*
+
+        si on veut dessiner une image en transparence, on ne peut pas utiliser une un style comme
+        -rgbA( r,g,b, Alpha )
+        -hslA( h, s, l, Alpha )
+        qui possède une valeur de transparence (Alpha)
+
+        cependant le contexte possède une méthode :
+
+        ctx.globalAlpha = 0-1
+
+        qui permett de dessiner n'importe quoi avec une transparence donnée
+
+        exemple, je dessine 11 rectangles rouges avec un alpha global croissant
+
+        */
+        function drawAlpha( w, h )
+        {
+
+            //la couleur de remplissage est un rouge opaque:
+            ctx.fillStyle = "#f00";
+
+            //je fais une boucle de 'count' itérations
+            var i, count = 10;
+            var stepWidth  = Math.round( w / (count+1) );
+            var stepHeight = Math.round( h / (count+1) );
+            for( i = 0; i <= count; i++  )
+            {
+
+                //chaque fois j'augmente l'opacité globale
+                ctx.globalAlpha = i / count;
+
+                //je dessine des rectangles rouges
+                ctx.fillRect( i * stepWidth, 0, stepWidth, h );
+
+            }
+
+//            return;
+
+            //pour bien voir que ce sont les transparence qui changent et pas la couleur
+            //je redessine en bleu des lignes verticales
+            ctx.fillStyle = "#00f";
+            for( i = 0; i <= count; i++  )
+            {
+
+                //chaque fois j'augmente l'opacité globale
+                ctx.globalAlpha = i / count;
+
+                //je dessine
+                ctx.fillRect( 0, i * stepHeight, w, stepHeight );
+
+            }
+
+            ctx.globalAlpha = 1;
+
+        }
+        drawAlpha( w, h );
+
+
+        /*
+         exploration des opérations de composition
+
+         le contexte 2D permet de combienr les différentes couches (les ensembles d'instructions de dessin) de plusieurs façons
+         c'est la propriété :
+
+         ctx.globalCompositeOperation = type
+
+         les types disponibles sont :
+
+             'source-over'
+             'source-in'
+             'source-out'
+             'source-atop'
+             'destination-over'
+             'destination-in'
+             'destination-out'
+             'destination-atop'
+             'lighter'
+             'copy'
+             'xor'
+             'multiply'
+             'screen'
+             'overlay'
+             'darken'
+             'lighten'
+             'color-dodge'
+             'color-burn'
+             'hard-light'
+             'soft-light'
+             'difference'
+             'exclusion'
+             'hue'
+             'saturation'
+             'color'
+             'luminosity'
+
+         on l'assigne comme un style de trait ou de remplissage, avant de dessiner.
+         dans photoshop, ça correspond aux modes de fusion ou "blendmodes"
+
+         par défaut le contexte utilise le mode "source-over" ( "normal" dans photoshop)
+         qui combine la nouvelle couche avec l'arrière plan en ne tenant compte que de la transparence
+
+         exemple:
+          on charge une image puis on dessine les bandes transparentes rouges et bleues par dessus
+
+         */
+
+        function drawBlendMode( type )
+        {
+
+
+            ctx.clearRect(0,0,w,h);
+
+            //dessine le dégradé puis l'image
+            if( document.getElementsByName("order")[0].checked )
+            {
+                //on met le blendmode à 'normal' ( source-over )
+                ctx.globalCompositeOperation = "source-over";
+
+                //on redessine le dégradé rouge/bleu
+                drawAlpha( img.width, img.height );
+
+                //on change le blendmode
+                ctx.globalCompositeOperation = type || blendmode;
+
+                //on redessine l'image avec le blendmode choisi par dessus
+                ctx.drawImage( img, 0,0 );
+            }
+            //dessine l'image puis le dégradé
+            else
+            {
+
+                //on met le blendmode à 'normal' ( source-over )
+                ctx.globalCompositeOperation = "source-over";
+
+                //on redessine l'image avec le blendmode choisi par dessus
+                ctx.drawImage( img, 0,0 );
+
+                //on change le blendmode
+                ctx.globalCompositeOperation = type || blendmode;
+
+                //on redessine le dégradé rouge/bleu
+                drawAlpha( img.width, img.height );
+
+            }
+
+            //stocke la dernière valeur comme défaut (pour le changement d'ordre)
+            blendmode = ctx.globalCompositeOperation;
+
+            document.getElementById( "current").innerHTML = "<strong>"+blendmode.toUpperCase()+"</trong>";
+
+        }
+        var blendmode = "source-over";
+        var img = new Image();
+        img.onload = function(e){
+
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            var types = ['source-over', 'source-in', 'source-out', 'source-atop', 'destination-over', 'destination-in', 'destination-out', 'destination-atop', 'lighter', 'copy', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation','color','luminosity']
+            types.forEach( function(type )
+            {
+                var li = document.createElement( 'li' );
+                li.innerHTML = type;
+                li.onclick = function(){ drawBlendMode(type) };
+                document.getElementById( 'items' ).appendChild( li );
+            });
+            document.getElementById( 'selector').style.visibility = "visible";
+            drawBlendMode();
+        };
+        img.src = "image.jpg";
+
+
+
+    </script>
+    <div id="selector" >
+        <h3>blendmodes</h3>
+        <hr>
+        <span id="current"></span><br>
+        <input onchange="drawBlendMode()" type="radio" value="0" name="order" id="img" checked><label for="img">blendmode sur l'image</label><br/>
+        <input onchange="drawBlendMode()" type="radio" value="1" name="order" id="rct"><label for="rct">blendmode sur les rectangles</label>
+        <hr>
+        <ul id="items" ></ul>
+        <hr>
+        <h3>ressources</h3>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation">blendmodes canvas (MDN)</a><br>
+        <a href="https://helpx.adobe.com/photoshop/using/blending-modes.html">blendmodes photoshop</a>
+    </div>
+
+</body>
+</html>

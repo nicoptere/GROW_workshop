@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+<script>
+
+    var G = new Graphics(ctx);
+
+    function draw(){
+
+        /*
+        parfois il est plus simple de transformer le contexte plutôt que de définir les positions absolues des objets à dessiner
+
+        le cas typique est celui d'une distribution circulaire:
+        plutôt que de calculer une position avec cos( angle ) * radius et sin( angel ) * radius
+        puis de lui ajouter un déplacement en X et Y correspondant au centre cu cercle sur lequel on veut distribuer l'objet
+
+        on préfèrera déplacer toute la zone de dessin vers le centre du cercle
+        et dessiner aux position cos( angle ) * radius et sin( angel ) * radius sans ajouter un décalage
+
+        un eexemple sera sans doute plus parlant: reprise de l'exemple sur les cercles
+        */
+
+        //le centre de la page cx/cy
+        var cx = w / 2;
+        var cy = h / 2;
+        var radius = 150;
+
+        //dessine un cercle au centre
+        G.circle( cx, cy, radius );
+
+        var count = 6;
+        var step = PI2 / count;
+        for( var i = 0; i < count; i++ )
+        {
+
+            var angle = step * i;
+
+            //on place les points en ABSOLU
+            //en leur ajoutant CX et CY
+            var x = cx + Math.cos( angle ) * radius;
+            var y = cy + Math.sin( angle ) * radius;
+
+            //on dessine le point
+            G.circle( x, y, 20 );
+
+            //on tire une ligne vers le centre en passant les XY du centre et les XY du point
+            G.line( cx, cy, x, y );
+
+
+        }
+
+        return;
+
+        //on peut simplifier cette opération en disant
+        //déplace l'origine du canvas au point central
+
+        ctx.translate( cx, cy );
+
+
+        ctx.strokeStyle = "#f00";//rouge
+        ctx.lineWidth = 3;//3px
+
+        //puisqu'on a bougé l'origine de la zone de dessin,
+        //on dessine le cercle central en X = 0 / Y = 0
+
+        G.circle( 0, 0, radius );
+
+        //et pour chaque cercle périphérique
+        for( i = 0; i < count; i++ ){
+
+            //on place les points en RELATIF
+            //SANS leur ajouter CX et CY
+
+            angle = step * i;
+            x = Math.cos( angle ) * radius;
+            y = Math.sin( angle ) * radius;
+
+            G.circle( x, y, 20 );
+            G.line( 0,0, x, y );
+
+        }
+
+        return;
+
+        /*
+
+        en faisant un translate() du contexte, on altère sa "matrice de transformation"
+        pour tout savoir sur les matrices de transformations, je vous recommande la lecture de cet article sur les Matrices de transformations en Flash
+        http://www.senocular.com/flash/tutorials/transformmatrix/
+
+        malheureusement cette matrice n'est pas accessible directement
+        on peut toutefois assigner directement les valeurs de cette matrice grâce à la méthode
+
+            ctx.setTransform( a,b,c,d,e,f );
+
+        où a et d sont les valeurs de mise à l'échelle souvent appelées SX et SY
+
+        où b et c sont les valeurs de "skew" (distortion entre les extrémités, haut/bas | gauche/droite ) en Y et X, parfois aussi appelées SY et SX
+
+        où a, b, c et d servent pour les rotations
+
+        où e et f sont les valeurs de translation souvent appelées TX et TY
+
+        les valeurs par défaut d'une matrice sont :
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        par exemple, si on veut "annuler" la translation que nous avons faite plus haut, utiliser
+
+            ctx.restore()
+
+        ne suffira pas ; comme son nom l'indique restore(), va "restaurer" le contexte à l'état dans le quel il se trouvait "avant"
+        pour ça il faut lui indiquer de quel état on parle. en disant :
+
+            ctx.save()
+
+        on crée en quelque sorte un "point de sauvegarde" de l'état du contexte ( style et transformations )
+
+        donc la commande suivante ne marchera pas pour remettre l'origine en haut àa gauche:
+        //*/
+
+
+        //on passe le style en jaune sans sauver
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "#FC0";
+
+        //on tente de restaurer un état qui n'existe pas
+        ctx.restore();
+
+        //aucun "point de sauvegarde" à restaurer > sans effet
+        //la dernière modification avant de restaurer est bien prise en compte : le trait sera 5px jaune au lieu de 3px rouge
+        G.circle( 0, 0, radius );
+
+        return;
+
+
+        //en revanche si on sauve l'état du contexte courant( 5px jaune, origine centrée dans la page )
+
+        ctx.save();
+
+
+        //on peut changer la couleur et la largeur du trait ( 10px bleu )
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = "#06C";
+
+        //on peut ajouter une autre translation au contexte ( 150px ver la droite, -100px vers le haut )
+        ctx.translate( 150, -100 );
+
+        //et dessiner le cercle à cet endroit là
+        G.circle( 0, 0, radius );
+
+        //retransformer le contexte en appliquant une rotation (45° en radians)
+        ctx.rotate( 45 * RAD );
+
+        //et dessiner une ligne à cet endroit là
+        G.line( -radius/2, 0, radius/2, 0 );
+
+        //puis rotation à 90°
+        ctx.rotate( 90 * RAD );
+        G.line( -radius, 0, radius, 0 );
+
+
+        // etc.
+
+        //lorsqu'on restaure l'état précédent
+        ctx.restore();
+
+        //on retrouve notre origine centrée avec une ligne de 5px jaune
+        G.circle( 0, 0, radius );
+
+        return;
+
+        /*
+
+        il existe 3 commandes principales pour trnsformer le contexte:
+
+        ctx.translate( tx, ty )
+
+        ctx.rotate( angle )
+
+        ctx.scale( sx, sy )
+
+        on vient d'utiliser les deux premières au fil de l'eau, il faut savoir que l'ordre des opérations ci dessus est important:
+
+        le résultat de
+
+            ctx.translate( 100,100 )
+            puis
+            ctx.rotate( 45 * RAD )
+
+        n'est pas le même que celui de
+
+            ctx.rotate( 45 * RAD )
+            puis
+            ctx.translate( 100,100 )
+
+        ça tient à deux choses:
+        - pour combiner plusieurs transformations, il faut multiplier 2 matrices
+        - la manière dont les matrices se multiplient n'est pas commutative (A * B != B * A)
+
+        donc il faut transformer le contexte dans un certain ordre pour ne pas avoir de (mauvaises) surprises
+        ou du moins: si le résultat n'est pas celui voulu, il faut penser à changer l'ordre des transformations
+
+        exemple:
+
+        **/
+
+
+        //on réinitialise la matrice de transformation
+        //comme ctx.restore(); ne marchera pas faute de "point de sauvegarde"
+        //on réinitialise les valeurs de la matrice directement à leur valeur par défaut
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        //NB cette mathode annule les transformations géométriques mais conserve le style ( 5px jaune ) que nous avions avant,
+            //test
+            G.circle( 0, 0, radius );//dessine un cercle jaune en haut à gauche avec les autres dessins encore présents
+
+        return;
+
+        //pour tout remettre à 0 (transformation et style et effectue un clearRect ) on peut utiliser un hack consistant à redimensionner
+        canvas.width += 1;
+        canvas.width -= 1;
+            //test
+            G.circle( 0, 0, radius );//dessine un cercle noir de 1 px en haut à gauche sur un contexte vide
+
+        return;
+
+        //on sauve l'état du contexte
+        ctx.save();
+
+        //on applique une rotation
+        ctx.rotate( 30 * RAD );
+
+        //puis une translation
+        ctx.translate( w/2, h/2);
+
+        //et on dessine un cercle et un rectangle en rouge
+        ctx.fillStyle = ctx.strokeSTyle = "#f00";
+        ctx.fillRect( -100, -25, 200, 50 );
+        G.circle( 0,0, 10 );
+
+        return;
+
+        //on restaure l'état du contexte avant transformation
+        ctx.restore();
+
+        //NB il n'y a pas "d'historique des points de sauvegarde"
+        //si on veut pouvoir restaurer à nouveau cet état, il faut le re-sauver
+        ctx.save();
+
+        //et cette fois, on applique une translation
+        ctx.translate( w/2, h/2);
+
+        //puis une rotation
+        ctx.rotate( 30 * RAD );
+
+        //et on dessine la même chose en vert
+        ctx.fillStyle = ctx.strokeSTyle = "#0f0";
+        ctx.fillRect( -100, -25, 200, 50 );
+        G.circle( 0,0, 10 );
+
+
+        return;
+
+
+        /*
+        en général, on transforme le contexte dans l'ordre
+
+         ctx.translate( tx, ty )
+         ctx.rotate( angle )
+         ctx.scale( sx, sy )
+
+         ça permet de transformer l'objet 'en place'
+
+        */
+
+
+        //on restaure l'état du contexte avant transformation
+
+        ctx.restore();
+
+        ctx.translate( w/2, h/2);
+        ctx.rotate( 30 * RAD );
+        ctx.scale( 2,2 );
+
+
+        //et on dessine un rectangle en gris semi transparent
+
+        ctx.fillStyle = ctx.strokeSTyle = "rgba( 128,128,128, .5 )";
+        ctx.fillRect( -100, -25, 200, 50 );
+        G.circle( 0,0, 10 );
+
+        //le rectangle gris a été mis à l'échelle au dessus du rectangle vert
+        //c'est généralement ce qu'on veut
+        //toutefois le plus sûr reste de setter la transformation directement avec
+        //ctx.setTrasform()
+
+
+    }
+    window.addEventListener( 'resize', draw, false );
+    draw();
+
+
+</script>
+
+
+</body>
+</html>

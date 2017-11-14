@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+</head>
+<body>
+
+<script src="../base.js"></script>
+
+<script>
+
+
+    /*
+
+    l'image en question est: Psyché ranimée par le baiser de l'Amour
+    elle provient de http://art.rmngp.fr/fr/library/artworks/antonio-canova_psyche-ranimee-par-le-baiser-de-l-amour_marbre-blanc_sculpture-technique_1793
+
+    pour pouvoir utiliser une image, il faut qu'elle soit chargée dans le DOM
+    2 options :
+     - soit inclure l'image dans la page, attendre que l'image ou la page entière soit chargée ( img.onload ou wnidow.onload ) puis la récupérer avec son identifiant
+     - soit créer un objet Image, assigner la source et attendre la fin du chargement
+
+    on utilise la seconde approche (plus 'scriptée')
+
+    attention:
+    l'utilisation d'images est soumise aux CORS ( cross origin resource sharing )
+    cette restriction interdit l'utilisation d'images distantes 'en local' ; on a pas le droit d'utiliser une image internet depuis le disque dur.
+    le plus sûr est d'utiliser une image provenant du même serveur et de renseigner la propriété
+
+        img.crossOrigin = "Anonymous";
+
+    plus d'informations ici: https://developer.mozilla.org/fr/docs/Web/HTML/Image_avec_ressources_origines_multiples_CORS_activees
+
+    */
+
+    //on crée une image
+    var img = new Image();
+
+    //on attend la fin du chargement
+    img.onload = function( e )
+    {
+        //ici notre image a été chargée
+
+        //le contenu de l'image se trouve dans : e.target
+
+        console.log( "image chargée:", e.target );
+        console.log( "largeur:",  e.target.width, "hauteur:", e.target.height );
+
+
+        /*
+        on peut désormais accéder au contenu de l'image
+        pour dessiner l'image dans le contexte, on utilise la méthode
+
+            ctx.drawImage( img_elem, dx_or_sx, dy_or_sy, dw_or_sw, dh_or_sh, dx, dy, dw, dh )
+
+        cette liste exubérante d'arguments (9!) se décompose comme suit:
+
+        requis:
+
+        img_elem        l'image à dessiner ( en l'occurrence: e.target ou img puisqu'on a toujours la référence)
+
+        dx_or_sx        destination en X OU source en X
+        dy_or_sy        destination en Y OU source en Y
+
+        optionnels:
+
+        [dw_or_sw]      largeur de destination OU largeur source
+        [dh_or_sh]      hauteur de destination OU hauteur source
+
+        [dx]            destination en X
+        [dy]            destination en Y
+        [dw]            largeur de destination
+        [dh]            hauteur de destination
+
+        seuls les 3 premiers sont requis : l'image à dessiner, destination en X et Y dans le contexte
+
+        avec 3 arguments, le contexte va copier toute l'image et la positionner en X Y
+
+        exemple:
+        */
+
+        //dessine l'image en haut à droite (plus exactement sur l'origine du contexte qui est en haut à droite par défaut)
+        ctx.drawImage( img, 0,0 );
+
+        //dessine l'image au centre
+//        ctx.drawImage( img, w / 2, h / 2 );
+
+        //dessine l'image en haut à droite
+//        ctx.drawImage( img, w - e.target.width, 0 );
+
+        return;
+
+
+        //avec 5 aguments, on va pouvoir positionner ET redimensionner l'image
+
+
+        //on rafraichit le contexte
+        ctx.clearRect( 0,0,w,h );
+
+        //dessine l'image sur toute la taille du contexte (le résultat est étiré)
+        ctx.drawImage( img, 0, 0, w, h );
+
+        //dessine l'image en haut à droite avec une taille de 100 par 100 pixels
+        ctx.drawImage( img, 0,0, 100,100 );
+
+        //dessine l'image au centre avec une taille de 100 par 500 pixels
+        ctx.drawImage( img, w/2, h/2, 100, 500 );
+
+        return;
+
+
+        /*
+        avec 9 aguments on va pouvoir:
+
+         - sélectionner une zone rectangulaire à copier depuis l'image chargée
+
+         puis
+
+         - positionner ET redimensionner la portion d'image copiée (comme vu juste avant)
+
+        */
+
+        //on rafraichit le contexte
+        ctx.clearRect( 0,0,w,h );
+
+
+        //pas à pas:
+
+        ctx.drawImage(  img,     //avec cette image
+
+                        // sélectionne un rectangle depuis:
+
+                        0, // x:0
+                        0, // y:0
+
+                        //jusqu'à:
+
+                        img.width / 2, // largeur image / 2
+                        img.height,    // hauteur de l'image
+
+                        // et colle le rectangle sélectionné sur l'image source à:
+
+                        100, // x:100
+                        100, // y:100
+
+                        img.width / 2, //  largeur image / 2
+                        img.height     //  hauteur de l'image
+
+                        //sur le contexte
+        );
+
+        return;
+
+        /*
+        la première étape est souvent appelée "crop" ou "cropping", c'est le fait de sélectionner une zone dans une image.
+        ça sert à recadrer les photos en général.
+        la seconde est l'équivalent de la fontion map() : c'est un changement de repère en 2 Dimensions ; on passe du rectangle croppé au rectangle de destination
+
+        ce qui peut donner des trucs rigolos, par exemple:
+        copier / coller des bouts de l'image source dans le contexte, au hasard.
+        */
+
+
+        //on rafraichit le contexte
+        ctx.clearRect( 0,0,w,h );
+
+        //hauteur largeur de l'image source
+        var wi = img.width;
+        var hi = img.height;
+
+        var count = 100;
+        for( var i = 0; i < count; i++ )
+        {
+
+            //rectangle source
+
+            //on choisit un X Y aléatoire
+            var xin = Math.random() * wi;
+            var yin = Math.random() * hi;
+
+            //on choisit une largeur / hauteur aléatoire
+            var win = Math.random() * wi / 2;
+            var hin = Math.random() * hi / 2;
+
+            /*
+            ctx.drawImage(  img,
+                    xin,  yin, win, hin,       // crop
+
+                    //paste : on recolle le morceau 'presque' où on l'a pris
+                    xin + ( Math.random() -.5 ) * 100,
+                    yin + ( Math.random() -.5 ) * 100,
+                    win, hin
+            );
+            //*/
+
+            //alternatives
+
+            //rectangle destination
+            //on choisit un X Y aléatoire sur le contexte
+            var xout = Math.random() * w;
+            var yout = Math.random() * h;
+
+            /*
+            ctx.drawImage(  img,
+                             xin,  yin, win, hin,       // crop
+                            xout, yout, win, hin        // paste (destination aléatoire, même taille)
+            );
+            //*/
+
+            /*
+
+             //taille max pour l'affichage du petit bout
+             var wo = 500;
+             var ho = 500;
+
+             //on choisit une largeur / hauteur aléatoire ( maximum wo / ho )
+             var wout = Math.random() * wo;
+             var hout = Math.random() * ho;
+
+            ctx.drawImage(  img,
+                xin, yin, win, hin,         // crop
+                xout, yout, wout, hout      // paste (destination aléatoire, taille aléatoire)
+            );
+            //*/
+        }
+
+    };
+
+    //on renseigne le crossOrigin
+    img.crossOrigin = "Anonymous";
+
+    //on donne la source de l'image qui déclenchera le chargement
+    img.src = "image.jpg";
+
+
+</script>
+</body>
+</html>

@@ -164,7 +164,7 @@ function getPositionAt(points, t) {
 
     var delta = 1 / length;
     var nt = ( t - ( i0 * delta ) ) / delta;
-    return points[i0].PointAt( nt, points[i1] );
+    return points[i0].pointAt( nt, points[i1] );
 }
 
 

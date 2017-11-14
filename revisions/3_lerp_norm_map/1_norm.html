@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+        #speed
+        {
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+
+<script>
+
+    var G = new Graphics(ctx);
+    function draw()
+    {
+
+        ctx.clearRect( 0,0,w,h );
+
+        //partant de 3 valeurs arbitraires T, A et B
+        //normaliser T entre A et B permet de retrouver un chiffre compris entre 0 et 1
+
+        var t = 10;
+        var a = -5;
+        var b = 50;
+
+        //pour normaliser la valeur T entre A et B, on fait quelque chose comme:
+
+        var norm = ( t - a ) / ( b - a );
+
+        //console.log( norm );
+        // -> 0.2727272727272727 si t = 10, a = -5 et b = 50
+
+        //on peut donner différentes valeurs à T
+
+        // t = -5  a = -5  b = 50 > norm = 0
+        // t =  0  a = -5  b = 50 > norm = 0.09090909090909091
+        // t = 10  a = -5  b = 50 > norm = 0.2727272727272727
+        // t = 49  a = -5  b = 50 > norm = 0.9818181818181818
+        // t = 50  a = -5  b = 50 > norm = 1
+
+        //tant que T est compris entre A et B, la valeur de norm sera comprise entre 0 et 1
+
+        //si T < A ou si T > B notre norme ne sera plus comprise entre 0 et 1
+        //par exemple:
+        // t = -6 > norm = -0.01818181818181818
+        // t = 51 > norm = 1.018181818181818
+
+
+        //dans la vraie vie:
+        //on a un ensemble de données dont on ne connaît pas la taille
+        //on veut les faire tenir dans un tableau de taille donnée
+
+        var i, x;
+        var count = 100;
+        var min = -10000;
+        var max = 10000;
+        var values = [];
+
+        //on remplit un tableau avec 'count' (200) valeurs aléatoires comprises entre min et max (-10000 et 10000 )
+        for( i = 0; i < count; i++ )
+        {
+            //sachant que Math.random() renvoie une valeur aléatoire normalisée ( comprise entre 0 et 1 )
+
+            //on utilise lerp( Math.random(), A, B ) pour obtenir une valeur aléatoire comprise entre min et max
+            x = lerp( Math.random(), min, max );
+
+            //on l'ajoute au tableau
+            values.push( x );
+
+        }
+
+        //si on essaye de représenter les valeurs de ce tableau à l'écran, beaucoup devraient se retrouver hors champ
+        //en effet, soit la valeur sera inférieure à 0 soit elle sera supérieure à la largeur de l'écran
+
+        //exemple
+        for( i = 0; i < values.length; i++ )
+        {
+            //on récupère la valeur du tableau
+            x = values[i];
+
+            //on la dessine telle quelle (souvent hors champ donc)
+            G.circle( x, h / 2, 2 );
+
+        }
+        //comme prévu, beaucoup de valeurs sortent de l'écran et on voit seulement une partie des 'count' (200) valeurs attendues
+
+        return;
+
+        //en revanche, si on normalise chaque valeur entre min et max, on obtiendra un chiffre compris entre 0 et 1
+        //ce chiffre peut ensuite être interpolé entre les valeurs de notre choix par exemple, 100 et w-100
+
+        //essayons
+        //on commence par nettoyer le contexte pour ne pas que le dessin précédent interfère
+        ctx.clearRect( 0,0,w,h );
+
+        //on choisit les bornes entre lesquelles on veut dessiner
+        //de 100px à gauche
+        var A = 100;
+        //à ( largeur - 100px ) à droite
+        var B = w - 100;
+
+        //on tente à nouveau de dessiner nos valeurs, cette fois ci en les normalisant
+        for( i = 0; i < values.length; i++ )
+        {
+            //récupère la valeur
+            x = values[i];
+
+            //on normalise la valeur x entre min et max
+            norm = ( x - min ) / ( max - min );
+
+            //norm représente maintenant la valeur de X entre min et max
+            //mais entre 0 et 1
+
+            //on interpole la valeur normalisée entre A et B
+            var position = lerp( norm, A, B );
+
+            //dessine la position
+            G.circle( position, h / 2, 5);
+
+        }
+
+        //beauoup mieux!
+        //nous sommes désormais en mesure de dessiner un ensemble de valeurs inconnues dans un espace de dimensions données
+
+        return;
+
+        //dernier point:
+        //que faire si on ne connaît pas les bornes entre lesquelles normaliser X (min et max)?
+        //le plus simple est de faire une première boucle pour retrouver ces valeurs, ce qui nous donnera :
+
+        //NB: le résultat est plus flagrant avec un petit nombre de points (count = 10, ou 20 )
+
+        //prend le plus grand chiffre possible (2^53) comme minimum
+        var minimum = Math.pow(2, 53);
+
+        //prend le plus petit chiffre possible -(2^53) comme maximum
+        var maximum = -Math.pow(2, 53);
+
+        for( i = 0; i < count; i++ ){
+
+            //pour chaque valeur X
+            x = values[ i ];
+
+            //si X est inférieur au minimum, minimum devient X
+            if( x < minimum ) minimum = x;
+
+            //si X est supérieur au maximum, maximum devient X
+            if( x > maximum ) maximum = x;
+
+        }
+
+        //on les trace dans la console: peu de chance que minimum == min et/ ou que maximum == max
+        console.log( minimum, maximum );
+
+        //et on dessine le "vraies" bornes de l'ensemble en rouge
+        ctx.strokeStyle = "#f00";
+
+        //on dessine le minimum
+        norm = ( minimum - min ) / ( max - min );
+        position = lerp( norm, A, B );
+
+        //dessine un petit trait vertical au dessus du minimum
+        G.line( position, h/2 - 20, position, h/2 + 20 );
+
+
+        //et le maximum
+        norm = ( maximum - min ) / ( max - min );
+        position = lerp( norm, A, B );
+
+        //dessine un petit trait vertical au dessus du maximum
+        G.line( position, h/2 - 20, position, h/2 + 20 );
+
+
+        //puis les bornes "théoriques" min et max (-10000 et 10000 normalisées et interpolées entre A et B )
+        ctx.strokeStyle = "#000";
+        G.line( A, h/2 - 20, A, h/2 + 20 );
+        G.line( B, h/2 - 20, B, h/2 + 20 );
+
+    }
+    window.addEventListener( "resize", draw, false );
+    window.addEventListener( "mousedown", draw, false );
+    draw();
+
+</script>
+
+
+</body>
+</html>

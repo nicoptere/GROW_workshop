@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+        #speed
+        {
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../geom.js"></script>
+<script src="../graphics.js"></script>
+
+<script>
+
+    //on utilise l'utilitaire graphique
+    var G = new Graphics(ctx);
+    function draw()
+    {
+
+        requestAnimationFrame( draw );
+        ctx.clearRect( 0,0,w,h );
+
+
+        //une interpolation linéaire permet de passer graduellement d'une valeur à une autre
+
+        //prenons 2 points A et B où:
+
+        // A est placé à 100  pixels ( à "gauche" ), centré verticalement
+        var A = new Point( 100, h / 2 );
+
+        // et B à W- 100 pixels (à "droite"), centré verticalement
+        var B = new Point( w - 100, h / 2 );
+
+        //on les dessine et on tire un trait entre les 2
+        ctx.strokeStyle = ctx.fillStyle = "#000";
+        G.disc( A.x, A.y, 2 );
+        G.disc( B.x, B.y, 2 );
+        G.line( A, B );
+
+
+        //accessoirement, on indique par une lettre quel point a quelle valeur
+        G.text( "A", 24, A.x - 12, A.y - 16);//place la lettre "A" au dessus du point A
+        G.text( "B", 24, B.x - 12, B.y - 16);//place la lettre "B" au dessus du point B
+
+
+        //pour passer progressivement de l'une à l'autre, il nous faut une troisième valeur T, comprise entre 0 et 1
+        var T = 0.25;
+
+
+        //la valeur "interpolée" en X entre A et B équivaut alors à:
+
+        var interpolation = A.x + T * ( B.x - A.x );
+
+        //plus souvent écrit comme suit :
+        interpolation = A.x * ( 1 - T ) +  T * B.x;
+
+
+        //et on peut la dessiner
+        ctx.fillStyle = "#06C";//bleu
+        G.disc( interpolation, A.y, 5 );
+
+        return;
+
+        //on peut représneter graphiquement ces valeurs comme suit:
+        //avec une valeur T qui passe de 0 à 1 en s'incrémentant de .1 ( = de 0% à 100 % par étapes de 10% )
+        ctx.fillStyle = "#F00";//rouge
+        for( T = 0; T <= 1; T += .1 )
+        {
+
+            // on calcule la valeur interpolée
+            interpolation = A.x * ( 1 - T ) +  T * B.x;
+
+            //et on peut la dessiner
+            G.disc( interpolation, h/2, 5 );
+
+        }
+
+        return;
+
+        //une interpolation permet de passer d'une valeur à une autre sans se soucier des valeurs en question
+        //par exemple on peut intervertir les valeur A et B, ça continuera de marcher.
+
+        //comme on passe d'une valeur à l'autre, on peut facilement combiner plusieurs variables:
+
+        //ajoutons une différence en X et Y au point B et interpolons également les Y
+
+        B.x -= 100;
+        B.y -= h / 4;
+
+        //on représente notre nouveau point B
+
+        ctx.strokeStyle = ctx.fillStyle = "#000";
+        G.circle( B.x, B.y, 10 );
+        G.line( A,B );
+        G.text( "B", 24, B.x - 12, B.y - 16);//place la lettre "B" au dessus du point B
+
+//        return;
+
+        ctx.strokeStyle = ctx.fillStyle = "#fC0";
+        for( T = 0; T <= 1; T += .1 )
+        {
+
+            // on calcule la valeur interpolée en X
+            var interpolationX = A.x * ( 1 - T ) +  T * B.x;
+
+
+            // puis on calcule la valeur interpolée en Y
+            var interpolationY = A.y * ( 1 - T ) +  T * B.y;
+
+            //et on peut dessiner cette valeur en X et en Y
+            G.disc( interpolationX, interpolationY, 5 );
+
+        }
+
+        return;
+
+        //en fait on peut interpoler n'importe quelle valeur linéaire
+        //par exemple, couleur et taille avec un nombre d'étapes spécifique
+
+        var increment = .05; // += 5% soit 20 étapes (+1 pour atteindre la dernière valuer)
+        for( T = 0; T < ( 1 + increment ); T += increment )
+        {
+
+            //position
+            interpolationX = A.x * ( 1 - T ) +  T * B.x;
+            interpolationY = A.y * ( 1 - T ) +  T * B.y;
+
+            //couleur
+            ctx.fillStyle = "hsl( " + ( T * 360 ) +', 100%, 50% )';
+
+            //taille
+            var radius = 1 + T * 30;
+
+            //dessine un disque de couleur
+            G.disc( interpolationX, interpolationY, radius );
+
+        }
+
+
+        //le dernier exemple est un cas particulier puisqu'au lieu d'interpoler en tre 2 valeurs arbitraires,
+        //nous utilisons une valeur T entre 0 et 1 que nous multiplions par la valeur maximale souhaitée ( 360 pour la couleur et 30 pour le rayon )
+
+        //donc
+        // quand T = 0, couleur = 0 * 360 = 0 et radius = 1 + 0 * 30 = 1
+        // quand T = 1, couleur = 1 * 360 = 360 et radius = 1 + 1 * 30 = 31
+
+        //obtenir une valeur comprise entre 0 et 1 présente beaucoup d'avantages
+        //obtenir une valeur "comprise entre 0 et 1" quand on a des valeurs arbitraires s'appelle "normaliser" une valeur
+
+        //c'est pourquoi la normalisation est notre prochaine étape
+
+    }
+    draw();
+
+</script>
+
+
+</body>
+</html>

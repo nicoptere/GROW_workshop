@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        head, body
+        {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            margin:0;
+            padding:0;
+            background-color: #EEE;
+        }
+
+    </style>
+</head>
+<body>
+
+<script src="../base.js"></script>
+<script src="../graphics.js"></script>
+
+<script>
+
+    function draw(){
+
+        /*
+        jusqu'à présent on a utilisé des couleurs en aplat pour remplir les formes
+        mais il existe une autre manière de faire ; utiliser un "motif de remplissage" ou "pattern"
+
+        on peut créer un motif  de 2 façons:
+        - soit à partir d'une image
+        - soit à partir d'un canvas
+
+        dans les 2 cas, ça se dit :
+
+            var pattern = ctx.createPattern( imageOuCanvas, repetition );
+
+        avec 2 arguments:
+
+            imageOuCanvas qui est soit une image soit un canvas (pas un contexte)
+            repetition qui peut prendre les valeurs suivantes : 'repeat' | 'repeat-x' | 'repeat-y' | 'no-repeat'
+
+        en général on va vouloir que le motif se répète (donc 'repeat') mais il faut toujours le spécifier.
+
+        une fois le pattern créé, on peut l'assigner comme style au contexte:
+
+        au trait
+            context.strokeStyle = pattern;
+
+        ou au remplissage
+            context.fillStyle = pattern;
+
+        essayons:
+
+        */
+        var cx = w/2;
+        var cy = h/2;
+
+        //on crée un nouveau contexte 2D de 64 * 64 pixels
+        var patCtx = getContext( 64,64 );
+
+        //et on récupère une référence vers l'objet Canvas auquel il appartient
+        //en effet, le pattern ne prend pas en argument un contexte 2d mais bien un objet canvas
+        var patCanvas = patCtx.canvas;
+
+        //on "branche" l'utilistaire graphique sur ce ontexte
+        var G = new Graphics( patCtx );
+
+        //et on dessine un disque bleu
+        patCtx.fillStyle = "#09C";//bleu
+        G.disc( 32, 32, 30 );
+
+        //avec le contexte principal cette fois, on crée le motif
+        var pattern = ctx.createPattern( patCanvas, 'repeat' );
+
+        //on assigne le motif comme style de remplissage
+        ctx.fillStyle = pattern;
+
+        //et on dessine
+        ctx.fillRect(0, 0, w, h );
+
+        //on obtient une surface couverte de ronds bleus, répétés à l'infini en X et Y
+
+        return;
+
+        //si on change le mode de répétition, on peut obtenir:
+
+        //une frise horizontale
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = ctx.createPattern( patCanvas, 'repeat-x' );
+        ctx.fillRect(0, 0, w, h );
+
+        return;
+
+        //une frise verticale
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = ctx.createPattern( patCanvas, 'repeat-y' );
+        ctx.fillRect(0, 0, w, h );
+
+        return;
+
+        //ou pas de frise du tout
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = ctx.createPattern( patCanvas, 'no-repeat' );
+        ctx.fillRect(0, 0, w, h );
+
+        //ça peut paraître idiot mais ça peut servir (pour un pinceau par exemple).
+
+        return;
+
+        //on peut aussi utiliser le motif comme style de trait
+
+        ctx.clearRect(0,0,w,h);
+
+        pattern = ctx.createPattern( patCanvas, 'repeat' );
+
+        //assigne le style de trait
+        ctx.lineWidth = 64;//64px de large
+        ctx.lineJoin = "round";
+        ctx.fillStyle = pattern;
+        ctx.strokeStyle = pattern;
+        ctx.strokeRect( cx-96, cy-96, 192, 192 );
+
+            //et comme remplissage évidemment
+            ctx.fillStyle = pattern;//le motif
+            ctx.fillRect( cx-100, cy-100, 200, 200 );
+
+        return;
+
+        /*
+        sur l'exemple ci dessus, on remarque que le motif ne commence pas en haut à gauche de la forme dessinée
+        c'est très visible lorsqu'on redimensionne la fenêtre : les ronds ne "bougent pas" et la forme semble glisser au dessus
+
+        ça tient au fait que le motif commence à l'origine du contexte dans le quel il est dessiné, pas là où l'on dessine
+        si on veut que le motif commence où l'on dessine, il faut appliquer une translation au contexte qui amènera l'origine au point de dessin
+        */
+
+        ctx.clearRect(0,0,w,h);
+        ctx.save();
+
+        //amène l'origine du contexte là où on veut commencer à dessiner
+        ctx.translate( cx-96, cy - 96 );
+
+        //le motif ne "glisse" plus.
+        ctx.strokeRect( 0,0, 192, 192 );
+
+            //met en valeur l'endroit où passe le trait de 64 px de large
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000";
+            ctx.strokeRect( 0, 0, 192, 192 );
+
+        ctx.restore();
+
+        return;
+
+        //dans le cas d'un motif basé sur un canvas, on peut l'animer
+        //voyons comment
+        cancelAnimationFrame( interval );
+        update();
+
+
+    }
+
+    //ici on crée des variables que l'on va réutiliser pour l'animation
+    var interval;
+    var size = 64;
+    var r = size / 2;
+    var animaCtx = getContext( size,size );
+    var animaCanvas = animaCtx.canvas;
+    var G = new Graphics(animaCtx);
+    function update()
+    {
+        interval = requestAnimationFrame( update );
+
+
+        //on nettoie le contexte du motif
+        animaCtx.fillStyle = "rgba( 255,255,255,.025 )";
+        animaCtx.fillRect(0,0,animaCanvas.width, animaCanvas.height );
+
+        //une variable d'oscillation basée sur le temps
+        var time = Date.now() *.001;
+        var ct =  .5 + ( Math.cos( time ) * .5 );
+        var st = .5 + ( Math.sin( time ) * .5 );
+
+        //on dessine un motif (des sortes de vaguelette)
+        for( var i = -size; i < size * 2; i+= 16 )
+        {
+
+            var y = ( i + st * r );
+
+            G.arc( - size,       y, r * ct, -PI, 0 );
+            G.arc( 0,            y, r * ct, -PI, 0 );
+            G.arc( size,         y, r * ct, -PI, 0 );
+
+            G.arc( size / 2 - size,         y, r * ( 1 - ct ), 0, PI );
+            G.arc( size / 2,                y, r * ( 1 - ct ), 0, PI );
+            G.arc( size / 2 + size,         y, r * ( 1 - ct ), 0, PI );
+
+        }
+
+        //utilise l'animation mise à jour comme motif
+        ctx.fillStyle = ctx.createPattern( animaCanvas, "repeat" );
+        //remplit toute la surface
+        ctx.fillRect(0,0,w,h);
+
+
+        //met en valeur la zone servant de motif
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#F00";
+        ctx.strokeRect( size, size,size,size);
+
+    }
+
+
+
+    window.addEventListener( "resize", draw, false );
+    draw();
+
+
+
+</script>
+</body>
+</html>

@@ -25,29 +25,38 @@
 
     var flow = document.createElement( "canvas" );
     var flowData, particles = [], startingPoints = [];
-
     var img = new Image();
+    var animationFrame;
+
     img.onload = function(){
         w = canvas.width = img.width;
         h = canvas.height = img.height;
 
+        reset();
+
+
+    };
+
+    function reset(){
+
         ctx.save();
-        ctx.filter = "blur(5px) saturate(0)";
+        var blur = ~~( Math.random() * 30 );
+        console.log( "blur:", blur );
+        ctx.filter = "blur("+ blur +"px)";
         ctx.drawImage(img,0,0);
         ctx.restore();
 
-
+        //collects the image data
         var imgData = ctx.getImageData(0,0,w,h);
 
+        //resizes the flow field and creates a destination imageData
         flow.width = w;
         flow.height = h;
-        var f_ctx = flow.getContext( '2d' );
         flowData = ctx.getImageData(0,0,w,h);
 
         //compute the flowfiled
-
-        var multiplier = 3;
-        var threshold = 3;
+        var multiplier  = 3;
+        var threshold   = 3;//~~( 2 + Math.random() * 4 );
         var i = imgData.data.length;
         while( i -= 4 ){
 
@@ -87,8 +96,7 @@
         }
 
         update();
-
-    };
+    }
 
     function resetParticle( p ) {
 
@@ -102,9 +110,9 @@
 
     function update() {
 
-        requestAnimationFrame(update);
+        animationFrame = requestAnimationFrame(update);
 
-        ctx.globalAlpha = .02;
+        ctx.globalAlpha = .01;
         ctx.globalCompositeOperation = "darken";
 
         var times = 10;
@@ -133,11 +141,12 @@
 
         }
     }
-    img.src = 'tronche.jpg';
 
     canvas.addEventListener('mousedown', function(){
         ctx.clearRect(0,0,w,h);
-    })
+    });
+
+    img.src = 'tronche.jpg';
 
 </script>
 
