@@ -164,10 +164,7 @@ function getPositionAt(points, t) {
 
     var delta = 1 / length;
     var nt = ( t - ( i0 * delta ) ) / delta;
-    return p = new Point(
-        lerp(nt, points[i0].x, points[i1].x),
-        lerp(nt, points[i0].y, points[i1].y)
-    );
+    return points[i0].PointAt( nt, points[i1] );
 }
 
 
