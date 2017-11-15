@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exercice</title>
+
+    <style>
+        html, body{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script src="quadratic.js"></script>
+    <script src="base.js"></script>
+    <script>
+
+
+        function pseudoRandom(x, y) {
+            return ( ( Math.sin( Math.pow( x + 12.9898, 2 ) + Math.pow( y + 78.233, 2 ) ) ) * 43758.5453123 ) % 1;
+        }
+
+        function noise(x, y) {
+
+            //gets the integer part
+            var ix = parseInt(x);
+            var iy = parseInt(y);
+
+            // 2D cell corners
+            var a = pseudoRandom(ix,iy);
+            var b = pseudoRandom(ix+1, iy);
+            var c = pseudoRandom(ix, iy+1);
+            var d = pseudoRandom(ix+1, iy+1);
+
+            //gets the fractional part
+            var fx = (x % 1);
+            var fy = (y % 1);
+            var ux = fx * fx * (3.0 - 2.0 * fx);
+            var uy = fy * fy * (3.0 - 2.0 * fy);
+
+            //interpolate the 4 noises with fractional parts
+            return (a * (1-ux) + b * ux) + (c - a) * uy * (1.0 - ux) + (d - b) * ux * uy;
+
+        }
+
+
+
+        ctx.translate( w/2,h/2);
+        ctx.fillStyle  ="#387fb5";
+        ctx.fillRect(-w/2,-h/2, w, h);
+
+        ctx.strokeStyle  ="#FFF";
+        ctx.globalCompositeOperation = "lighten";
+
+
+        //polarisation
+        var radiusIn = h /5;
+        var radiusOut = h /3;
+
+        var time = 10;
+        while( time-- ){
+
+            var lineCount = 50;
+            for( var i = 0; i < lineCount; i++ ){
+
+                var baseSegmentsCount = 40;
+                var extraSegmentsCount = 30;
+                var segmentsCount = baseSegmentsCount + ( Math.random() - .5 ) * extraSegmentsCount;
+
+                var start = Math.random() * baseSegmentsCount * .2;
+                var anchors = [];
+                for( var j = start; j < segmentsCount ; j++ ){
+
+                    var scale = 0.05;
+                    var t = (j / segmentsCount);
+                    var n = noise( ( Math.sin( time + j ) ) * scale, i*j * scale ) * ( t * t );
+
+                    var angle = ( j / ( baseSegmentsCount + extraSegmentsCount * .5 ) * Math.PI * 2 );
+
+                    var radius = map( i, 0, lineCount, radiusIn, radiusOut ) + ( n * 50 * t * t );
+
+                    var p = new Point( Math.cos( angle ) * radius, Math.sin( angle ) * radius );
+                    anchors.push(p);
+
+                }
+
+                var points = quadratic.compute( anchors, .1 , false );
+
+                ctx.beginPath();
+                ctx.globalAlpha = .2 + Math.random() * .1;
+                ctx.lineWidth = Math.random() * 3;
+                points.forEach(function(p){ctx.lineTo(p.x, p.y);});
+                ctx.stroke();
+
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>
