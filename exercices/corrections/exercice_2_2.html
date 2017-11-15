@@ -33,7 +33,6 @@
         }
 
         ctx.translate( w/2,h/2);
-//        ctx.fillStyle = "#fe4918";
 
         var poly =[];
         var count = 5;
@@ -49,7 +48,7 @@
         var times = 8;
         while( times-- ){
 
-            ctx.globalAlpha = 1 / 0xFF * 5;
+            ctx.globalAlpha = 1 / 0xFF * 3;
 
             var layers = 200;
 
@@ -76,8 +75,8 @@
 
             poly = tmp.concat();
             poly.forEach(function( p ){
-                p.x *= 0.95;
-                p.y *= 0.95;
+                p.x *= 0.98;
+                p.y *= 0.98;
             })
         }
 

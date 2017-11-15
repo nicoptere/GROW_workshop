@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e4f2d3-4bf8-414a-b6c0-e2b0ec7f350a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exercices/corrections/exercice_2_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exercices/corrections/exercice_1_2.html" afterPath="$PROJECT_DIR$/exercices/corrections/exercice_1_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exercices/corrections/exercice_2_1.html" afterPath="$PROJECT_DIR$/exercices/corrections/exercice_2_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exercices/references/index.html" afterPath="$PROJECT_DIR$/exercices/references/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exercices/corrections/exercice_2_2.html" afterPath="$PROJECT_DIR$/exercices/corrections/exercice_2_2.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,8 +30,8 @@
       <file leaf-file-name="exercice_2_2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exercices/corrections/exercice_2_2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="51" column="42" lean-forward="false" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+            <state relative-caret-position="238">
+              <caret line="50" column="42" lean-forward="false" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -380,12 +376,12 @@
       <workItem from="1510646461578" duration="1034000" />
       <workItem from="1510648205965" duration="5521000" />
       <workItem from="1510729415691" duration="606000" />
-      <workItem from="1510739258707" duration="20181000" />
+      <workItem from="1510739258707" duration="20244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193357000" />
+    <option name="totallyTimeSpent" value="193420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -772,8 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercices/corrections/exercice_2_2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="51" column="42" lean-forward="false" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+        <state relative-caret-position="238">
+          <caret line="50" column="42" lean-forward="false" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
           <folding />
         </state>
       </provider>
