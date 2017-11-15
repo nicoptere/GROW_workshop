@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exercice</title>
+
+    <style>
+        html, body{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script src="quadratic.js"></script>
+    <script src="base.js"></script>
+    <script>
+
+        function polyline( points ){
+
+            ctx.beginPath();
+            points.forEach(function(p){ctx.lineTo(p.x, p.y);});
+            ctx.closePath();
+            ctx.fill();
+
+        }
+
+        ctx.translate( w/2,h/2);
+//        ctx.fillStyle = "#fe4918";
+
+        var poly =[];
+        var count = 5;
+        for( var i = 0; i < count; i++ ){
+            var angle = i/count * Math.PI * 2;
+            var radius = h/4;// + Math.random() * h/16;
+            p = new Point( Math.cos( angle ) * radius, Math.sin( angle ) * radius );
+            poly.push(p);
+        }
+
+
+
+        var times = 8;
+        while( times-- ){
+
+            ctx.globalAlpha = 1 / 0xFF * 5;
+
+            var layers = 200;
+
+            while( layers-- ) {
+
+                var tmp = [];
+
+                for (var i = 0; i < poly.length; i++) {
+
+                    var c = poly[i];
+                    c.x += ( Math.random() - .5 ) * 2;
+                    c.y += ( Math.random() - .5 ) * 2;
+                    var n = poly[( i + 1 ) % poly.length];
+
+                    if ( i/poly.length > .5) {
+                        tmp.push(c, subdiv(c, n));
+                    } else {
+                        tmp.push(c);
+                    }
+
+                }
+                polyline(tmp);
+            }
+
+            poly = tmp.concat();
+            poly.forEach(function( p ){
+                p.x *= 0.95;
+                p.y *= 0.95;
+            })
+        }
+
+        function subdiv( a,b ){
+
+            var m = new Point();
+
+            var r = Math.random();
+            var n = new Point( (b.y - a.y), -(b.x - a.x ) );
+            if( Math.random() > 1.5 ){
+                n.x *= -1;
+                n.y *= -1;
+            }
+            n = normalize(n);
+
+            m.x = lerp( r, a.x, b.x ) + n.x * 50 * Math.random();
+            m.y = lerp( r, a.y, b.y ) + n.y * 50 * Math.random();
+
+            return m;
+
+        }
+
+        function normalize(v) {
+            var l = Math.sqrt(v.x * v.x + v.y * v.y);
+            v.x/=l;
+            v.y/=l;
+            return v;
+        }
+
+    </script>
+
+</body>
+</html>
