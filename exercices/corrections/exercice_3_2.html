@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video</title>
+
+    <style>
+        html, body{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="Delaunator.js"></script>
+<script src="base.js"></script>
+
+<script>
+
+    var flow = document.createElement( "canvas" );
+    var flowData, startingPoints = [];
+    var img = new Image();
+
+
+    function reset(){
+
+        ctx.save();
+        var blur = 1;
+        var multiplier  = 5;
+        var threshold   = 32;
+
+        console.log( "blur:", blur );
+        ctx.filter = "blur("+ blur +"px)";
+        ctx.drawImage(img,0,0);
+        ctx.restore();
+
+        //collects the image data
+        var imgData = ctx.getImageData(0,0,w,h);
+
+        //resizes the flow field and creates a destination imageData
+        flow.width = w;
+        flow.height = h;
+        flowData = ctx.getImageData(0,0,w,h);
+
+        //compute the central difference ; we'll use it as an edge detection
+        startingPoints = [];
+
+        var i = imgData.data.length;
+        while( i -= 4 ){
+
+            var top = ( i/4 - w ) * 4;
+            var bot = ( i/4 + w ) * 4;
+            var tb = ( imgData.data[top] - imgData.data[bot] ) * multiplier;
+            flowData.data[ i ] = ~~( 0x7F + tb );
+
+            var lef = ( i/4 - 1 ) * 4;
+            var rig = ( i/4 + 1 ) * 4;
+            var lr =( imgData.data[lef] - imgData.data[rig] ) * multiplier;
+            flowData.data[ i+1 ] =  ~~( 0x7F + lr );
+
+            flowData.data[ i+2 ] = 0;
+
+            if( Math.abs( tb ) > threshold && Math.abs( lr ) > threshold ){
+                startingPoints.push( new Point( ~~( i/4 ) % w, ~~( ( i/4 ) / w ) ) );
+                flowData.data[ i ] = flowData.data[ i+1 ] = 0xFF;
+            }else{
+                flowData.data[ i ] = flowData.data[ i+1 ] = 0;
+            }
+
+
+        }
+
+        ctx.filter = "";
+
+        ////debug
+        ctx.putImageData( flowData,0,0);
+
+        ctx.fillStyle = "#FFF";
+        ctx.fillRect( 0,0,w,h );
+        ctx.fillStyle = "#000";
+
+        //now we have a flow field, we can use it to drive particles motion
+        var pool = [];
+        for( i = 0; i < 1000; i++ ){
+
+            if( startingPoints.length <= 0 )break;
+
+            var p = startingPoints.splice( ~~(Math.random() * startingPoints.length ), 1 )[0];
+            pool.push( p );
+            ctx.fillRect( p.x, p.y, 1,1 );
+
+        }
+
+        // adds the corners
+        pool.push( new Point( 0, 0 ) );
+        pool.push( new Point( w, 0 ) );
+        pool.push( new Point( w, h ) );
+        pool.push( new Point( 0, h ) );
+
+        //compute triangulation
+
+        var delaunay = new Delaunator( pool.map(function( p ){return [p.x, p.y]; }) );
+
+
+
+        //render triangles :
+        //creates a smaller version of the picture to avoid noise when picking colors
+        var scale = .2;
+
+        var palette = document.createElement( 'canvas' );
+        palette.width = w * scale;
+        palette.height = h * scale;
+        var palette_ctx = palette.getContext("2d");
+        palette_ctx.drawImage( img, 0,0,img.width, img.height, 0,0,palette.width, palette.height );
+        imgData = palette_ctx.getImageData(0,0,palette.width, palette.height);
+
+
+        var tris = delaunay.triangles;
+        for( i = 0; i < tris.length; i += 3 ){
+
+            p0 = pool[ tris[ i ] ];
+            p1 = pool[ tris[ i+1 ] ];
+            p2 = pool[ tris[ i+2 ] ];
+
+
+            //centroid
+            var x = ~~( ( ( p0.x + p1.x + p2.x ) / 3 ) * scale );
+            var y = ~~( ( ( p0.y + p1.y + p2.y ) / 3 ) * scale );
+
+            ctx.strokeStyle = ctx.fillStyle = getColor( imgData, x, y );
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y );
+            ctx.lineTo( p1.x, p1.y );
+            ctx.lineTo( p2.x, p2.y );
+            ctx.lineTo( p0.x, p0.y );
+            ctx.fill();
+            ctx.stroke();
+
+        }
+
+
+        return;
+
+        //debug
+        ctx.strokeStyle = ctx.fillStyle = "#000";
+        ctx.lineWidth = .1;
+        //render triangles : strokes
+        for( i = 0; i < tris.length; i += 3 ){
+
+            //collects points
+            var p0 = pool[ tris[ i ] ];
+            var p1 = pool[ tris[ i+1 ] ];
+            var p2 = pool[ tris[ i+2 ] ];
+
+            //draws triangle
+            ctx.beginPath();
+            ctx.moveTo( p0.x, p0.y );
+            ctx.lineTo( p1.x, p1.y );
+            ctx.lineTo( p2.x, p2.y );
+            ctx.lineTo( p0.x, p0.y );
+            ctx.stroke();
+
+            //centroid
+            var x = ( p0.x + p1.x + p2.x ) / 3;
+            var y = ( p0.y + p1.y + p2.y ) / 3;
+
+            ctx.beginPath();
+            ctx.arc(x,y, 2, 0, Math.PI * 2);
+            ctx.fill();
+
+        }
+
+    }
+
+    function getColor( imgData, x, y ){
+        var id = ( x + imgData.width * y ) * 4;
+        return "rgba( "+ imgData.data[id++]+","+ imgData.data[id++]+","+ imgData.data[id++]+","+ imgData.data[id++]+")";
+    }
+
+    img.onload = function(){
+        w = canvas.width = img.width;
+        h = canvas.height = img.height;
+        reset();
+    };
+    img.src = 'tronche.jpg';
+
+    canvas.addEventListener('mousedown', function(){
+        reset();
+    });
+
+
+</script>
+
+</body>
+</html>

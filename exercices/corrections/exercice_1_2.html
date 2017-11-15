@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exercice</title>
+
+    <style>
+        html, body{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            top:0;
+            left:0;
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script src="base.js"></script>
+    <script>
+
+        ctx.translate(w/2,h/2);
+        ctx.lineCap = "round";
+
+        var radius = Math.min( w,h ) / 4;
+        var count = 6;
+        for( var i = 0; i <= count; i++ ){
+
+            var rad = i * radius / 6;
+
+            ctx.beginPath();
+            ctx.arc( radius - rad, 0, rad, 0, PI * 2 );
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc( - radius + rad, 0, rad, -PI, 0 );
+            ctx.stroke();
+
+        }
+
+
+    </script>
+
+</body>
+</html>
