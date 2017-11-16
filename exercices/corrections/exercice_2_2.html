@@ -32,68 +32,78 @@
 
         }
 
-        ctx.translate( w/2,h/2);
+        function reset(){
 
-        var poly =[];
-        var count = 5;
-        for( var i = 0; i < count; i++ ){
-            var angle = i/count * Math.PI * 2;
-            var radius = h/4;// + Math.random() * h/16;
-            p = new Point( Math.cos( angle ) * radius, Math.sin( angle ) * radius );
-            poly.push(p);
-        }
+            ctx.restore();
+            ctx.clearRect( 0,0,w,h );
+            ctx.save();
+            ctx.translate( w/2,h/2);
 
-
-
-        var times = 8;
-        while( times-- ){
-
-            ctx.globalAlpha = 1 / 0xFF * 3;
-
-            var layers = 200;
-
-            while( layers-- ) {
-
-                var tmp = [];
-
-                for (var i = 0; i < poly.length; i++) {
-
-                    var c = poly[i];
-                    c.x += ( Math.random() - .5 ) * 2;
-                    c.y += ( Math.random() - .5 ) * 2;
-                    var n = poly[( i + 1 ) % poly.length];
-
-                    if ( i/poly.length > .5) {
-                        tmp.push(c, subdiv(c, n));
-                    } else {
-                        tmp.push(c);
-                    }
-
-                }
-                polyline(tmp);
+            var poly =[];
+            var count = 6;
+            for( var i = 0; i < count; i++ ){
+                var angle = i/count * Math.PI * 2;
+                var radius = h/6;// + Math.random() * h/16;
+                p = new Point( Math.cos( angle ) * radius, Math.sin( angle ) * radius );
+                poly.push(p);
             }
 
-            poly = tmp.concat();
-            poly.forEach(function( p ){
-                p.x *= 0.98;
-                p.y *= 0.98;
-            })
+
+            ctx.globalAlpha = ( 1 / 0xFF ) * 4;
+            ctx.strokeStyle = ctx.fillStyle = "#f65e28";
+            ctx.globalCompositeOperation = "darken";
+
+
+            var maxIteration = 8;
+            var iteration = maxIteration;
+            while( iteration-- ){
+
+                var layers = 200;
+
+                while( layers-- ) {
+
+                    var tmp = [];
+
+                    for (var i = 0; i < poly.length; i++) {
+
+                        var c = poly[i];
+                        c.x += ( Math.random() - .5 ) * ( maxIteration - iteration );
+                        c.y += ( Math.random() - .5 ) * ( maxIteration - iteration );
+
+                        var n = poly[( i + 1 ) % poly.length];
+
+                        var t = Math.sin( i/poly.length * Math.PI * 2 );
+                        tmp.push(c, subdiv(c, n, 30 + ( maxIteration - iteration ) * 10));
+
+    //                    //variation
+    //                    if( c.y < 0 && c.x > 0 ) {
+    //                        tmp.push(c, subdiv(c, n, 30 + ( maxIteration - iteration ) * 10));
+    //                    }else{
+    //                        tmp.push(c);
+    //                    }
+
+                    }
+                    polyline(tmp);
+                }
+
+                poly = tmp.concat();
+                poly.forEach(function( p ){
+                    p.x *= 0.99;//1.05;//
+                    p.y *= 0.99;//1.05;//
+                })
+            }
         }
 
-        function subdiv( a,b ){
+        function subdiv( a,b, length ){
 
             var m = new Point();
 
-            var r = Math.random();
             var n = new Point( (b.y - a.y), -(b.x - a.x ) );
-            if( Math.random() > 1.5 ){
-                n.x *= -1;
-                n.y *= -1;
-            }
             n = normalize(n);
 
-            m.x = lerp( r, a.x, b.x ) + n.x * 50 * Math.random();
-            m.y = lerp( r, a.y, b.y ) + n.y * 50 * Math.random();
+            var r = Math.sin( Math.random() * Math.PI );
+            m.x = lerp( r, a.x, b.x ) + n.x * length * Math.random();
+            m.y = lerp( r, a.y, b.y ) + n.y * length * Math.random();
 
             return m;
 
@@ -106,6 +116,8 @@
             return v;
         }
 
+        canvas.addEventListener("mousedown", reset)
+        reset()
     </script>
 
 </body>
